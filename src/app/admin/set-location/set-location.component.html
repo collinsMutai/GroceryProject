@@ -1,0 +1,116 @@
+<div class="setLocationContainer">
+  <div class="setLocation">
+    <p class="icon">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+        <path
+          d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z"
+        />
+      </svg>
+    </p>
+    <p class="setLocationText">No delivery location is currently set</p>
+    <p class="setLocationButton">
+      <button (click)="openLocationModal()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-map-pins"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M10.828 9.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z"
+          />
+          <path d="M8 7l0 .01" />
+          <path
+            d="M18.828 17.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z"
+          />
+          <path d="M16 15l0 .01" />
+        </svg>
+        Set Location
+      </button>
+    </p>
+  </div>
+</div>
+<div *ngIf="showContent" class="modalContainer">
+  <div class="modalContent">
+    <h3>Select Location</h3>
+    <hr />
+    <h4>Pick or Search a delivery address</h4>
+    <p>
+      Enter your delivery address to get started. You can also search for a
+      location or address.
+    </p>
+    <div class="input">
+      <form>
+        <div class="input-group">
+          <span class="input-group-text"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon homeIcon icon-tabler icons-tabler-outline icon-tabler-home"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+              <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+              <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg
+          ></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search address..."
+          />
+          <span class="input-group-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-location"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
+              />
+            </svg>
+            Use current location
+          </span>
+        </div>
+      </form>
+    </div>
+    <div class="modalBtns">
+      <button class="close" (click)="closeLocationModal()">Close</button>
+      <button class="confirm">Confirm Location</button>
+    </div>
+  </div>
+</div>

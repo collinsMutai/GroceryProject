@@ -1,0 +1,48 @@
+<div class="tableContainer">
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Payment status</th>
+      <th scope="col">Order status</th>
+      <th scope="col">Date</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (country of countries; track country.payment_status) {
+    <tr>
+      <th scope="row">{{ country.id }}</th>
+      <td>
+        {{ country.payment_status }}
+      </td>
+      <td>{{ country.order_status }}</td>
+      <td>{{ country.date }}</td>
+      <td>{{ country.total }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination
+    [collectionSize]="collectionSize"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    (pageChange)="refreshCountries()"
+  >
+  </ngb-pagination>
+
+  <select
+    class="form-select"
+    style="width: auto"
+    [(ngModel)]="pageSize"
+    (ngModelChange)="refreshCountries()"
+  >
+    <option [ngValue]="2">2 items per page</option>
+    <option [ngValue]="4">4 items per page</option>
+    <option [ngValue]="6">6 items per page</option>
+  </select>
+</div>
+
+</div>

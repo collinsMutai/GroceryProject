@@ -1,0 +1,95 @@
+/* .topNav {
+  background-color: #52aa1c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 15px;
+}
+.left,
+.right {
+  flex: 1;
+}
+.left p,
+.right p {
+  font-size: 15px;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+.left p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+.right {
+  display: flex;
+  justify-content: end;
+}
+.bottomNav{
+    background-color: #000000;
+    
+} */
+
+.productContainer {
+  height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.left {
+  width: 150px;
+}
+.logo p {
+  font-size: 21px;
+  font-weight: 900;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.avatar {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 10px 10px 5px 0px rgba(255, 128, 132, 0.62),
+    -10px -10px 5px 0px rgba(255, 128, 132, 0.62);
+}
+.avatar svg {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+.avatar h3 {
+  color: #ff8084;
+  font-size: 16px;
+  font-weight: 600;
+}
+.avatar p {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.linksContainer {
+  padding-top: 60px;
+}
+.links p {
+  display: flex;
+  gap: 10px;
+}
+.links p svg {
+  height: 20px;
+  width: 20px;
+  color: #ff8084;
+}
+.links p {
+  font-weight: 500;
+}
+
+.right {
+  flex: 1;
+  background-color: #f8f8f9;
+  overflow-y: auto;
+}
