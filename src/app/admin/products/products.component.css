@@ -3,10 +3,13 @@
   height: 100%;
   padding: 40px 20px;
 }
-.productContainer h3{
-    font-size: 22px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding-bottom: 40px;
-
+.productContainer h3 {
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding-bottom: 40px;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
 }

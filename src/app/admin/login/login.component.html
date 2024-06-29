@@ -1,32 +1,69 @@
 <div class="parent">
-        <div class="container">
-        <div class="left-section"></div>
-        <div class="right-section">
-            <div class="login-container">
-                <form class="login-form">
-                    <h2 class="login-title"><i class="fas fa-user-circle"></i> Login</h2>
-                    <div class="form-control">
-                        <i class="fas fa-user icon"></i>
-                        <input type="text" name="username" [(ngModel)]="loginObj.username" placeholder="Username" id="username" required>
-                    </div>
-                    <div class="form-control">
-                        <i class="fas fa-lock icon"></i>
-                        <input name="password" [(ngModel)]="loginObj.password"  type="password" placeholder="Password" id="password" >
-                    </div>
-                    <div class="remember-me">
-                        <input type="checkbox" id="rememberMe" class="checkbox-input">
-                        <span class="checkbox-custom"></span>
-                        <label for="rememberMe">Remember me</label>
-                    </div>
-                    
-                    <div class="social-login">
-                        <i class="fab fa-google social-icon"></i>
-                        <i class="fab fa-facebook-f social-icon"></i>
-                        <i class="fab fa-twitter social-icon"></i>
-                    </div>
-                    <button type="button" (click)="onLogin()">Login</button>
-                </form>
+  <div class="container">
+    <div class="left-section"></div>
+    <div class="right-section">
+      <div class="login-container">
+        <form class="login-form">
+          <h2 *ngIf="!isRegister" class="login-title">
+            <i class="fas fa-user-circle"></i> Login
+          </h2>
+          <h2 *ngIf="isRegister" class="login-title">
+            <i class="fas fa-user-circle"></i> Register
+          </h2>
+          <div class="inline">
+            <div *ngIf="isRegister" class="form-control">
+              <i class="fas fa-user icon"></i>
+              <input
+                type="text"
+                name="first_name"
+                [(ngModel)]="loginObj.first_name"
+                placeholder="First name"
+                id="first_name"
+                required
+              />
             </div>
-        </div>
+            <div *ngIf="isRegister" class="form-control">
+              <i class="fas fa-user icon"></i>
+              <input
+                type="text"
+                name="first_name"
+                [(ngModel)]="loginObj.last_name"
+                placeholder="Last name"
+                id="last_name"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-control">
+            <i class="fas fa-user icon"></i>
+            <input
+              type="text"
+              name="username"
+              [(ngModel)]="loginObj.username"
+              placeholder="Username"
+              id="username"
+              required
+            />
+          </div>
+          <div class="form-control">
+            <i class="fas fa-lock icon"></i>
+            <input
+              name="password"
+              [(ngModel)]="loginObj.password"
+              type="password"
+              placeholder="Password"
+              id="password"
+            />
+          </div>
+
+          <button type="button" (click)="onLogin()">Login</button>
+          <div class="register">
+            <p>
+              Register account? <span (click)="onRegister()">register</span>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>

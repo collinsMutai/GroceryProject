@@ -1,0 +1,13 @@
+{
+  "products": [
+    {
+      "productName": "TEST",
+      "productImage": "UPDATED",
+      "productPrice": 111,
+      "productDiscountPrice": 2299,
+      "productDescription": "TEST",
+      "id": "c721"
+    }
+  ],
+  "users": []
+}

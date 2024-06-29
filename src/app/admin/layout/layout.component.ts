@@ -17,4 +17,5 @@ export class LayoutComponent {
   redirect(){
     this.router.navigateByUrl('/dashboard/products');
   }
+  
 }

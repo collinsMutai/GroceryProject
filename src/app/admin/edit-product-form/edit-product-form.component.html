@@ -1,42 +1,69 @@
 <div class="parentContainer">
   <div class="formContainer">
+    <svg
+    (click)="closeForm()"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-x"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 6l-12 12" />
+      <path d="M6 6l12 12" />
+    </svg>
     <div class="text">Add Product</div>
-    <form action="#">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
       <div class="form-row">
         <div class="input-data">
-          <input type="text" required />
+          <input type="text" formControlName="productName" required />
           <div class="underline"></div>
-          <label for="">First Name</label>
+          <label for="productName">Product name: </label>
         </div>
         <div class="input-data">
-          <input type="text" required />
+          <input type="text" formControlName="productImage" required />
           <div class="underline"></div>
-          <label for="">Last Name</label>
+          <label for="productImage">Product image: </label>
         </div>
       </div>
       <div class="form-row">
         <div class="input-data">
-          <input type="text" required />
+          <input type="number" formControlName="productPrice" required />
           <div class="underline"></div>
-          <label for="">Email Address</label>
+          <label for="productPrice">Product price: </label>
         </div>
         <div class="input-data">
-          <input type="text" required />
+          <input
+            type="number"
+            formControlName="productDiscountPrice"
+            required
+          />
           <div class="underline"></div>
-          <label for="">Website Name</label>
+          <label for="productDiscountPrice">Product discount price: </label>
         </div>
       </div>
       <div class="form-row">
         <div class="input-data textarea">
-          <textarea rows="8" cols="80" required></textarea>
+          <textarea
+            rows="8"
+            cols="80"
+            formControlName="productDescription"
+            required
+          ></textarea>
           <br />
           <div class="underline"></div>
-          <label for="">Write your message</label>
+          <label for="productDescription">Product description:</label>
         </div>
       </div>
       <div class="form-row submit-btn">
         <div class="input-data">
-          <input type="submit" value="Submit" />
+          <button type="submit" class="add">Add</button>
+        
         </div>
       </div>
     </form>

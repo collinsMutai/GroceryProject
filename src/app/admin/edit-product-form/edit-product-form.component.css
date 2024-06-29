@@ -10,22 +10,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  height: 80vh;
   padding: 10px;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(
-    90deg,
-    rgba(34, 193, 195, 1) 33%,
-    rgba(255, 128, 128, 0.9010197829131653) 66%
-  );
+  background-color: #F2F2F2;
 }
 .formContainer {
   max-width: 800px;
+  height: 100%;
   background: #fff;
   width: 800px;
   padding: 25px 40px 10px 40px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
 .formContainer .text {
   text-align: center;
   font-size: 41px;
@@ -142,6 +140,16 @@ form .form-row .textarea {
   position: relative;
   z-index: 2;
 }
+.submit-btn .input-data .add{
+  background-color: green;
+  color: #fff;
+  padding: 8px;
+  width: 100px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 @media (max-width: 700px) {
   .formContainer .text {
     font-size: 30px;
