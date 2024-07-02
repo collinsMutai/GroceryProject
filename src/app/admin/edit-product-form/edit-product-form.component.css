@@ -13,7 +13,7 @@
   height: 80vh;
   padding: 10px;
   font-family: "Poppins", sans-serif;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
 }
 .formContainer {
   max-width: 800px;
@@ -140,7 +140,7 @@ form .form-row .textarea {
   position: relative;
   z-index: 2;
 }
-.submit-btn .input-data .add{
+.submit-btn .input-data .add {
   background-color: green;
   color: #fff;
   padding: 8px;

@@ -1,4 +1,4 @@
-import { AsyncPipe, DecimalPipe } from '@angular/common';
+import { AsyncPipe, CommonModule, DecimalPipe } from '@angular/common';
 import { Component, QueryList, ViewChildren } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -18,6 +18,7 @@ import { NgbHighlight, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     NgbHighlight,
     NgbdSortableHeader,
     NgbPaginationModule,
+    CommonModule,
   ],
   templateUrl: './product-orders-table.component.html',
   styleUrl: './product-orders-table.component.css',
@@ -35,7 +36,6 @@ export class ProductOrdersTableComponent {
   }
 
   onSort({ column, direction }: SortEvent) {
-    // resetting other headers
     this.headers.forEach((header) => {
       if (header.sortable !== column) {
         header.direction = '';
@@ -44,5 +44,25 @@ export class ProductOrdersTableComponent {
 
     this.service.sortColumn = column;
     this.service.sortDirection = direction;
+  }
+
+  getStatusClass(status: string): string {
+    switch (status) {
+      case 'Processing':
+        return 'status-paid';
+      case 'Shipped':
+        return 'status-pending';
+      case 'Delivered':
+        return 'status-shipped';
+      case 'Cancelled':
+        return 'status-delivered';
+      default:
+        return '';
+    }
+  }
+  
+
+  trackById(index: number, item: any) {
+    return item.id; // Adjust this based on your unique identifier for each order
   }
 }

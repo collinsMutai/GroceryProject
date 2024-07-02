@@ -16,14 +16,14 @@ import { EditProductFormComponent } from '../edit-product-form/edit-product-form
 export class ProductCardComponent {
   @Input() products: any[] = [];
   edit: boolean = false;
+  editedProductId: any;
+  product: any;
 
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder
-  ) {
-    console.log(this.products);
-  }
+  ) {}
 
   productForm = this.formBuilder.group({
     productName: ['', Validators.required],
@@ -32,8 +32,22 @@ export class ProductCardComponent {
     productDiscountPrice: ['', Validators.required],
     productDescription: ['', Validators.required],
   });
+  loadProducts() {
+    this.productService.getAllProducts().subscribe(
+      (products: any) => {
+        this.products = products;
+      },
+      (error) => {
+        this.toastr.error('Error fetching products');
+        console.error('Error fetching products', error);
+      }
+    );
+  }
+
   editProduct(id: any) {
     this.edit = true;
+    this.editedProductId = id;
+
     this.productService
       .getAllProducts()
       .pipe(
@@ -45,24 +59,7 @@ export class ProductCardComponent {
       .subscribe({
         next: (filteredProducts: any[]) => {
           if (filteredProducts.length > 0) {
-            const productToUpdate = filteredProducts[0];
-            console.log(productToUpdate);
-
-            this.productForm.controls['productName'].setValue(
-              productToUpdate.meter_number
-            );
-            this.productForm.controls['productImage'].setValue(
-              productToUpdate.meter_type
-            );
-            this.productForm.controls['productPrice'].setValue(
-              productToUpdate.installation_date
-            );
-            this.productForm.controls['productDiscountPrice'].setValue(
-              productToUpdate.installation_date
-            );
-            this.productForm.controls['productDescription'].setValue(
-              productToUpdate.installation_date
-            );
+            this.product = filteredProducts[0];
           } else {
             this.toastr.warning('Product with provided ID not found.');
           }
@@ -76,12 +73,16 @@ export class ProductCardComponent {
   deleteProduct(id: any) {
     this.productService.deleteProduct(id).subscribe((res: any) => {
       this.toastr.success('Product deleted');
+
+      this.productService.getAllProducts().subscribe((products: any) => {
+        this.products = products;
+      });
     });
   }
 
   handleProductUpdate(updatedProduct: any) {
     console.log('Updated Product:', updatedProduct);
-
+    this.loadProducts();
     this.edit = false;
   }
 }

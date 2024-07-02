@@ -1,105 +1,84 @@
 <form>
   <div class="mb-3 row">
-    <label
-      for="table-complete-search"
-      class="col-xs-3 col-sm-auto col-form-label"
-      >Search Order:</label
-    >
+    <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Search Order:</label>
     <div class="col-xs-3 col-sm-auto">
-      <input
-        id="table-complete-search"
-        type="text"
-        class="form-control"
-        name="searchTerm"
-        [(ngModel)]="service.searchTerm"
-      />
+      <input id="table-complete-search" type="text" class="form-control" name="searchTerm" [(ngModel)]="service.searchTerm" />
     </div>
-    @if (service.loading$ | async) {
-    <span class="col col-form-label">Loading...</span>
-    }
+    <div class="col">
+      <span *ngIf="service.loading$ | async" class="col-form-label">Loading...</span>
+    </div>
   </div>
 
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col" sortable="order_id" (sort)="onSort($event)">
-          Order Id
-        </th>
-        <th scope="col" sortable="customer_id" (sort)="onSort($event)">
-          Customer Id
-        </th>
-        <th scope="col" sortable="payment_status" (sort)="onSort($event)">
-          Payment Status
-        </th>
-        <th scope="col" sortable="order_status" (sort)="onSort($event)">
-          Order Status
-        </th>
+        <th scope="col" sortable="order_id" (sort)="onSort($event)">Order Id</th>
+        <th scope="col" sortable="customer_id" (sort)="onSort($event)">Customer Id</th>
+        <th scope="col" sortable="payment_status" (sort)="onSort($event)">Payment Status</th>
+        <th scope="col" sortable="order_status" (sort)="onSort($event)">Order Status</th>
         <th scope="col" sortable="date" (sort)="onSort($event)">Date</th>
         <th scope="col" sortable="total" (sort)="onSort($event)">Total</th>
       </tr>
     </thead>
     <tbody>
-      @for (country of countries$ | async; track country.id) {
-      <tr>
-        <th scope="row">{{ country.id }}</th>
-
-        <td>
-          <ngb-highlight
-            [result]="country.order_id"
-            [term]="service.searchTerm"
-          />
-        </td>
-        <td>
-          <ngb-highlight
-            [result]="country.customer_id"
-            [term]="service.searchTerm"
-          />
-        </td>
-        <td>
-          <ngb-highlight
-            [result]="country.payment_status"
-            [term]="service.searchTerm"
-          />
-        </td>
-        <td>
-          <ngb-highlight
-            [result]="country.order_status"
-            [term]="service.searchTerm"
-          />
-        </td>
-        <td>
-          <ngb-highlight [result]="country.date" [term]="service.searchTerm" />
-        </td>
-        <td>
-          <ngb-highlight
-            [result]="country.total | number"
-            [term]="service.searchTerm"
-          />
-        </td>
-      </tr>
-      } @empty {
-      <tr>
-        <td colspan="4" style="text-align: center">No orders found</td>
-      </tr>
-      }
+      <ng-container *ngIf="(countries$ | async) as countries">
+        <tr *ngFor="let country of countries; index as i; trackBy: trackById">
+          <th scope="row">{{ i + 1 }}</th>
+          <td><ng-container [ngSwitch]="country.order_id">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.order_id }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.order_id }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.order_id }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.order_id }}</span>
+            <span *ngSwitchDefault>{{ country.order_id }}</span>
+          </ng-container></td>
+          <td><ng-container [ngSwitch]="country.customer_id">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.customer_id }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.customer_id }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.customer_id }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.customer_id }}</span>
+            <span *ngSwitchDefault>{{ country.customer_id }}</span>
+          </ng-container></td>
+          <td><ng-container [ngSwitch]="country.payment_status">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.payment_status }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.payment_status }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.payment_status }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.payment_status }}</span>
+            <span *ngSwitchDefault>{{ country.payment_status }}</span>
+          </ng-container></td>
+          <td><ng-container [ngSwitch]="country.order_status">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.order_status }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.order_status }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.order_status }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.order_status }}</span>
+            <span *ngSwitchDefault>{{ country.order_status }}</span>
+          </ng-container></td>
+          <td><ng-container [ngSwitch]="country.date">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.date }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.date }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.date }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.date }}</span>
+            <span *ngSwitchDefault>{{ country.date }}</span>
+          </ng-container></td>
+          <td><ng-container [ngSwitch]="country.total">
+            <span *ngSwitchCase="'Processing'" class="status-processing">{{ country.total | number }}</span>
+            <span *ngSwitchCase="'Shipped'" class="status-shipped">{{ country.total | number }}</span>
+            <span *ngSwitchCase="'Delivered'" class="status-delivered">{{ country.total | number }}</span>
+            <span *ngSwitchCase="'Cancelled'" class="status-cancelled">{{ country.total | number }}</span>
+            <span *ngSwitchDefault>{{ country.total | number }}</span>
+          </ng-container></td>
+        </tr>
+        <tr *ngIf="countries.length === 0">
+          <td colspan="7" style="text-align: center">No orders found</td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
 
   <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="(total$ | async)!"
-      [(page)]="service.page"
-      [pageSize]="service.pageSize"
-    >
+    <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page" [pageSize]="service.pageSize">
     </ngb-pagination>
-
-    <select
-      class="form-select"
-      style="width: auto"
-      name="pageSize"
-      [(ngModel)]="service.pageSize"
-    >
+    <select class="form-select" style="width: auto" name="pageSize" [(ngModel)]="service.pageSize">
       <option [ngValue]="2">2 items per page</option>
       <option [ngValue]="4">4 items per page</option>
       <option [ngValue]="6">6 items per page</option>

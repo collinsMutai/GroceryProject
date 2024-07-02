@@ -1,3 +1,30 @@
-.tableContainer{
-    padding: 49px 20px;
+.tableContainer {
+  padding: 49px 20px;
+}
+.status-cancelled {
+  color: white;
+  background-color: #a5a5a5;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.status-processing {
+  color: white;
+  background-color: #ffbc58;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.status-shipped {
+  color: white;
+  background-color: #ff8084;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.status-delivered {
+  color: white;
+  background-color: #88be1c;
+  padding: 2px 8px;
+  border-radius: 5px;
 }

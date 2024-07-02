@@ -56,7 +56,7 @@
             />
           </div>
 
-          <button type="button" (click)="onLogin()">Login</button>
+          <button type="button" (click)="onLogin()">{{isRegister ? "Register" : "Login"}}</button>
           <div class="register">
             <p>
               Register account? <span (click)="onRegister()">register</span>

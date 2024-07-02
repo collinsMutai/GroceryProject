@@ -2,7 +2,7 @@
   <li class="cards__item" *ngFor="let product of products">
     <div class="card">
       <img
-        src="https://images-na.ssl-images-amazon.com/images/I/71gI-IUNUkL.AC_SL240_.jpg"
+        src="{{product.productImage}}"
         alt=""
       />
       <div class="card__content">
@@ -58,6 +58,6 @@
 </ul>
 <div *ngIf="edit" class="edit-overlay">
   <div class="edit-form-container">
-    <app-edit-product-form (updateProduct)="handleProductUpdate($event)"></app-edit-product-form>
+    <app-edit-product-form (updateProduct)="handleProductUpdate($event)" [edit]="edit" [id]="editedProductId" [product]="product"></app-edit-product-form>
   </div>
 </div>

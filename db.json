@@ -1,12 +1,28 @@
 {
   "products": [
     {
-      "productName": "TEST",
-      "productImage": "UPDATED",
-      "productPrice": 111,
-      "productDiscountPrice": 2299,
-      "productDescription": "TEST",
-      "id": "c721"
+      "productName": "1111",
+      "productImage": "https://cdn.pixabay.com/photo/2023/08/16/10/09/oranges-8193789_1280.jpg",
+      "productPrice": 888,
+      "productDiscountPrice": 888,
+      "productDescription": "ufyghng",
+      "id": "952f"
+    },
+    {
+      "productName": "uhfhhhh",
+      "productImage": "https://cdn.pixabay.com/photo/2023/11/04/09/23/bananas-8364511_1280.jpg",
+      "productPrice": 877,
+      "productDiscountPrice": 988,
+      "productDescription": "888",
+      "id": "4181"
+    },
+    {
+      "productName": "iiii",
+      "productImage": "https://cdn.pixabay.com/photo/2015/12/16/03/34/fruit-1095331_1280.jpg",
+      "productPrice": 999,
+      "productDiscountPrice": 9999,
+      "productDescription": "jfjjf",
+      "id": "9309"
     }
   ],
   "users": []

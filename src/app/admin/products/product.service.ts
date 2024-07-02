@@ -18,6 +18,7 @@ export class ProductService {
   getProductByID(id: any) {
     return this.http.get(`${this.APIURL}?id=${id}`);
   }
+  
   updateProduct(id: string, data: any) {
     return this.http.put<any>(this.APIURL + id, data);
   }

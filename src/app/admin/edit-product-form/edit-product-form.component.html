@@ -17,7 +17,7 @@
       <path d="M18 6l-12 12" />
       <path d="M6 6l12 12" />
     </svg>
-    <div class="text">Add Product</div>
+    <div class="text">{{edit ? "Edit Product" : "Add Product"}}</div>
     <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
       <div class="form-row">
         <div class="input-data">
@@ -62,7 +62,7 @@
       </div>
       <div class="form-row submit-btn">
         <div class="input-data">
-          <button type="submit" class="add">Add</button>
+          <button type="submit" class="add">{{edit ? "Edit" : "Add"}}</button>
         
         </div>
       </div>
