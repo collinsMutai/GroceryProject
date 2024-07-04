@@ -1,0 +1,30 @@
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  cursor: pointer;
+}
+.left p svg,
+.right p svg {
+  height: 20px;
+  width: 20px;
+  color: #fe5e50;
+}
+
+.navContainer {
+  background-color: white;
+}
+.navbar-brand img {
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  margin-right: auto;
+}
+
+.navbar-nav .nav-link {
+  padding: 0.5rem 1rem;
+  color: #000;
+}

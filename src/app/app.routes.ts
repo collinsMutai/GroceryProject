@@ -4,10 +4,23 @@ import { LayoutComponent } from './admin/layout/layout.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { EditProductFormComponent } from './admin/edit-product-form/edit-product-form.component';
 import { ProductOrdersTableComponent } from './admin/product-orders-table/product-orders-table.component';
+import { LandingComponent } from './website/landing/landing.component';
+import { CategoryProductsComponent } from './website/category-products/category-products.component';
+import { WebproductsComponent } from './website/webproducts/webproducts.component';
+
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'shop', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    component: LandingComponent,
+    children: [
+      { path: 'shop', component: WebproductsComponent },
+      { path: 'products/:id', component: CategoryProductsComponent },
+    ],
+  },
+
   {
     path: 'dashboard',
     component: LayoutComponent,
