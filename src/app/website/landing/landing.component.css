@@ -1,16 +1,73 @@
+.locationBtnContainer{
+  padding: 10px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  color: white;
+}
+.locationBtnContainer p {
+  font-size: 14px;
+}
+.locationBtn{
+  background-color: #FE5E50;
+  color: white;
+  border: none;
+  outline: none;
+  padding: 4px 7px;
+  border-radius: 5px;
+}
+
+.setLocationModal svg{
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+.middleNavContainer{
+  padding: 25px 0px;
+
+}
+.navbar {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+}
 .left,
+.middle,
 .right {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
   cursor: pointer;
+  font-size: 14px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+  font-size: 14px;
+}
+.left, .right{
+  flex: 1;
+}
+.middle{
+  flex: 2;
+}
+.area-select{
+  width: 200px;
 }
 .left p svg,
 .right p svg {
   height: 20px;
   width: 20px;
   color: #fe5e50;
+}
+.middleNav{
+  display: flex;
 }
 
 .navContainer {
@@ -27,4 +84,19 @@
 .navbar-nav .nav-link {
   padding: 0.5rem 1rem;
   color: #000;
+}
+.cartIcon span{
+position: absolute;
+right: 22px;
+top: 16px;
+font-size: 14px;
+}
+.right p svg, .left p svg{
+  height: 25px;
+  width: 25px;
+}
+.right .cartIcon svg{
+  margin-right: 20px;
+  height: 35px;
+  width: 35px;
 }
