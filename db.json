@@ -43,7 +43,7 @@
       "productDiscountPrice": 10,
       "productDescription": "Fresh",
       "productCategory": "Fruit and Vegetables",
-      "id": "952a"
+      "id": "9542a"
     },
     {
       "productName": "Plum Roma Tomato",
@@ -52,7 +52,7 @@
       "productDiscountPrice": 10,
       "productDescription": "Fresh",
       "productCategory": "Fruit and Vegetables",
-      "id": "952a"
+      "id": "9562a"
     },
     {
       "productName": "Banana Bunch",
@@ -61,9 +61,88 @@
       "productDiscountPrice": 10,
       "productDescription": "Fresh",
       "productCategory": "Fruit and Vegetables",
-      "id": "952a"
+      "id": "95t2a"
+    },
+    {
+      "productName": "Beetroot",
+      "productImage": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/1.jpg",
+      "productPrice": 31,
+      "productDiscountPrice": 25,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "91w52f",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Cabbage",
+      "productImage": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/2.jpg",
+      "productPrice": 25,
+      "productDiscountPrice": 20,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "9252i",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Brinjal",
+      "productImage": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/4.jpg",
+      "productPrice": 40,
+      "productDiscountPrice": 35,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "9552l",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Cilantro",
+      "productImage": "https://images-na.ssl-images-amazon.com/images/I/81aHrk9bpeL.AC_SL240_.jpg",
+      "productPrice": 15,
+      "productDiscountPrice": 10,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "9572a",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Green Bell Pepper",
+      "productImage": "https://images-na.ssl-images-amazon.com/images/I/71VG+kxmK1L.AC_SL240_.jpg",
+      "productPrice": 15,
+      "productDiscountPrice": 10,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "95842a",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Plum Roma Tomato",
+      "productImage": "https://images-na.ssl-images-amazon.com/images/I/71xjZONKSIL.AC_SL240_.jpg",
+      "productPrice": 15,
+      "productDiscountPrice": 10,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "95692a",
+      "featuredProduct": true
+    },
+    {
+      "productName": "Banana Bunch",
+      "productImage": "https://images-na.ssl-images-amazon.com/images/I/61aLynLf2GL.AC_SL240_.jpg",
+      "productPrice": 15,
+      "productDiscountPrice": 10,
+      "productDescription": "Fresh",
+      "productCategory": "Fruit and Vegetables",
+      "id": "95tp2a",
+      "featuredProduct": true
     }
-  
   ],
-  "users": []
+  "users": [],
+  "cart": [
+    {
+      "id": "07fd",
+      "CartId": 0,
+      "CustId": 0,
+      "ProductId": 0,
+      "Quantity": 0,
+      "AddedData": "2024-07-08T13:10:21.930Z"
+    }
+  ]
 }

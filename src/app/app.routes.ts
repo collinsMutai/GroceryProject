@@ -7,6 +7,7 @@ import { ProductOrdersTableComponent } from './admin/product-orders-table/produc
 import { LandingComponent } from './website/landing/landing.component';
 import { CategoryProductsComponent } from './website/category-products/category-products.component';
 import { WebproductsComponent } from './website/webproducts/webproducts.component';
+import { ProductDetailsComponent } from './website/product-details/product-details.component';
 
 
 export const routes: Routes = [
@@ -17,7 +18,7 @@ export const routes: Routes = [
     component: LandingComponent,
     children: [
       { path: 'shop', component: WebproductsComponent },
-      { path: 'products/:id', component: CategoryProductsComponent },
+      { path: 'products/:id', component: ProductDetailsComponent },
     ],
   },
 

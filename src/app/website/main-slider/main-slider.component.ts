@@ -1,38 +1,29 @@
 import { CommonModule } from '@angular/common';
 import {
-  Component,
   AfterViewInit,
+  Component,
   ElementRef,
-  ViewChild,
-  OnInit,
   Input,
+  OnInit,
+  ViewChild,
 } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
 import { ProductService } from '../product.service';
-import { VegetableComponent } from '../vegetable/vegetable.component';
-import { FruitComponent } from '../fruit/fruit.component';
 
 import 'owl.carousel';
-import { MainSliderComponent } from '../main-slider/main-slider.component';
 declare var $: any;
 
 @Component({
+  selector: 'app-main-slider',
   standalone: true,
-  selector: 'app-featured-slider',
-  templateUrl: './featured-slider.component.html',
-  styleUrls: ['./featured-slider.component.css'],
-  imports: [
-    CarouselModule,
-    CommonModule,
-    VegetableComponent,
-    FruitComponent,
-    MainSliderComponent,
-  ],
+  imports: [CarouselModule, CommonModule],
+  templateUrl: './main-slider.component.html',
+  styleUrl: './main-slider.component.css',
 })
-export class FeaturedSliderComponent implements AfterViewInit, OnInit {
+export class MainSliderComponent implements AfterViewInit, OnInit {
   @Input() title!: string;
   products: any[] = [];
+  featuredProduct: any[] = [];
 
   @ViewChild('owlCarousel') owlCarousel!: ElementRef;
 
@@ -75,8 +66,17 @@ export class FeaturedSliderComponent implements AfterViewInit, OnInit {
       console.log(this.products);
     });
   }
+  addToCart(id: any){
+    const obj = {
+      "CartId": 0,
+      "CustId": 0,
+      "ProductId":0,
+      "Quantity": 0,
+      "AddedData": new Date()
+    }
+    this.productService.addtoCart(obj).subscribe((res:any)=>{
+
+    })
+
+  }
 }
-
-
-
-
