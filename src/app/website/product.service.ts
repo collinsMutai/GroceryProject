@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  cartUpdated: Subject<boolean> = new Subject<boolean>();
   constructor(private http: HttpClient) {}
   private APIURL = 'http://localhost:3000/products/';
   private CARTAPIURL = 'http://localhost:3000/cart/';
@@ -19,7 +20,10 @@ export class ProductService {
   addtoCart(obj: any): Observable<any> {
     return this.http.post(this.CARTAPIURL, obj);
   }
-  getCart(id: any): Observable<any[]> {
-    return this.http.get<any[]>(`${this.CARTAPIURL}?id=${id}`);
+  getCart(id: any) {
+    return this.http.get(`${this.CARTAPIURL}?CustId=${id}`);
+  }
+  deleteCartItem(id: any) {
+    return this.http.delete(this.CARTAPIURL + id);
   }
 }

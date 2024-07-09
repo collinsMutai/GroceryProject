@@ -8,6 +8,7 @@ import { LandingComponent } from './website/landing/landing.component';
 import { CategoryProductsComponent } from './website/category-products/category-products.component';
 import { WebproductsComponent } from './website/webproducts/webproducts.component';
 import { ProductDetailsComponent } from './website/product-details/product-details.component';
+import { CheckoutComponent } from './website/checkout/checkout.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     children: [
       { path: 'shop', component: WebproductsComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
+      { path: 'checkout', component: CheckoutComponent },
     ],
   },
 

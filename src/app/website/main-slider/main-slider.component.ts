@@ -66,17 +66,19 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
       console.log(this.products);
     });
   }
-  addToCart(id: any){
+  addToCart(id: any) {
     const obj = {
-      "CartId": 0,
-      "CustId": 0,
-      "ProductId":0,
-      "Quantity": 0,
-      "AddedData": new Date()
-    }
-    this.productService.addtoCart(obj).subscribe((res:any)=>{
-
-    })
-
+      CartId: 0,
+      CustId: 1,
+      ProductName: 'Farm Fresh (AAA) Strawberries - 200g',
+      ProductId: 0,
+      Quantity: 2,
+      AddedData: new Date(),
+      ProductImgUrl:
+        'https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg',
+    };
+    this.productService.addtoCart(obj).subscribe((res: any) => {
+      this.productService.cartUpdated.next(true);
+    });
   }
 }

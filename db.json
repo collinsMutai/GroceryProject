@@ -137,12 +137,25 @@
   "users": [],
   "cart": [
     {
-      "id": "07fd",
+      "id": "d16e",
       "CartId": 0,
       "CustId": 0,
       "ProductId": 0,
-      "Quantity": 0,
-      "AddedData": "2024-07-08T13:10:21.930Z"
+      "Quantity": 4,
+      "ProductName": "Farm Fresh (AAA) Strawberries - 200g",
+      "ProductPrice": 16.99,
+      "AddedData": "2024-07-09T05:50:11.052Z",
+      "ProductImgUrl": "https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg"
+    },
+    {
+      "id": "08d2",
+      "CartId": 0,
+      "CustId": 1,
+      "ProductName": "Farm Fresh (AAA) Strawberries - 200g",
+      "ProductId": 0,
+      "Quantity": 2,
+      "AddedData": "2024-07-09T09:25:45.286Z",
+      "ProductImgUrl": "https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg"
     }
   ]
 }

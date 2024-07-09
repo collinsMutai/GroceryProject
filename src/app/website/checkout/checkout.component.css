@@ -1,0 +1,60 @@
+.navigatorContainer {
+  padding: 80px 0px;
+}
+.form {
+  background-color: #f8f9fa;
+}
+.label {
+  font-size: 16px;
+}
+input {
+  font-size: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+textarea {
+  font-size: 12px;
+}
+.placeOrderBtn {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 20px;
+  border-radius: 5px;
+  width: auto;
+  padding: 4px 10px;
+  color: #fe5e50;
+  background: none;
+  border: 1px solid #fe5e50;
+}
+.placeOrderBtn:hover {
+  background-color: #fe5e50;
+  color: #fff;
+}
+.shipping_form {
+  background-color: #f8f9fa;
+  margin-top: 60px;
+}
+.checkoutItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemDetails {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+}
+.itemDetails p svg{
+    height: 20px;
+    width: 20px;
+}
+.price{
+    font-size: 15px;
+    font-weight: 600;
+}
+.subtotal{
+    font-size: 16px;
+    font-weight: 600;
+}

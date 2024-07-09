@@ -127,18 +127,38 @@
   background-color: #fff;
   color: #fe5e50;
 }
-.image img{
+.image img {
   width: 80px;
   height: 80px;
 }
-.product h3{
+.product{
+  width: 70%;
+}
+.product .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+ 
+}
+.product .header h3 {
   font-size: 14px;
 }
-
-.product-btns{
-  display: flex;
+.product .header svg:hover {
+  color: #fe5e50;
 }
-.modalContainer{
+
+.product-btns {
+  display: flex;
+  gap: 10px;
+}
+
+.product-btns p svg {
+  color: #000;
+  height: 20px;
+  width: 20px;
+  background-color: #f3f3f3;
+}
+.modalContainer {
   display: flex;
   justify-content: start;
   align-items: start;

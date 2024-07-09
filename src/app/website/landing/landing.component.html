@@ -176,7 +176,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content pb-4">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
 
@@ -195,16 +195,41 @@
               for delivery.
             </p>
           </div>
-          <div class="modal-footer modalContainer">
+          <ng-container *ngIf="cartItems.length == 0">
+            <p style="text-align: center">No products found.</p>
+          </ng-container>
+          <div
+            class="modal-footer modalContainer"
+            *ngFor="let item of cartItems"
+          >
             <div class="image">
-              <img
-                src="https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg"
-                alt=""
-              />
+              <img [src]="item.ProductImgUrl" alt="" />
             </div>
             <div class="product">
-              <h3>Farm Fresh (AAA) Strawberries - 200g</h3>
-              <p>KShs 1,316 (Save 8%)</p>
+              <div class="header">
+                <h3>{{ item.ProductName }}</h3>
+                <svg
+                  (click)="removeCartItem(item.id)"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 7l16 0" />
+                  <path d="M10 11l0 6" />
+                  <path d="M14 11l0 6" />
+                  <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                  <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                </svg>
+              </div>
+              <p>Subtotal: KShs {{ item.ProductPrice }}</p>
               <div class="product-btns">
                 <p class="remove">
                   <svg
@@ -244,8 +269,8 @@
                 </p>
               </div>
             </div>
-            <button type="button" class="checkoutBtn">Checkout Now</button>
           </div>
+          <button data-bs-dismiss="modal" routerLink="/checkout" type="button" class="checkoutBtn"  *ngIf="cartItems.length != 0">Checkout Now</button>
         </div>
       </div>
     </div>
@@ -298,7 +323,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse pt-4 pb-4" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
