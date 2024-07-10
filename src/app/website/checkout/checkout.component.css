@@ -46,15 +46,25 @@ textarea {
   gap: 4px;
   font-size: 15px;
 }
-.itemDetails p svg{
-    height: 20px;
-    width: 20px;
+.itemDetails p svg {
+  height: 20px;
+  width: 20px;
 }
-.price{
-    font-size: 15px;
-    font-weight: 600;
+.price {
+  font-size: 15px;
+  font-weight: 600;
 }
-.subtotal{
-    font-size: 16px;
-    font-weight: 600;
+.subtotal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.subtotal p {
+  font-size: 16px;
+  font-weight: 600;
+}
+.custom-radio {
+  background-color: #fe5e50;
+  color: #fff;
+  border-color: #fe5e50;
 }

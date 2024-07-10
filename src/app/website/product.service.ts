@@ -7,23 +7,33 @@ import { Observable, Subject } from 'rxjs';
 })
 export class ProductService {
   cartUpdated: Subject<boolean> = new Subject<boolean>();
-  constructor(private http: HttpClient) {}
+
   private APIURL = 'http://localhost:3000/products/';
   private CARTAPIURL = 'http://localhost:3000/cart/';
 
-  getAllProducts() {
+  constructor(private http: HttpClient) {}
+
+  getAllProducts(): Observable<any> {
     return this.http.get(this.APIURL);
   }
-  getProductByCategory(id: any) {
+
+  getProductByCategory(id: any): Observable<any> {
     return this.http.get(`${this.APIURL}?id=${id}`);
   }
+
   addtoCart(obj: any): Observable<any> {
     return this.http.post(this.CARTAPIURL, obj);
   }
-  getCart(id: any) {
+
+  getCart(id: any): Observable<any> {
     return this.http.get(`${this.CARTAPIURL}?CustId=${id}`);
   }
-  deleteCartItem(id: any) {
+
+  updateCartItem(cartItemId: any, obj: any): Observable<any> {
+    return this.http.put(`${this.CARTAPIURL}${cartItemId}`, obj);
+  }
+
+  deleteCartItem(id: any): Observable<any> {
     return this.http.delete(this.CARTAPIURL + id);
   }
 }

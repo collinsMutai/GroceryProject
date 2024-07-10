@@ -9,6 +9,7 @@ import { CategoryProductsComponent } from './website/category-products/category-
 import { WebproductsComponent } from './website/webproducts/webproducts.component';
 import { ProductDetailsComponent } from './website/product-details/product-details.component';
 import { CheckoutComponent } from './website/checkout/checkout.component';
+import { CustomerCartComponent } from './website/customer-cart/customer-cart.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
     children: [
       { path: 'shop', component: WebproductsComponent },
       { path: 'products/:id', component: ProductDetailsComponent },
+      { path: 'cart', component: CustomerCartComponent },
       { path: 'checkout', component: CheckoutComponent },
     ],
   },

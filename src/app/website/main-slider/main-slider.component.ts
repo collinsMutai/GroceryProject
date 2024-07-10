@@ -66,18 +66,56 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
       console.log(this.products);
     });
   }
-  addToCart(id: any) {
+  addToCart(productId: any) {
+    // Check if the product already exists in the cart
+    this.productService.getCart(1).subscribe((cartItems: any[]) => {
+      const existingItem = cartItems.find(
+        (item) => item.ProductId === productId
+      );
+
+      if (existingItem) {
+        // If the product exists, update its quantity
+        const updatedQuantity = existingItem.Quantity + 1;
+        this.updateCartItem(
+          existingItem.id,
+          updatedQuantity,
+          existingItem.ProductName,
+          existingItem.ProductImgUrl
+        );
+      } else {
+        // If the product does not exist, add it to the cart
+        const productToAdd = this.products.find(
+          (product) => product.id === productId
+        );
+        if (productToAdd) {
+          const obj = {
+            CartId: 0,
+            CustId: 1,
+            ProductName: productToAdd.productName,
+            ProductId: productToAdd.id,
+            Quantity: 1,
+            AddedData: new Date(),
+            ProductImgUrl: productToAdd.productImage,
+          };
+          this.productService.addtoCart(obj).subscribe(() => {
+            this.productService.cartUpdated.next(true);
+          });
+        }
+      }
+    });
+  }
+
+  updateCartItem(
+    cartItemId: any,
+    newQuantity: number,
+    ProductName: string,
+    ProductImgUrl: string) {
     const obj = {
-      CartId: 0,
-      CustId: 1,
-      ProductName: 'Farm Fresh (AAA) Strawberries - 200g',
-      ProductId: 0,
-      Quantity: 2,
-      AddedData: new Date(),
-      ProductImgUrl:
-        'https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg',
+      Quantity: newQuantity,
+      ProductName: ProductName,
+      ProductImgUrl: ProductImgUrl,
     };
-    this.productService.addtoCart(obj).subscribe((res: any) => {
+    this.productService.updateCartItem(cartItemId, obj).subscribe(() => {
       this.productService.cartUpdated.next(true);
     });
   }

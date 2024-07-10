@@ -1,169 +1,261 @@
 <div class="container-fluid navigatorContainer">
-  <div class="row justify-content-center">
-    <div class="col-lg-7 col-md-6">
-      <form
-        style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px"
-      >
-        <div class="card form" style="border: none">
-          <h5
-            class="card-header"
-            style="background-color: #fe5e50; color: #fff"
-          >
-            Customer details
-          </h5>
-          <div class="card-body pt-4">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label class="label" for="first_name">First Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="first_name"
-                  placeholder="First name"
-                />
+  <form action="">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 col-md-6">
+        <div
+          style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px"
+        >
+          <div class="card form" style="border: none">
+            <h5
+              class="card-header"
+              style="background-color: #fe5e50; color: #fff"
+            >
+              Customer details
+            </h5>
+            <div class="card-body pt-4">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="label" for="first_name">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="first_name"
+                    placeholder="First name"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="label" for="last_name">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="last_name"
+                    placeholder="Last name"
+                  />
+                </div>
               </div>
-              <div class="form-group col-md-6">
-                <label class="label" for="last_name">Last Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="last_name"
-                  placeholder="Last name"
-                />
-              </div>
-            </div>
-            <div class="row pt-4">
-              <div class="form-group col-md-6">
-                <label class="label" for="phone">Phone</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="phone"
-                  placeholder="Phone number"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label class="label" for="email">Email address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="email"
-                  placeholder="Email address"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card shipping_form" style="border: none; outline: none">
-          <h5
-            class="card-header"
-            style="background-color: #fe5e50; color: #fff"
-          >
-            Delivery details
-          </h5>
-          <div class="card-body pt-4">
-            <div class="row">
-              <div class="form-group col-md-6">
-                <label class="label" for="address">Street address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="address"
-                  placeholder="Street address"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label class="label" for="building"
-                  >Building, Apartment, or House No.</label
-                >
-                <input
-                  type="text"
-                  class="form-control"
-                  id="building"
-                  placeholder="Building, Apartment, or House No."
-                />
-              </div>
-            </div>
-            <div class="row pt-4">
-              <div class="form-group col-md-6">
-                <label class="label" for="city">Town, or City</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="city"
-                  placeholder="Town, or City"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <label class="label" for="county">County</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="county"
-                  placeholder="County"
-                />
-              </div>
-              <div class="form-group col-md-12 pt-4">
-                <label class="label" for="instructions"
-                  >Delivery instructions
-                </label>
-                <textarea
-                  class="form-control"
-                  id="instructions"
-                  rows="5"
-                  placeholder="Delivery instructions"
-                ></textarea>
+              <div class="row pt-4">
+                <div class="form-group col-md-6">
+                  <label class="label" for="phone">Phone</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="phone"
+                    placeholder="Phone number"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="label" for="email">Email address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    placeholder="Email address"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="pt-4">
-          <button type="submit" class="placeOrderBtn">Place order</button>
-        </div>
-      </form>
-    </div>
-    <div class="col-lg-4 col-md-6">
-      <div
-        style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px"
-      >
-        <div class="card form" style="border: none; outline: none">
-          <h5
-            class="card-header"
-            style="background-color: #fe5e50; color: #fff"
-          >
-            Your Order
-          </h5>
-          <div class="card-body">
-            <div class="checkoutItem">
-              <div class="itemDetails">
-                <p>Farm Fresh (AAA)</p>
-                <p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                    style="transform: rotate(45deg)"
+          <div class="card shipping_form" style="border: none; outline: none">
+            <h5
+              class="card-header"
+              style="background-color: #fe5e50; color: #fff"
+            >
+              Delivery details
+            </h5>
+            <div class="card-body pt-4">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="label" for="address">Street address</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    placeholder="Street address"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="label" for="building"
+                    >Building, Apartment, or House No.</label
                   >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 5l0 14" />
-                    <path d="M5 12l14 0" />
-                  </svg>
-                </p>
-                <p>1</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="building"
+                    placeholder="Building, Apartment, or House No."
+                  />
+                </div>
               </div>
-              <p class="price">$20.00</p>
+              <div class="row pt-4">
+                <div class="form-group col-md-6">
+                  <label class="label" for="city">Town, or City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="city"
+                    placeholder="Town, or City"
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label class="label" for="county">County</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="county"
+                    placeholder="County"
+                  />
+                </div>
+                <div class="form-group col-md-12 pt-4">
+                  <label class="label" for="instructions"
+                    >Delivery instructions
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="instructions"
+                    rows="5"
+                    placeholder="Delivery instructions"
+                  ></textarea>
+                </div>
+              </div>
             </div>
-            <p class="subtotal">Subtotal</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px"
+        >
+          <div class="card form" style="border: none; outline: none">
+            <h5
+              class="card-header"
+              style="background-color: #fe5e50; color: #fff"
+            >
+              Your Order
+            </h5>
+            <div class="card-body pt-4">
+              <div class="checkoutItem">
+                <div class="itemDetails">
+                  <p>Farm Fresh (AAA)</p>
+                  <p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                      style="transform: rotate(45deg)"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 5l0 14" />
+                      <path d="M5 12l14 0" />
+                    </svg>
+                  </p>
+                  <p>1</p>
+                </div>
+                <p class="price">$20.00</p>
+              </div>
+              <div class="checkoutItem">
+                <div class="itemDetails">
+                  <p>Farm Fresh (AAA)</p>
+                  <p>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                      style="transform: rotate(45deg)"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 5l0 14" />
+                      <path d="M5 12l14 0" />
+                    </svg>
+                  </p>
+                  <p>1</p>
+                </div>
+                <p class="price">$20.00</p>
+              </div>
+              <div class="subtotal">
+                <p>Subtotal</p>
+                <p>KShs 2,942</p>
+              </div>
+            </div>
+          </div>
+          <div class="card shipping_form" style="border: none; outline: none">
+            <h5
+              class="card-header"
+              style="background-color: #fe5e50; color: #fff"
+            >
+              Select payment method
+            </h5>
+            <div class="card-body">
+              <div class="form-check">
+                <input
+                  class="form-check-input custom-radio"
+                  type="radio"
+                  name="exampleRadios"
+                  id="mpesa"
+                  value="option1"
+                  checked
+                />
+                <label class="form-check-label" for="mpesa"> M-PESA </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input custom-radio"
+                  type="radio"
+                  name="exampleRadios"
+                  id="pesapal"
+                  value="option2"
+                />
+                <label class="form-check-label" for="pesapal">
+                  Pesapal (Credit Card Payments)
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input custom-radio"
+                  type="radio"
+                  name="exampleRadios"
+                  id="helapay"
+                  value="option2"
+                />
+                <label class="form-check-label" for="helapay"> HelaPay </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input custom-radio"
+                  type="radio"
+                  name="exampleRadios"
+                  id="cash"
+                  value="option2"
+                />
+                <label class="form-check-label" for="cash">
+                  Cash on delivery
+                </label>
+              </div>
+              <div class="pt-4">
+                <button
+                  type="button"
+                  class="placeOrderBtn w-100 mw-100"
+                  (click)="placeOrder()"
+                >
+                  Place order
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>

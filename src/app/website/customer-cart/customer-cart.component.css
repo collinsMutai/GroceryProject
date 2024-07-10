@@ -1,0 +1,43 @@
+.cartContainer {
+  padding: 80px 0px;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.product img {
+  width: 60px;
+  height: 60px;
+}
+.product h3, .subtotal {
+  font-size: 15px;
+  font-weight: 600;
+}
+.product p {
+  font-size: 14px;
+  font-weight: normal;
+}
+.delete{
+    height: 20px;
+    width: 20px;
+}
+.cart-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cart-btns .add svg,
+.cart-btns .remove svg {
+  background-color: #fe5e50;
+  width: 20px;
+  height: 20px;
+  color: #fff;
+}
+.cart-btns .cartItem {
+  font-size: 15px;
+  border: 1px solid black;
+  width: 40px;
+}
+
