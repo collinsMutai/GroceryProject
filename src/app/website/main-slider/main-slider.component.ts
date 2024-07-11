@@ -68,19 +68,25 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
   }
   addToCart(productId: any) {
     // Check if the product already exists in the cart
-    this.productService.getCart(1).subscribe((cartItems: any[]) => {
+    this.productService.getCart().subscribe((cartItems: any[]) => {
       const existingItem = cartItems.find(
-        (item) => item.ProductId === productId
+        (item) => item.CustId === 1 && item.ProductId === productId
       );
 
       if (existingItem) {
         // If the product exists, update its quantity
         const updatedQuantity = existingItem.Quantity + 1;
+        const updatedTotal = updatedQuantity * existingItem.productPrice;
         this.updateCartItem(
-          existingItem.id,
-          updatedQuantity,
+          existingItem.CartId,
+          existingItem.CustId,
           existingItem.ProductName,
-          existingItem.ProductImgUrl
+          existingItem.ProductId,
+          updatedQuantity,
+          existingItem.AddedData,
+          existingItem.ProductImgUrl,
+          existingItem.productPrice,
+          updatedTotal
         );
       } else {
         // If the product does not exist, add it to the cart
@@ -89,13 +95,14 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
         );
         if (productToAdd) {
           const obj = {
-            CartId: 0,
             CustId: 1,
             ProductName: productToAdd.productName,
             ProductId: productToAdd.id,
             Quantity: 1,
-            AddedData: new Date(),
+            AddedData: new Date().toISOString(),
             ProductImgUrl: productToAdd.productImage,
+            productPrice: productToAdd.productPrice,
+            Total: productToAdd.productPrice,
           };
           this.productService.addtoCart(obj).subscribe(() => {
             this.productService.cartUpdated.next(true);
@@ -106,17 +113,50 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
   }
 
   updateCartItem(
-    cartItemId: any,
-    newQuantity: number,
+    CartId: any,
+    CustId: number,
     ProductName: string,
-    ProductImgUrl: string) {
+    ProductId: string,
+    newQuantity: number,
+    AddedData: string,
+    ProductImgUrl: string,
+    productPrice: number,
+    updatedTotal: number
+  ) {
     const obj = {
-      Quantity: newQuantity,
+      CartId: CartId,
+      CustId: 1,
       ProductName: ProductName,
+      ProductId: ProductId,
+      Quantity: newQuantity,
+      AddedData: AddedData,
       ProductImgUrl: ProductImgUrl,
+      Total: updatedTotal,
     };
-    this.productService.updateCartItem(cartItemId, obj).subscribe(() => {
-      this.productService.cartUpdated.next(true);
+    // Fetch the current cart items
+    this.productService.getCart().subscribe((cartItems: any[]) => {
+      // Find the item in the cart array based on CustId and ProductId
+      const existingItem = cartItems.find(
+        (item) => item.CustId === CustId && item.ProductId === ProductId
+      );
+
+      if (existingItem) {
+        // If the item exists, update its quantity
+        const updatedItem = {
+          ...existingItem,
+          Quantity: newQuantity,
+          Total: updatedTotal,
+        };
+
+        // Call the updateCartItem method in ProductService to update the item
+        this.productService
+          .updateCartItem(existingItem.id, updatedItem)
+          .subscribe(() => {
+            // Notify subscribers that the cart has been updated
+            this.productService.cartUpdated.next(true);
+            // Update local storage if needed
+          });
+      }
     });
   }
 }

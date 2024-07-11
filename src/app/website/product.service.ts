@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,12 +25,21 @@ export class ProductService {
     return this.http.post(this.CARTAPIURL, obj);
   }
 
-  getCart(id: any): Observable<any> {
-    return this.http.get(`${this.CARTAPIURL}?CustId=${id}`);
+  getCart(): Observable<any> {
+    return this.http.get<any[]>(this.CARTAPIURL).pipe(
+      map((cartItems) => {
+        const subtotal = cartItems.reduce((acc, item) => acc + item.Total, 0);
+        const totalQuantity = cartItems.reduce(
+          (acc, item) => acc + item.Quantity,
+          0
+        );
+        return { cartItems, subtotal, totalQuantity };
+      })
+    );
   }
 
-  updateCartItem(cartItemId: any, obj: any): Observable<any> {
-    return this.http.put(`${this.CARTAPIURL}${cartItemId}`, obj);
+  updateCartItem(id: any, obj: any): Observable<any> {
+    return this.http.put(`${this.CARTAPIURL}${id}`, obj);
   }
 
   deleteCartItem(id: any): Observable<any> {

@@ -137,10 +137,26 @@
   "users": [],
   "cart": [
     {
-      "Quantity": 2,
+      "id": "ac9f",
+      "CustId": 1,
+      "ProductName": "Cabbage",
+      "ProductId": "952i",
+      "Quantity": 3,
+      "AddedData": "2024-07-11T12:31:46.288Z",
+      "ProductImgUrl": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/2.jpg",
+      "productPrice": 25,
+      "Total": 75
+    },
+    {
+      "id": "a38f",
+      "CustId": 1,
       "ProductName": "Beetroot",
+      "ProductId": "952f",
+      "Quantity": 2,
+      "AddedData": "2024-07-11T12:33:15.257Z",
       "ProductImgUrl": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/1.jpg",
-      "id": "02b0"
+      "productPrice": 31,
+      "Total": 62
     }
   ]
 }

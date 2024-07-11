@@ -229,9 +229,9 @@
                   <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                 </svg>
               </div>
-              <p>Subtotal: KShs {{ item.ProductPrice }}</p>
+              <p>Subtotal: KShs {{ item.Total }}</p>
               <div class="product-btns">
-                <p class="remove">
+                <p class="remove" (click)="subtractCartItemQuantity(item)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -248,8 +248,8 @@
                     <path d="M5 12l14 0" />
                   </svg>
                 </p>
-                <p class="cartItem">1</p>
-                <p class="add">
+                <p class="cartItem">{{ item.Quantity }}</p>
+                <p class="add" (click)="incrementCartItemQuantity(item)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -270,7 +270,15 @@
               </div>
             </div>
           </div>
-          <button data-bs-dismiss="modal" routerLink="/checkout" type="button" class="checkoutBtn"  *ngIf="cartItems.length != 0">Checkout Now</button>
+          <button
+            data-bs-dismiss="modal"
+            routerLink="/checkout"
+            type="button"
+            class="checkoutBtn"
+            *ngIf="cartItems.length != 0"
+          >
+            Checkout Now
+          </button>
         </div>
       </div>
     </div>
@@ -283,7 +291,7 @@
       data-bs-target="#cartModal"
       data-bs-whatever="@mdo"
     >
-      <span>0</span>
+      <span>{{totalQuantity}}</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"

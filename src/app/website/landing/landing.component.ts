@@ -15,7 +15,10 @@ import { Subject } from 'rxjs';
 })
 export class LandingComponent {
   activeTab: string = 'home';
-  cartItems!: any;
+  cartItems: any[] = [];
+  subtotal: number = 0;
+  totalQuantity: number = 0;
+
   constructor(private productService: ProductService) {
     this.getCartData(1);
     this.productService.cartUpdated.subscribe((res: boolean) => {
@@ -29,14 +32,57 @@ export class LandingComponent {
     this.activeTab = tab;
   }
 
-  getCartData(id: number) {
-    this.productService.getCart(id).subscribe((res) => {
-      this.cartItems = res;
+  getCartData(CustId: number) {
+    this.productService.getCart().subscribe((data) => {
+      this.cartItems = data.cartItems;
+      this.subtotal = data.subtotal;
+      this.totalQuantity = data.totalQuantity;
     });
   }
-  removeCartItem(CartId: any) {
-    this.productService.deleteCartItem(CartId).subscribe((res) => {
-      this.getCartData(1);
+
+  updateCartItemQuantity(item: any, newQuantity: number) {
+    const updatedItem = { ...item, Quantity: newQuantity };
+
+    this.productService
+      .updateCartItem(updatedItem.id, updatedItem)
+      .subscribe(() => {
+        this.productService.cartUpdated.next(true);
+      });
+  }
+  subtractCartItemQuantity(item: any) {
+    const updatedQuantity = item.Quantity - 1;
+
+    if (updatedQuantity >= 1) {
+      const updatedItem = { ...item, Quantity: updatedQuantity };
+      updatedItem.Total = updatedItem.productPrice * updatedQuantity;
+
+      this.productService
+        .updateCartItem(updatedItem.id, updatedItem)
+        .subscribe(() => {
+          this.productService.cartUpdated.next(true);
+        });
+    } else if (updatedQuantity === 0) {
+      this.removeCartItem(item.id);
+    } else {
+      console.log('Quantity cannot be less than 0.');
+    }
+  }
+
+  incrementCartItemQuantity(item: any) {
+    const updatedQuantity = item.Quantity + 1;
+    const updatedItem = { ...item, Quantity: updatedQuantity };
+    updatedItem.Total = updatedItem.productPrice * updatedQuantity;
+
+    this.productService
+      .updateCartItem(updatedItem.id, updatedItem)
+      .subscribe(() => {
+        this.productService.cartUpdated.next(true);
+      });
+  }
+
+  removeCartItem(CartId: string) {
+    this.productService.deleteCartItem(CartId).subscribe(() => {
+      this.productService.cartUpdated.next(true);
     });
   }
 }
