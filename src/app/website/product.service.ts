@@ -8,8 +8,8 @@ import { Observable, Subject, map } from 'rxjs';
 export class ProductService {
   cartUpdated: Subject<boolean> = new Subject<boolean>();
 
-  private APIURL = 'http://localhost:3000/products/';
-  private CARTAPIURL = 'http://localhost:3000/cart/';
+  private APIURL = 'http://localhost:4000/products/';
+  private CARTAPIURL = 'http://localhost:4000/cart/';
 
   constructor(private http: HttpClient) {}
 

@@ -1,86 +1,18 @@
 <div class="container-fluid pt-3 pb-3" style="background-color: #eaeded;">
   <div class="container pt-1 pb-1">
     <div class="slide-header">
-    <h3>Fresh Vegetables</h3>
-  </div>
-  <div class="row owl-carousel owl-theme" #owlCarousel3>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71AM8cSg+7L.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Red Onion</p>
+      <h3>Fresh Vegetables</h3>
+    </div>
+    <div class="row owl-carousel owl-theme" #owlCarousel3>
+      <div class="col" *ngFor="let vegetable of vegetables" (click)="goToCart(vegetable)"
+      style="cursor: pointer;" >
+        <div class="image">
+          <img [src]="vegetable.imageUrl" [alt]="vegetable.name" />
+        </div>
+        <div class="content">
+          <p>{{ vegetable.name }}</p>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Asparagus Green</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71GxrCR+gLL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Zucchini Squash</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71xjZONKSIL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Plum Roma Tomato</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/81JWj-cXxQL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Broccoli Crowns</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Asparagus Green</p>
-      </div>
-    </div>
-    <div class="col">
-      <div class="image">
-        <img
-          src="https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
-          alt=""
-        />
-      </div>
-      <div class="content">
-        <p>Asparagus Green</p>
-      </div>
-    </div>
-  </div>
   </div>
 </div>

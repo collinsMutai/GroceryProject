@@ -1,25 +1,52 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  Inject,
+  PLATFORM_ID,
+} from '@angular/core';
+import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { FooterComponent } from '../footer/footer.component';
 import { ProductService } from '../product.service';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
-import { Subject } from 'rxjs';
-
+import { isPlatformBrowser } from '@angular/common';
+import { ImageOverlayComponent } from '../image-overlay/image-overlay.component';
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, CommonModule, RouterLink],
+  imports: [RouterOutlet, FooterComponent, CommonModule, RouterLink,ImageOverlayComponent],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css',
+  styleUrls: ['./landing.component.css'],
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit, AfterViewInit {
   activeTab: string = 'home';
   cartItems: any[] = [];
   subtotal: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      import('scrollreveal').then((ScrollReveal) => {
+        const scrollRevealOption = {
+          distance: '50px',
+          origin: 'bottom',
+          duration: 1000,
+        };
+        ScrollReveal.default().reveal('.', {
+          ...scrollRevealOption,
+          origin: 'left',
+        });
+      });
+    }
+  }
+
+  ngOnInit(): void {
     this.getCartData(1);
     this.productService.cartUpdated.subscribe((res: boolean) => {
       if (res) {
@@ -42,6 +69,7 @@ export class LandingComponent {
 
   updateCartItemQuantity(item: any, newQuantity: number) {
     const updatedItem = { ...item, Quantity: newQuantity };
+    updatedItem.Total = updatedItem.productPrice * newQuantity;
 
     this.productService
       .updateCartItem(updatedItem.id, updatedItem)
@@ -49,6 +77,7 @@ export class LandingComponent {
         this.productService.cartUpdated.next(true);
       });
   }
+
   subtractCartItemQuantity(item: any) {
     const updatedQuantity = item.Quantity - 1;
 
@@ -85,4 +114,24 @@ export class LandingComponent {
       this.productService.cartUpdated.next(true);
     });
   }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
+  }
+
+  // ngAfterViewInit(): void {
+  //   if (isPlatformBrowser(this.platformId)) {
+  //     import('scrollreveal').then((ScrollReveal) => {
+  //       const scrollRevealOption = {
+  //         distance: '50px',
+  //         origin: 'bottom',
+  //         duration: 1000,
+  //       };
+  //       ScrollReveal.default().reveal('.navbar-brand img', {
+  //         ...scrollRevealOption,
+  //         origin: 'left',
+  //       });
+  //     });
+  //   }
+  // }
 }

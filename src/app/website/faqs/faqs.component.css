@@ -1,0 +1,123 @@
+@keyframes emergeFromCenter {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+} 
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+background-image: url(https://t3.ftcdn.net/jpg/03/07/15/28/360_F_307152868_ncMILWfZIhGoAEK8QsFDsScGiRaQMsL0.jpg);
+background-size: cover;
+background-position: center;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
+  color: black;
+}
+
+.content-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  animation: emergeFromCenter 0.8s ease-out; /* Adjust timing as needed */
+}
+
+.accordion {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+.form-container {
+  color: whitesmoke;
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+@media (max-width: 767px) {
+  .content-row {
+    flex-direction: column;
+  }
+}
+
+.container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+label {
+  color: whitesmoke;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.required {
+  color: red;
+}
+
+input, textarea {
+  /* background:rgba(255, 255, 255, 0.3) ; */
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.accordion .accordion-item {
+  border: none;
+}
+
+.accordion .accordion-button {
+  background-color: #e9ecef;
+  color: #000;
+  text-align: left;
+  font-weight: bold;
+}
+
+.accordion .accordion-body {
+  background-color: #f8f9fa;
+}

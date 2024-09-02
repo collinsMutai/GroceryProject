@@ -1,0 +1,82 @@
+<!-- blog-post.component.html -->
+<div class="blog-post-container">
+    <div class="blog-post-content">
+      <h1 class="blog-post-title">
+        How We Saved 10 Tons Of Fruits And Vegetables In 2023
+      </h1>
+      <div class="blog-post-metadata">
+        <span class="metadata-item"><i class="fa fa-calendar"></i> Mar 18, 2024</span>
+        <span class="metadata-item"><i class="fa fa-shopping-cart"></i> Quick Cart</span>
+        <span class="metadata-item"><i class="fa fa-comments"></i> 0 Comments</span>
+      </div>
+      <h2 class="blog-post-subtitle">
+        How We Saved 10 Tons of Fruits and Vegetables in 2023
+      </h2>
+      <img
+        src="https://static.blog.bolt.eu/LIVE/wp-content/uploads/2022/04/30135418/grocery-list-1024x536.jpg"
+        alt="Fruits and Vegetables"
+        class="blog-post-image"
+      /> <br><br>
+      <p class="blog-post-text">
+        Imagine you are a 'mama mboga,' a micro-local retailer in Nairobi, Kenya. You sell fresh fruits and vegetables to your customers every day. But you also face a big challenge: food loss. You don’t know how much of your produce goes to waste, or how much money you lose because of it. In fact, you are not alone as 70% of 'mama mbogas' are unaware of this problem.
+      </p>
+      <br>
+      <div *ngIf="showMore" class="additional-content">
+        <p class="blog-post-text">
+          Here’s more information about how our solutions helped 'mama mboga' to reduce food waste and increase profits. We introduced better storage solutions and educated local farmers on the importance of supply chain management.
+        </p><br>
+        <p class="blog-post-text">
+            We offer an extensive range of products to cater to all your grocery needs. From fresh fruits and vegetables to pantry staples and gourmet items, our selection is carefully curated to ensure you have access to the best products. We partner with trusted brands and local producers to bring you high-quality, organic, and sustainable options.
+        </p><br>
+
+        <p class="blog-post-text">
+            Our website is designed with you in mind. With a clean and intuitive interface, you can easily navigate through categories, search for specific items, and add them to your cart with a simple click. Our seamless checkout process ensures a hassle-free experience from start to finish.
+
+        </p>
+        <br>
+
+        <p class="blog-post-text">
+
+            We believe in providing value for money. Our team is constantly monitoring market prices to ensure we offer the best deals on all products. Plus, we offer regular promotions and discounts, allowing you to save even more on your favorite items.
+        </p>
+        <br>
+        <p class="blog-post-text">
+            With GroceryApp, you don’t have to worry about inconvenient delivery times. We offer flexible delivery slots and same-day delivery options to ensure your groceries reach you when you need them. Our dedicated delivery team ensures your orders are handled with care and delivered promptly.
+
+        </p>
+
+        <br>
+      </div>
+      <a  (click)="toggleShowMore()" class="blog-post-read-more">
+        {{ showMore ? 'SHOW LESS >' : 'SHOW ALL >' }}
+      </a>
+    </div>
+  
+    <div class="blog-sidebar">
+        <div class="search-bar-container">   <div class="search-bar">
+        <input type="text" placeholder="Search For" />
+        <button>Search</button>
+      </div></div>
+   <div class="categories-container">  <div class="categories">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Changing Lives</a></li>
+          <li><a href="#">Deliveries</a></li>
+          <li><a href="#">AI and Technology</a></li>
+          <li><a href="#">Our Say</a></li>
+          <li><a href="#">Videos</a></li>
+        </ul>
+      </div></div>
+    
+      <div class="archives-container"> <div class="archives">
+        <h3>Archives</h3>
+        <ul>
+          <li><a href="#">December, 2023</a></li>
+          <li><a href="#">November, 2023</a></li>
+          <li><a href="#">October, 2023</a></li>
+        </ul>
+      </div></div>
+     
+    </div>
+  </div>
+  

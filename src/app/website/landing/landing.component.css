@@ -25,7 +25,11 @@
   margin-right: 5px;
 }
 .middleNavContainer {
-  padding: 25px 0px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030;
+  padding: 15px 0px;
 }
 .navbar {
   display: flex;
@@ -96,6 +100,7 @@
   height: 25px;
   width: 25px;
 }
+
 .right .cartIcon svg {
   margin-right: 20px;
   height: 35px;
@@ -131,14 +136,13 @@
   width: 80px;
   height: 80px;
 }
-.product{
+.product {
   width: 70%;
 }
 .product .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
- 
 }
 .product .header h3 {
   font-size: 14px;
@@ -163,3 +167,310 @@
   justify-content: start;
   align-items: start;
 }
+
+@media (max-width: 768px) {
+  .right .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}
+
+.body {
+  font-family: "Noto Sans", sans-serif;
+  background: #fafafa;
+  padding: 0;
+  margin: 0;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+nav {
+  ul,
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  a {
+    display: block;
+    text-decoration: none;
+    &:hover,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+}
+
+.menu-bar {
+  background: #ffffff;
+  display: flex;
+}
+
+.menu-link {
+  padding: 20px 25px;
+  background: #ffffff;
+  color: #177e89;
+  transition: background 0.2s, color 0.2s;
+  position: relative;
+  z-index: 1;
+  &[aria-haspopup="true"] {
+    padding-right: 40px;
+    &:after {
+      content: "";
+      background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowRight.svg#177E89");
+      background-size: 14px;
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+.mega-menu-header {
+  font-size: 1.2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #0f6f7f;
+}
+
+.mega-menu {
+  background: #ffffff;
+  z-index: 10;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  display: none; /* Hidden by default */
+}
+
+.mega-menu--multiLevel {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu--flat {
+  display: flex;
+}
+
+.mobile-menu-trigger,
+.mobile-menu-header,
+.mobile-menu-back-item {
+  display: none;
+}
+
+@media all and (min-width: 951px) {
+  /* Desktop only */
+  .nav {
+    margin-top: 50px;
+    background: #ffffff;
+    > nav {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  }
+
+  .menu-bar {
+    position: relative;
+    > li {
+      > [aria-haspopup="true"] {
+        &:after {
+          background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#177E89");
+        }
+        &:hover {
+          &:after {
+            background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowBottom.svg#ffffff");
+          }
+        }
+        &:focus {
+          ~ ul {
+            display: flex;
+            transform-origin: top;
+            animation: dropdown 0.2s ease-out;
+          }
+        }
+        ~ ul {
+          &:hover {
+            display: flex;
+          }
+        }
+      }
+      &:focus-within {
+        > [aria-haspopup="true"] {
+          ~ ul {
+            display: flex;
+          }
+        }
+      }
+      > [aria-haspopup="true"]:focus,
+      &:focus-within > [aria-haspopup="true"],
+      &:hover > a {
+        background: #177e89;
+        color: #ffffff;
+        &:after {
+          background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowTop.svg#ffffff");
+        }
+      }
+    }
+  }
+
+  .mega-menu {
+    &:hover {
+      display: flex;
+    }
+    a {
+      &:hover {
+        background: rgba(23, 126, 137, 0.85);
+        color: #0f6f7f;
+      }
+    }
+  }
+
+  .mega-menu--multiLevel > li {
+    width: 33.33%; /* Assuming 3 columns */
+    > [aria-haspopup="true"] {
+      ~ ul {
+        left: 33.33%; /* Adjust based on column width */
+        width: 33.33%; /* Adjust based on column width */
+        ul {
+          width: 100%;
+          left: 100%;
+        }
+      }
+    }
+  }
+
+  .mega-menu--multiLevel li {
+    &:hover {
+      > [aria-haspopup="true"] {
+        ~ ul {
+          display: block;
+          transform-origin: left;
+          animation: flyout 0.2s ease-out;
+        }
+      }
+    }
+    &:focus-within {
+      > [aria-haspopup="true"] {
+        ~ ul {
+          display: block;
+        }
+      }
+    }
+    &:hover,
+    &:focus-within {
+      > [aria-haspopup="true"],
+      > a {
+        background: rgba(23, 126, 137, 0.85);
+        color: #0f6f7f;
+      }
+    }
+  }
+
+  .mega-menu--flat > * {
+    flex: 1;
+  }
+
+  .mobile-menu-trigger,
+  .mobile-menu-header,
+  .mobile-menu-back-item {
+    display: none;
+  }
+}
+
+.mega-menu-content {
+  padding: 20px 25px;
+}
+
+.mobile-menu-back-item {
+  order: -1;
+  a {
+    background: rgba(128, 128, 128, 0.7);
+    color: #2a2a2a;
+    max-height: calc(1.4em + 40px);
+    margin-top: calc(0px - (1.4em + 40px));
+    pointer-events: none;
+    &:before {
+      content: "";
+      width: 14px;
+      height: 12px;
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1397521/arrowLeft.svg#default');
+      background-size: 14px;
+      margin-right: 10px;
+      display: inline-block;
+    }
+  }
+}
+
+.mobile-menu-trigger {
+  &:focus {
+    ~ ul {
+      left: 0;
+    }
+  }
+}
+
+.menu-bar {
+  &:hover, &:focus-within {
+    left: 0;
+  }
+  > li {
+    > [aria-haspopup="true"] {
+      &:focus,
+      &:hover {
+        background: #177E89;
+        color: #ffffff;
+      }
+      ~ ul {
+        &:hover {
+          display: block;
+          left: 0;
+          transform-origin: top;
+          animation: flyout .2s ease-out;
+        }
+      }
+    }
+  }
+}
+
+.mega-menu {
+  display: block;
+  background: #ffffff;
+  a {
+    padding: 20px 25px;
+    color: #2a2a2a;
+    &:hover {
+      background: rgba(23, 126, 137, 0.85);
+      color: #0F6F7F;
+    }
+  }
+}
+
+.mega-menu--multiLevel {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu--flat {
+  display: flex;
+  flex-direction: column;
+  > li {
+    width: 100%;
+  }
+}
+
+.menu-bar.is-active {
+  left: 0;
+}
+
+.menu-bar .sub-menu {
+  left: 100%;
+}
+
+

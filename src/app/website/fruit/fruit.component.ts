@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-
+import { RouterModule } from '@angular/router';
 import 'owl.carousel';
 declare var $: any;
 
 @Component({
   selector: 'app-fruit',
   standalone: true,
-  imports: [CarouselModule, CommonModule],
+  imports: [CarouselModule, CommonModule,RouterModule],
   templateUrl: './fruit.component.html',
   styleUrl: './fruit.component.css',
 })
@@ -46,6 +46,8 @@ export class FruitComponent implements AfterViewInit {
           },
         },
       });
+         // Add animation class after initialization
+         this.owlCarousel2.nativeElement.classList.add('animate');
     }, 0);
   }
 }

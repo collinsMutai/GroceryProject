@@ -26,7 +26,12 @@ export class ProductsComponent implements OnInit {
       console.log(this.products);
     });
   }
-  addProductForm(){
-this.router.navigate(['dashboard/add-product']);
+
+  addProductForm() {
+    this.router.navigate(['dashboard/add-product']);
+  }
+
+  navigateTo(category: string) {
+    this.router.navigate([`/${category}`]);
   }
 }

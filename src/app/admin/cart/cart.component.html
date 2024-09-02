@@ -1,1 +1,338 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <div class="header-container"><h2>We are Pleased to Serve you</h2></div>
+
+  <div *ngIf="selectedSpice">
+    <div class="mini-container">
+      <div class="image">
+        <img [src]="selectedSpice.imageUrl" [alt]="selectedSpice.name" />
+      </div>
+      <div class="info">
+        <div class="product-info">
+          <h2>{{ selectedSpice.name }}</h2>
+
+          <p class="unit-measure">Selected unit measure - {{ selectedUnit }}</p>
+
+          <div class="unit-selection">
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER 500G' }"
+              (click)="selectUnit('PER 500G')"
+            >
+             {{ selectedSpice.unitPrice }}
+            </button>
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER KG' }"
+              (click)="selectUnit('PER KG')"
+            >
+              PER KG
+            </button>
+          </div>
+
+          <p class="price">
+            Discounted price: KES
+            {{
+              selectedUnit === "PER 500G"
+                ? selectedSpice.unitPrice500g
+                : selectedSpice.unitPriceKg
+            }}.00
+          </p>
+          <div class="quantity-control">
+            <button
+              (click)="decreaseQuantity()"
+              style="background-color: rgb(247, 67, 67)"
+            >
+              -
+            </button>
+            <input type="text" [value]="quantity" readonly />
+            <button
+              (click)="increaseQuantity()"
+              style="background-color: rgb(135, 255, 111)"
+            >
+              +
+            </button>
+          </div>
+
+          <p class="description">Product Description</p>
+          <p>{{ selectedSpice.description }}</p>
+
+          <p class="availability">
+            Availability:
+            <span
+              [ngClass]="{
+                'in-stock': selectedSpice.inStock,
+                'out-of-stock': !selectedSpice.inStock
+              }"
+            >
+              {{ selectedSpice.inStock ? "In Stock" : "Out of Stock" }}
+            </span>
+          </p>
+        </div>
+
+        <div class="additional-info">
+          <div class="info-item">
+            <i class="fa fa-truck"></i>
+            <p>Free Delivery</p>
+            <p>We offer free delivery on orders within covered areas.</p>
+          </div>
+          <div class="info-item">
+            <i class="fa fa-check-circle"></i>
+            <p>100% Freshness Guarantee</p>
+            <p>We simply deliver the best.</p>
+          </div>
+        </div>
+        <button class="add-to-cart" (click)="addToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedVegetable">
+    <div class="mini-container">
+      <div class="image">
+        <img
+          [src]="selectedVegetable.imageUrl"
+          [alt]="selectedVegetable.name"
+        />
+      </div>
+      <div class="info">
+        <div class="product-info">
+          <h2>{{ selectedVegetable.name }}</h2>
+
+          <p class="unit-measure">Selected unit measure - {{ selectedUnit }}</p>
+
+          <div class="unit-selection">
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER 500G' }"
+              (click)="selectUnit('PER 500G')"
+            >
+              PER 500G
+            </button>
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER KG' }"
+              (click)="selectUnit('PER KG')"
+            >
+              PER KG
+            </button>
+          </div>
+
+          <p class="price">
+            Discounted price: KES
+            {{
+              selectedUnit === "PER 500G"
+                ? selectedVegetable.unitPrice500g
+                : selectedVegetable.unitPriceKg
+            }}.00
+          </p>
+          <div class="quantity-control">
+            <button
+              (click)="decreaseQuantity()"
+              style="background-color: rgb(247, 67, 67)"
+            >
+              -
+            </button>
+            <input type="text" [value]="quantity" readonly />
+            <button
+              (click)="increaseQuantity()"
+              style="background-color: rgb(135, 255, 111)"
+            >
+              +
+            </button>
+          </div>
+
+          <p class="description">Product Description</p>
+          <p>{{ selectedVegetable.description }}</p>
+
+          <p class="availability">
+            Availability:
+            <span
+              [ngClass]="{
+                'in-stock': selectedVegetable.inStock,
+                'out-of-stock': !selectedVegetable.inStock
+              }"
+            >
+              {{ selectedVegetable.inStock ? "In Stock" : "Out of Stock" }}
+            </span>
+          </p>
+        </div>
+
+        <div class="additional-info">
+          <div class="info-item">
+            <i class="fa fa-truck"></i>
+            <p>Free Delivery</p>
+            <p>We offer free delivery on orders within covered areas.</p>
+          </div>
+          <div class="info-item">
+            <i class="fa fa-check-circle"></i>
+            <p>100% Freshness Guarantee</p>
+            <p>We simply deliver the best.</p>
+          </div>
+        </div>
+        <button class="add-to-cart" (click)="addToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedMeat">
+    <div class="mini-container">
+      <div class="image">
+        <img [src]="selectedMeat.imageUrl" [alt]="selectedMeat.name" />
+      </div>
+      <div class="info">
+        <div class="product-info">
+          <h2>{{ selectedMeat.name }}</h2>
+
+          <p class="unit-measure">Selected unit measure - {{ selectedUnit }}</p>
+
+          <div class="unit-selection">
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER 500G' }"
+              (click)="selectUnit('PER 500G')"
+            >
+              PER 500G
+            </button>
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER KG' }"
+              (click)="selectUnit('PER KG')"
+            >
+              PER KG
+            </button>
+          </div>
+
+          <p class="price">
+            Discounted price: KES
+            {{
+              selectedUnit === "PER 500G"
+                ? selectedMeat.unitPrice500g
+                : selectedMeat.unitPriceKg
+            }}.00
+          </p>
+          <div class="quantity-control">
+            <button
+              (click)="decreaseQuantity()"
+              style="background-color: rgb(247, 67, 67)"
+            >
+              -
+            </button>
+            <input type="text" [value]="quantity" readonly />
+            <button
+              (click)="increaseQuantity()"
+              style="background-color: rgb(135, 255, 111)"
+            >
+              +
+            </button>
+          </div>
+
+          <p class="description">Product Description</p>
+          <p>{{ selectedMeat.description }}</p>
+
+          <p class="availability">
+            Availability:
+            <span
+              [ngClass]="{
+                'in-stock': selectedMeat.inStock,
+                'out-of-stock': !selectedMeat.inStock
+              }"
+            >
+              {{ selectedMeat.inStock ? "In Stock" : "Out of Stock" }}
+            </span>
+          </p>
+        </div>
+
+        <div class="additional-info">
+          <div class="info-item">
+            <i class="fa fa-truck"></i>
+            <p>Free Delivery</p>
+            <p>We offer free delivery on orders within covered areas.</p>
+          </div>
+          <div class="info-item">
+            <i class="fa fa-check-circle"></i>
+            <p>100% Freshness Guarantee</p>
+            <p>We simply deliver the best.</p>
+          </div>
+        </div>
+        <button class="add-to-cart" (click)="addToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedDairy">
+    <div class="mini-container">
+      <div class="image">
+        <img [src]="selectedDairy.imageUrl" [alt]="selectedDairy.name" />
+      </div>
+      <div class="info">
+        <div class="product-info">
+          <h2>{{ selectedDairy.name }}</h2>
+
+          <p class="unit-measure">Selected unit measure - {{ selectedUnit }}</p>
+
+          <div class="unit-selection">
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER 500G' }"
+              (click)="selectUnit('PER 500G')"
+            >
+              PER 500G
+            </button>
+            <button
+              [ngClass]="{ active: selectedUnit === 'PER KG' }"
+              (click)="selectUnit('PER KG')"
+            >
+              PER KG
+            </button>
+          </div>
+
+          <p class="price">
+            Discounted price: KES
+            {{
+              selectedUnit === "PER 500G"
+                ? selectedDairy.unitPrice500g
+                : selectedDairy.unitPriceKg
+            }}.00
+          </p>
+          <div class="quantity-control">
+            <button
+              (click)="decreaseQuantity()"
+              style="background-color: rgb(247, 67, 67)"
+            >
+              -
+            </button>
+            <input type="text" [value]="quantity" readonly />
+            <button
+              (click)="increaseQuantity()"
+              style="background-color: rgb(135, 255, 111)"
+            >
+              +
+            </button>
+          </div>
+
+          <p class="description">Product Description</p>
+          <p>{{ selectedDairy.description }}</p>
+
+          <p class="availability">
+            Availability:
+            <span
+              [ngClass]="{
+                'in-stock': selectedDairy.inStock,
+                'out-of-stock': !selectedDairy.inStock
+              }"
+            >
+              {{ selectedDairy.inStock ? "In Stock" : "Out of Stock" }}
+            </span>
+          </p>
+        </div>
+
+        <div class="additional-info">
+          <div class="info-item">
+            <i class="fa fa-truck"></i>
+            <p>Free Delivery</p>
+            <p>We offer free delivery on orders within covered areas.</p>
+          </div>
+          <div class="info-item">
+            <i class="fa fa-check-circle"></i>
+            <p>100% Freshness Guarantee</p>
+            <p>We simply deliver the best.</p>
+          </div>
+        </div>
+        <button class="add-to-cart" (click)="addToCart()">ADD TO CART</button>
+      </div>
+    </div>
+  </div>
+</div>

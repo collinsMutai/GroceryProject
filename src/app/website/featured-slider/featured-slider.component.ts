@@ -15,6 +15,10 @@ import { FruitComponent } from '../fruit/fruit.component';
 
 import 'owl.carousel';
 import { MainSliderComponent } from '../main-slider/main-slider.component';
+import { SpicesComponent } from '../spices/spices.component';
+import { MeatComponent } from '../meat/meat.component';
+import { DairyComponent } from '../dairy/dairy.component';
+
 declare var $: any;
 
 @Component({
@@ -28,6 +32,11 @@ declare var $: any;
     VegetableComponent,
     FruitComponent,
     MainSliderComponent,
+    SpicesComponent,
+    MeatComponent,
+
+    DairyComponent,
+
   ],
 })
 export class FeaturedSliderComponent implements AfterViewInit, OnInit {

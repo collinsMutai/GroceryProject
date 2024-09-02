@@ -60,12 +60,25 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
     }, 0);
   }
 
+
+
   loadProducts() {
     this.productService.getAllProducts().subscribe((res: any) => {
       this.products = res;
       console.log(this.products);
     });
   }
+
+  // increaseQuantity(index: number): void {
+  //   this.products[index].quantity += 1;
+  // }
+
+  // decreaseQuantity(index: number): void {
+  //   if (this.products[index].quantity > 1) {
+  //     this.products[index].quantity -= 1;
+  //   }
+  // } 
+
   addToCart(productId: any) {
     // Check if the product already exists in the cart
     this.productService.getCart().subscribe((cartItems: any[]) => {

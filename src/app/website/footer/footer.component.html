@@ -83,10 +83,10 @@
       <h3>About us</h3>
 
       <ul>
-        <li>Company Information</li>
+        <li (click)="navigateTo('about')" style="cursor: pointer;" >Company Information</li>
         <li>Careers</li>
-        <li>Blogs</li>
-        <li>FAQs</li>
+        <li (click)="navigateTo('blog')" style="cursor: pointer;" >Blogs</li>
+        <li (click)="navigateTo('faqs')" style="cursor: pointer;" >FAQs</li>
         <li>Terms & Condition</li>
         <li>Privacy Policy</li>
       </ul>
@@ -107,12 +107,12 @@
     <div class="col-2">
       <h3>Top categories</h3>
       <ul>
-        <li>Spices</li>
-        <li>Vegetables</li>
-        <li>Dry foods</li>
-        <li>Dairy products</li>
-        <li>Meat</li>
-        <li>Fruit</li>
+        <li (click)="navigateTo('spices')" style="cursor: pointer;" >Spices</li>
+        <li (click)="navigateTo('vegetables')" style="cursor: pointer;" >Vegetables</li>
+        <li (click)="navigateTo('dairy')" style="cursor: pointer;" >Dry foods</li>
+        <li (click)="navigateTo('meat')" style="cursor: pointer;" >Dairy products</li>
+        <li (click)="navigateTo('meat')" style="cursor: pointer;" >Meat</li>
+        <li (click)="navigateTo('fruit')" style="cursor: pointer;" >Fruit</li>
       </ul>
     </div>
     <div class="col">
