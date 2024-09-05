@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FeaturedSliderComponent } from '../featured-slider/featured-slider.component';
 import { MainSliderComponent } from '../main-slider/main-slider.component';
 import { ProductService } from '../product.service';
 

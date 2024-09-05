@@ -1,0 +1,52 @@
+<div class="container-fluid pt-3 pb-3" style="background-color: #eaeded">
+  <div class="container pt-1 pb-1">
+    <div class="slide-header">
+      <h3>{{ title }}</h3>
+    </div>
+
+    <div
+      [id]="carouselId"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="5000"
+    >
+      <div class="carousel-inner">
+        <div
+          class="carousel-item"
+          *ngFor="let slideImages of chunkedItems; let i = index"
+          [ngClass]="{ active: i === 0 }"
+        >
+          <div class="carousel-item-content"  [ngClass]="{ 'three-products': slideImages.length <= 4 }">
+            <div
+              class="carousel-item-image"
+              *ngFor="let item of slideImages"
+              (click)="onItemClick(item)"
+              style="cursor: pointer; text-align: center;"
+            >
+              <img [src]="item.imageUrl" alt="{{ item.name }}" />
+              <p>{{ item.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        [attr.data-bs-target]="'#' + carouselId"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        [attr.data-bs-target]="'#' + carouselId"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</div>

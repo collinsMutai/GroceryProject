@@ -37,7 +37,14 @@
           Hassle-free <br />
           Delivery.
         </p>
-        <button type="button" class="btnShop px-4 py-2 fs-5 mt-5"  routerLink="/featured-slider" routerLinkActive="active" >Shop</button>
+        <button
+          type="button"
+          class="btnShop px-4 py-2 fs-5 mt-5"
+          routerLink="/featured-slider"
+          routerLinkActive="active"
+        >
+          Shop
+        </button>
       </div>
     </div>
     <div class="carousel-item c-item">
@@ -118,7 +125,7 @@
         </svg>
       </p>
       <p>
-        Best Prices & Offers <br/><span>free delivery within 20 minutes</span>
+        Best Prices & Offers <br /><span>free delivery within 20 minutes</span>
       </p>
     </div>
     <div class="col bannerItem">
@@ -169,4 +176,48 @@
   </div>
 </div>
 
-<app-featured-slider></app-featured-slider>
+<!-- Vegetables Slider -->
+<app-category-slider-template
+  *ngIf="vegetableImagesWithNames.length"
+  [items]="vegetableImagesWithNames"
+  [chunkSize]="chunkSizes.vegetables"
+  title="Vegetables"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
+
+<!-- Fruits Slider -->
+<app-category-slider-template
+  *ngIf="fruitImagesWithNames.length"
+  [items]="fruitImagesWithNames"
+  [chunkSize]="chunkSizes.fruits"
+  title="Fruits"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
+
+<!-- Spices Slider -->
+<app-category-slider-template
+  *ngIf="spiceImagesWithNames.length"
+  [items]="spiceImagesWithNames"
+  [chunkSize]="chunkSizes.spices"
+  title="Spices"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
+
+<!-- Meats Slider -->
+<app-category-slider-template
+  *ngIf="meatImagesWithNames.length"
+  [items]="meatImagesWithNames"
+  [chunkSize]="chunkSizes.meats"
+  title="Meats"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
+
+<!-- Dairies Slider -->
+<app-category-slider-template
+  *ngIf="dairyImagesWithNames.length"
+  [items]="dairyImagesWithNames"
+  [chunkSize]="chunkSizes.dairies"
+  title="Dairies"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
+

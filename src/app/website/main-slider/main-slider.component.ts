@@ -29,7 +29,7 @@ export class MainSliderComponent implements AfterViewInit, OnInit {
 
   constructor(private productService: ProductService) {}
   ngOnInit(): void {
-    this.loadProducts();
+    // this.loadProducts();
   }
 
   ngAfterViewInit(): void {

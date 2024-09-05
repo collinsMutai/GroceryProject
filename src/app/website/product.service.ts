@@ -10,11 +10,12 @@ export class ProductService {
 
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
+  private api = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) {}
 
-  getAllProducts(): Observable<any> {
-    return this.http.get(this.APIURL);
+  getAllProducts(): Observable<[]> {
+    return this.http.get<[]>(this.api + 'allProducts');
   }
 
   getProductByCategory(id: any): Observable<any> {
