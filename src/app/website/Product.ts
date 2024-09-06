@@ -14,8 +14,23 @@ export interface Item {
   imageUrl: string;
   unitPrice500g?: number;
   unitPriceKg?: number;
+  price: number;
   description: string;
   category: string;
   inStock: boolean;
 }
 
+// Product.ts or an appropriate file
+export interface CartItem {
+  itemId: string;
+  quantity: number;
+  price: number; // Price per unit of the item
+}
+
+
+// Define the structure of cart data
+export interface CartData {
+  cartItems: CartItem[];
+  subtotal: number;
+  totalQuantity: number;
+}

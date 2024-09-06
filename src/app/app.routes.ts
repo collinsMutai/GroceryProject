@@ -7,7 +7,6 @@ import { ProductOrdersTableComponent } from './admin/product-orders-table/produc
 import { LandingComponent } from './website/landing/landing.component';
 import { CategoryProductsComponent } from './website/category-products/category-products.component';
 import { WebproductsComponent } from './website/webproducts/webproducts.component';
-import { ProductDetailsComponent } from './website/product-details/product-details.component';
 import { CheckoutComponent } from './website/checkout/checkout.component';
 import { CustomerCartComponent } from './website/customer-cart/customer-cart.component';
 import { FAQsComponent } from './website/faqs/faqs.component';

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../website/product.service'; // Adjust the path as necessary
 import { Item } from '../../website/Product';
 
 @Component({
@@ -12,13 +13,13 @@ import { Item } from '../../website/Product';
 })
 export class CartComponent implements OnInit {
   selectedItem: Item | null = null;
-  selectedUnit = 'PER 500G';
   quantity = 1;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductService // Inject ProductService
   ) {}
 
   ngOnInit(): void {
@@ -48,69 +49,48 @@ export class CartComponent implements OnInit {
     }
   }
 
-  loadItemDetails(itemId: string) {
-    // Use a fake product for demonstration purposes
-    const fakeProducts: Item[] = [
-      {
-        id: '123abc',
-        name: 'Organic Avocado',
-        imageUrl:
-          'https://images-na.ssl-images-amazon.com/images/I/81LKLCmdAQL.AC_SL240_.jpg',
-        unitPrice500g: 2.99,
-        unitPriceKg: 5.49,
-        description: 'Fresh and organic avocados from local farms.',
-        category: 'Fruits',
-        inStock: true,
+  loadItemDetails(itemId: string): void {
+    this.productService.getProductById(itemId).subscribe({
+      next: (item) => {
+        this.selectedItem = item;
       },
-
-      {
-        id: '1',
-        name: 'Fake Product 1',
-        imageUrl: 'https://via.placeholder.com/150',
-        unitPrice500g: 100,
-        unitPriceKg: 180,
-        description:
-          'This is a fake product 1 description for testing purposes.',
-        inStock: true,
-        category: 'fruits',
+      error: (error) => {
+        console.error('Error fetching product details:', error);
+        this.router.navigate(['/']); // Redirect on error
       },
-      {
-        id: '2',
-        name: 'Fake Product 2',
-        imageUrl: 'https://via.placeholder.com/150',
-        unitPrice500g: 120,
-        unitPriceKg: 200,
-        description:
-          'This is a fake product 2 description for testing purposes.',
-        inStock: true,
-        category: 'meats',
-      },
-    ];
-
-    this.selectedItem =
-      fakeProducts.find((product) => product.id === itemId) || null;
+    });
   }
 
-  selectUnit(unit: string) {
-    this.selectedUnit = unit;
-  }
-
-  increaseQuantity() {
+  increaseQuantity(): void {
     this.quantity++;
   }
 
-  decreaseQuantity() {
+  decreaseQuantity(): void {
     if (this.quantity > 1) {
       this.quantity--;
     }
   }
 
-  addToCart() {
+  getTotalPrice(): number {
+    return this.selectedItem ? this.selectedItem.price * this.quantity : 0;
+  }
+
+  addToCart(): void {
     if (this.selectedItem) {
-      // Replace with actual cart logic
+      const cartItem = {
+        itemId: this.selectedItem.id,
+        quantity: this.quantity,
+        price: this.selectedItem.price,
+      };
+
+      // Call the ProductService to add or update the item in the cart
+      this.productService.addtoCart(cartItem);
+
       console.log(
         `${this.quantity} unit(s) of ${this.selectedItem.name} added to cart.`
       );
+    } else {
+      console.error('No item selected.');
     }
   }
 }

@@ -38,43 +38,54 @@ export class WebproductsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit(): void {
-    this.fetchProducts('vegetables');
-    this.fetchProducts('fruits');
-    this.fetchProducts('spices');
-    this.fetchProducts('meats');
-    this.fetchProducts('dairys');
+    // Subscribe to product updates
+    this.productService.getProductsObservable().subscribe((products) => {
+      console.log('Products updated:', products); // Log to check data
+      this.updateProductList();
+    });
+
+    // Initialize chunk sizes based on screen size
+    this.updateChunkSize();
   }
 
-  fetchProducts(category: string): void {
-    this.productService.getAllProducts().subscribe((res) => {
-      const products = res.filter(
-        (product: Item) => product.category === category
-      );
-      const imagesWithNames = products.map((product: Item) => ({
-        imageUrl: product.imageUrl,
-        name: product.name,
-      }));
+  private updateProductList(): void {
+    // Access products from BehaviorSubject and log
+    const allProducts = this.productService.getProducts();
+    console.log('Products in component:', allProducts); // Log products to check data
 
-      switch (category) {
-        case 'vegetables':
-          this.vegetableImagesWithNames = imagesWithNames;
-          break;
-        case 'fruits':
-          this.fruitImagesWithNames = imagesWithNames;
-          break;
-        case 'spices':
-          this.spiceImagesWithNames = imagesWithNames;
-          break;
-        case 'meats':
-          this.meatImagesWithNames = imagesWithNames;
-          break;
-        case 'dairys':
-          this.dairyImagesWithNames = imagesWithNames;
-          break;
-      }
+    if (allProducts.length > 0) {
+      this.filterProductsByCategory(allProducts);
+    } else {
+      console.log('No products available.'); // Log if no products are available
+    }
+  }
 
-      this.updateChunkSize();
-    });
+  filterProductsByCategory(products: Item[]): void {
+    this.vegetableImagesWithNames = this.getImagesWithNames(
+      products.filter((product) => product.category === 'vegetables')
+    );
+    this.fruitImagesWithNames = this.getImagesWithNames(
+      products.filter((product) => product.category === 'fruits')
+    );
+    this.spiceImagesWithNames = this.getImagesWithNames(
+      products.filter((product) => product.category === 'spices')
+    );
+    this.meatImagesWithNames = this.getImagesWithNames(
+      products.filter((product) => product.category === 'meats')
+    );
+    this.dairyImagesWithNames = this.getImagesWithNames(
+      products.filter((product) => product.category === 'dairies')
+    );
+
+    this.updateChunkSize();
+  }
+
+  getImagesWithNames(products: Item[]): { id: string, imageUrl: string; name: string }[] {
+    return products.map((product) => ({
+      id: product.id,
+      imageUrl: product.imageUrl,
+      name: product.name,
+    }));
   }
 
   @HostListener('window:resize', ['$event'])
@@ -114,13 +125,15 @@ export class WebproductsComponent implements OnInit {
       imageUrl: 'https://example.com/images/organic-avocado.jpg',
       unitPrice500g: 2.99,
       unitPriceKg: 5.49,
+      price: 4.99,
       description: 'Fresh and organic avocados from local farms.',
       category: 'Fruits',
       inStock: true,
     };
+console.log('item', item);
 
-    this.selectedItems.push(fakeItem);
-    this.router.navigate(['products', fakeItem.id], {
+    this.selectedItems.push(item);
+    this.router.navigate(['products', item.id], {
       state: { selectedItems: this.selectedItems },
     });
   }

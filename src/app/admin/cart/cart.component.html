@@ -12,31 +12,13 @@
         <div class="product-info">
           <h2>{{ selectedItem.name }}</h2>
 
-          <p class="unit-measure">Selected unit measure - {{ selectedUnit }}</p>
-
-          <div class="unit-selection">
-            <button
-              [ngClass]="{ active: selectedUnit === 'PER 500G' }"
-              (click)="selectUnit('PER 500G')"
-            >
-              PER 500G
-            </button>
-            <button
-              [ngClass]="{ active: selectedUnit === 'PER KG' }"
-              (click)="selectUnit('PER KG')"
-            >
-              PER KG
-            </button>
-          </div>
-
           <p class="price">
-            Discounted price: KES
-            {{
-              selectedUnit === "PER 500G"
-                ? selectedItem.unitPrice500g
-                : selectedItem.unitPriceKg
-            }}.00
+            Price per unit: KES {{ selectedItem.price || 'N/A' }}.00
           </p>
+          <p class="total-price">
+            Total Price: KES {{ getTotalPrice() || 'N/A' }}.00
+          </p>
+          
           <div class="quantity-control">
             <button
               (click)="decreaseQuantity()"

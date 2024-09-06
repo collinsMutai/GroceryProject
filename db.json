@@ -135,500 +135,413 @@
   "users": [],
   "cart": [
     {
-      "id": "ac9f",
-      "CustId": 1,
-      "ProductName": "Cabbage",
-      "ProductId": "952i",
-      "Quantity": 3,
-      "AddedData": "2024-07-11T12:31:46.288Z",
-      "ProductImgUrl": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/2.jpg",
-      "productPrice": 25,
-      "Total": 75
+      "id": "3",
+      "itemId": "3",
+      "quantity": 9,
+      "price": 200
     },
     {
-      "id": "a38f",
-      "CustId": 1,
-      "ProductName": "Beetroot",
-      "ProductId": "952f",
-      "Quantity": 2,
-      "AddedData": "2024-07-11T12:33:15.257Z",
-      "ProductImgUrl": "https://angular.pixelstrap.com/multikart/assets/images/product/vegetables/1.jpg",
-      "productPrice": 31,
-      "Total": 62
+      "id": "4",
+      "itemId": "4",
+      "quantity": 6,
+      "price": 150
     }
   ],
   "allProducts": [
     {
+      "id": "1",
       "category": "vegetables",
       "name": "Red Onion",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71AM8cSg+7L.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71AM8cSg+7L.AC_SL240_.jpg",
+      "price": 120
     },
     {
+      "id": "2",
       "category": "vegetables",
       "name": "Asparagus Green",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg",
+      "price": 350
     },
     {
+      "id": "3",
       "category": "vegetables",
       "name": "Zucchini Squash",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71GxrCR+gLL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71GxrCR+gLL.AC_SL240_.jpg",
+      "price": 200
     },
     {
+      "id": "4",
       "category": "vegetables",
       "name": "Plum Roma Tomato",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71xjZONKSIL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71xjZONKSIL.AC_SL240_.jpg",
+      "price": 150
     },
     {
+      "id": "5",
       "category": "vegetables",
       "name": "Broccoli Crowns",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81JWj-cXxQL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81JWj-cXxQL.AC_SL240_.jpg",
+      "price": 250
     },
     {
+      "id": "6",
       "category": "vegetables",
       "name": "Green Bell Pepper",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToRhrzg0_RX2DNu3WIXvRp6jSP7LP7S18yyQ&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToRhrzg0_RX2DNu3WIXvRp6jSP7LP7S18yyQ&s",
+      "price": 180
     },
     {
+      "id": "7",
       "category": "vegetables",
       "name": "Carrots",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr3bM_dBaWJMdq4AIecvVNTp_K6wR3XVm6lw&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr3bM_dBaWJMdq4AIecvVNTp_K6wR3XVm6lw&s",
+      "price": 160
     },
     {
+      "id": "8",
       "category": "vegetables",
       "name": "Cauliflower",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/029/720/704/non_2x/cauliflower-transparent-background-png.png"
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/029/720/704/non_2x/cauliflower-transparent-background-png.png",
+      "price": 220
     },
     {
+      "id": "9",
       "category": "vegetables",
       "name": "Spinach",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9J874t5hj-JnGP5IT1Jd89msWpHKb0bL5Vg&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9J874t5hj-JnGP5IT1Jd89msWpHKb0bL5Vg&s",
+      "price": 270
     },
     {
+      "id": "10",
       "category": "vegetables",
       "name": "Kale",
-      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-kale-bundlevegetables-kale-leaf-cabbage-green-leaves-borecole-941524683046rvwcj.png"
+      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-kale-bundlevegetables-kale-leaf-cabbage-green-leaves-borecole-941524683046rvwcj.png",
+      "price": 290
     },
     {
+      "id": "11",
       "category": "vegetables",
       "name": "Cabbage",
-      "imageUrl": "https://pngimg.com/d/cabbage_PNG8804.png"
+      "imageUrl": "https://pngimg.com/d/cabbage_PNG8804.png",
+      "price": 130
     },
     {
+      "id": "12",
       "category": "vegetables",
       "name": "Lettuce",
-      "imageUrl": "https://i.pinimg.com/originals/60/16/91/6016911336b4930bb9eda15b99ffad36.png"
+      "imageUrl": "https://i.pinimg.com/originals/60/16/91/6016911336b4930bb9eda15b99ffad36.png",
+      "price": 140
     },
     {
+      "id": "13",
       "category": "vegetables",
       "name": "Sweet Potatoes",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/029/712/252/original/sweet-potato-transparent-background-png.png"
+      "imageUrl": "https://static.vecteezy.com/system/resources/previews/029/712/252/original/sweet-potato-transparent-background-png.png",
+      "price": 240
     },
     {
+      "id": "14",
       "category": "vegetables",
       "name": "Celery",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTfGGxcJ79G0PvHdw1m7L9ucXSNMX6_HZqXw&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTfGGxcJ79G0PvHdw1m7L9ucXSNMX6_HZqXw&s",
+      "price": 190
     },
     {
+      "id": "15",
       "category": "vegetables",
       "name": "Cucumbers",
-      "imageUrl": "https://www.pngall.com/wp-content/uploads/2016/04/Cucumber-PNG-HD.png"
+      "imageUrl": "https://www.pngall.com/wp-content/uploads/2016/04/Cucumber-PNG-HD.png",
+      "price": 170
     },
     {
+      "id": "16",
       "category": "vegetables",
       "name": "Eggplant",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9HUPGE0lD14wLE0Gv-FFFG3R8o-g_6_Z1KA&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9HUPGE0lD14wLE0Gv-FFFG3R8o-g_6_Z1KA&s",
+      "price": 230
     },
     {
+      "id": "17",
       "category": "vegetables",
       "name": "Radish",
-      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-radishvegetables-radish-fodder-radish-941524712345m1qre.png"
+      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-radishvegetables-radish-fodder-radish-941524712345m1qre.png",
+      "price": 110
     },
     {
+      "id": "18",
       "category": "vegetables",
       "name": "Beets",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRs_hWteGqH5RSUI0TjcRMgNP64QpEKvUxWA&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRs_hWteGqH5RSUI0TjcRMgNP64QpEKvUxWA&s",
+      "price": 200
     },
     {
+      "id": "19",
       "category": "vegetables",
       "name": "Pumpkin",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlb8dTjBW78N3SXb1X_P76KamYKPKyBxPI1A&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlb8dTjBW78N3SXb1X_P76KamYKPKyBxPI1A&s",
+      "price": 280
     },
     {
+      "id": "20",
       "category": "vegetables",
       "name": "Butternut Squash",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpF_XoBsOL4NL5Df-Y-Q_ovNo7aebBAVMYSA&s"
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpF_XoBsOL4NL5Df-Y-Q_ovNo7aebBAVMYSA&s",
+      "price": 240
     },
     {
+      "id": "21",
       "category": "vegetables",
       "name": "Tomatoes",
-      "imageUrl": "https://www.transparentpng.com/download/tomato/PSJAVT-tomato-picture.png"
+      "imageUrl": "https://www.transparentpng.com/download/tomato/PSJAVT-tomato-picture.png",
+      "price": 160
     },
     {
+      "id": "22",
       "category": "vegetables",
       "name": "Green Beans",
-      "imageUrl": "https://images.everydayhealth.com/images/diet-nutrition/potential-health-benefits-of-green-beans-1440x810.jpg"
+      "imageUrl": "https://images.everydayhealth.com/images/diet-nutrition/potential-health-benefits-of-green-beans-1440x810.jpg",
+      "price": 210
     },
     {
+      "id": "23",
       "category": "vegetables",
       "name": "Brussels Sprouts",
-      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-brussels-sproutsvegetables-brussels-sprouts-941524719390ewwex.png"
+      "imageUrl": "https://purepng.com/public/uploads/large/purepng.com-brussels-sproutsvegetables-brussels-sprouts-941524719390ewwex.png",
+      "price": 300
     },
     {
+      "id": "24",
       "category": "vegetables",
       "name": "Artichoke",
-      "imageUrl": "https://www.thespruceeats.com/thmb/Z9vy2vlSdm2c-g7vlnm2_MPAEec=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-157315654-2b78b5edd25e414ebfa0301aa676018e.jpg"
+      "imageUrl": "https://www.thespruceeats.com/thmb/Z9vy2vlSdm2c-g7vlnm2_MPAEec=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-157315654-2b78b5edd25e414ebfa0301aa676018e.jpg",
+      "price": 350
     },
     {
+      "id": "25",
       "category": "fruits",
       "name": "Lime",
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81HZUsK9dRL.AC_SL240_.jpg",
-      "unitPrice": 588.0,
-      "unitPriceKg": 1176.0,
+      "price": 588,
+      "unitPriceKg": 1176,
       "description": "FRESH Lime",
       "inStock": true
     },
     {
+      "id": "26",
       "category": "fruits",
       "name": "Organic Strawberries",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81knc9-4RHL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81knc9-4RHL.AC_SL240_.jpg",
+      "price": "$4.99"
     },
     {
+      "id": "27",
       "category": "fruits",
       "name": "Honeycrisp Apple",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71PxRvQMaoL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71PxRvQMaoL.AC_SL240_.jpg",
+      "price": "$1.49"
     },
     {
+      "id": "28",
       "category": "fruits",
       "name": "Navel Orange",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71ohLOFjl0L.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71ohLOFjl0L.AC_SL240_.jpg",
+      "price": "$0.89"
     },
     {
+      "id": "29",
       "category": "fruits",
       "name": "Mini Seedless Watermelon",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/818aDbVU3xL.AC_SL240_.jpg"
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/818aDbVU3xL.AC_SL240_.jpg",
+      "price": "$6.99"
     },
     {
+      "id": "30",
       "category": "fruits",
-      "name": "Asparagus Green",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
+      "name": "Red Seedless Grapes",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71zFD_4GmsL.AC_SL240_.jpg",
+      "price": "$3.99"
     },
     {
+      "id": "31",
       "category": "fruits",
-      "name": "Medium Hass Avocado",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81LKLCmdAQL.AC_SL240_.jpg"
+      "name": "Green Apple",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71LUMkRrhQL.AC_SL240_.jpg",
+      "price": "$1.29"
     },
     {
+      "id": "32",
       "category": "fruits",
-      "name": "Banana",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSP7gbmcXF7ZV88S4eU-1LepaJ4rTQmsZ1kw&s"
+      "name": "Blackberries",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71M-xCZ8dTL.AC_SL240_.jpg",
+      "price": "$5.49"
     },
     {
+      "id": "33",
       "category": "fruits",
-      "name": "Grapes",
-      "imageUrl": "https://thumbs.dreamstime.com/b/bunch-grapes-isolated-white-background-112957297.jpg"
+      "name": "Gala Apple",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81VZ0bW9uLL.AC_SL240_.jpg",
+      "price": "$1.19"
     },
     {
+      "id": "34",
       "category": "fruits",
-      "name": "Lime",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81HZUsK9dRL.AC_SL240_.jpg",
-      "unitPrice": 588.0,
-      "unitPriceKg": 1176.0,
-      "description": "FRESH Lime",
-      "inStock": true
+      "name": "Raspberries",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71rfU11FAxL.AC_SL240_.jpg",
+      "price": "$5.99"
     },
     {
+      "id": "35",
       "category": "fruits",
-      "name": "Organic Strawberries",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81knc9-4RHL.AC_SL240_.jpg"
+      "name": "Pineapple",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71TzTApeA9L.AC_SL240_.jpg",
+      "price": "$3.49"
     },
     {
+      "id": "36",
       "category": "fruits",
-      "name": "Honeycrisp Apple",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71PxRvQMaoL.AC_SL240_.jpg"
+      "name": "Peaches",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71bH5uyJhIL.AC_SL240_.jpg",
+      "price": "$2.99"
     },
     {
+      "id": "37",
       "category": "fruits",
-      "name": "Navel Orange",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71ohLOFjl0L.AC_SL240_.jpg"
+      "name": "Cantaloupe",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71eK7vWw2PL.AC_SL240_.jpg",
+      "price": "$4.49"
     },
     {
+      "id": "38",
       "category": "fruits",
-      "name": "Mini Seedless Watermelon",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/818aDbVU3xL.AC_SL240_.jpg"
+      "name": "Plums",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71Nid5kRYxL.AC_SL240_.jpg",
+      "price": "$2.49"
     },
     {
+      "id": "39",
       "category": "fruits",
-      "name": "Asparagus Green",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71rpY2GtFHL.AC_SL240_.jpg"
+      "name": "Pears",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71uNU3ZWu-L.AC_SL240_.jpg",
+      "price": "$1.89"
     },
     {
+      "id": "40",
       "category": "fruits",
-      "name": "Medium Hass Avocado",
-      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/81LKLCmdAQL.AC_SL240_.jpg"
+      "name": "Cherries",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71jfzMbj33L.AC_SL240_.jpg",
+      "price": "$7.99"
     },
     {
+      "id": "41",
       "category": "fruits",
-      "name": "Banana",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSP7gbmcXF7ZV88S4eU-1LepaJ4rTQmsZ1kw&s"
+      "name": "Avocado",
+      "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/71ESvDgjgWL.AC_SL240_.jpg",
+      "price": "$1.99"
     },
     {
-      "category": "fruits",
-      "name": "Grapes",
-      "imageUrl": "https://thumbs.dreamstime.com/b/bunch-grapes-isolated-white-background-112957297.jpg"
-    },
-    {
-      "name": "Cinnamon",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cinnamomum_verum_spices.jpg/1200px-Cinnamomum_verum_spices.jpg",
-      "unitPrice": 588.0,
-      "unitPriceKg": 1176.0,
-      "description": "FRESH CINNAMON",
-      "inStock": true,
-      "category": "spices"
-    },
-    {
-      "name": "Turmeric",
-      "imageUrl": "https://www.naatigrains.com/image/cache/catalog/naatigrains-products/NG121/pure-turmeric-powder-hand-processed-solar-dried-stone-order-now-online-organic-grinded-by-naati-grains-1000x1000.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Ginger",
-      "imageUrl": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/10/2011/10/ginger.jpg",
-      "category": "spices"
-    },
-    {
+      "id": "42",
+      "category": "spices",
       "name": "Cumin",
-      "imageUrl": "https://t3.ftcdn.net/jpg/01/95/20/82/360_F_195208265_hcwcxDwqtH41uKAnJ0gNZghjriJytbnR.jpg",
-      "category": "spices"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Cumin_Seeds.jpg/1200px-Cumin_Seeds.jpg",
+      "price": "$3.49"
     },
     {
+      "id": "43",
+      "category": "spices",
       "name": "Paprika",
-      "imageUrl": "https://thumbs.dreamstime.com/b/paprika-16685032.jpg",
-      "category": "spices"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Paprika_powder.jpg/1200px-Paprika_powder.jpg",
+      "price": "$2.99"
     },
     {
-      "name": "Cardamom",
-      "imageUrl": "https://harkola.online/wp-content/uploads/2017/01/Cardamom.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Clove",
-      "imageUrl": "https://t3.ftcdn.net/jpg/00/46/43/38/360_F_46433885_pyLrmyDWOdEjR1TgqHQcFPfqUWi7J3By.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Nutmeg",
-      "imageUrl": "https://cdn.britannica.com/77/170777-050-3A754B3D/Nutmeg-seeds-ground-spice.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Saffron",
-      "imageUrl": "https://perfarmersglobal.in/wp-content/uploads/2023/10/Saffron.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Cinnamon",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cinnamomum_verum_spices.jpg/1200px-Cinnamomum_verum_spices.jpg",
-      "unitPrice": 588.0,
-      "unitPriceKg": 1176.0,
-      "description": "FRESH CINNAMON",
-      "inStock": true,
-      "category": "spices"
-    },
-    {
+      "id": "44",
+      "category": "spices",
       "name": "Turmeric",
-      "imageUrl": "https://www.naatigrains.com/image/cache/catalog/naatigrains-products/NG121/pure-turmeric-powder-hand-processed-solar-dried-stone-order-now-online-organic-grinded-by-naati-grains-1000x1000.jpg",
-      "category": "spices"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Turmeric_Rhizomes.jpg/1200px-Turmeric_Rhizomes.jpg",
+      "price": "$4.29"
     },
     {
-      "name": "Ginger",
-      "imageUrl": "https://aggie-horticulture.tamu.edu/wp-content/uploads/sites/10/2011/10/ginger.jpg",
-      "category": "spices"
+      "id": "45",
+      "category": "spices",
+      "name": "Cinnamon",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Cinnamon-Sticks.jpg/1200px-Cinnamon-Sticks.jpg",
+      "price": "$2.49"
     },
     {
-      "name": "Cumin",
-      "imageUrl": "https://t3.ftcdn.net/jpg/01/95/20/82/360_F_195208265_hcwcxDwqtH41uKAnJ0gNZghjriJytbnR.jpg",
-      "category": "spices"
+      "id": "46",
+      "category": "spices",
+      "name": "Garlic Powder",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Garlic_powder.jpg/1200px-Garlic_powder.jpg",
+      "price": "$3.99"
     },
     {
-      "name": "Paprika",
-      "imageUrl": "https://thumbs.dreamstime.com/b/paprika-16685032.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Cardamom",
-      "imageUrl": "https://harkola.online/wp-content/uploads/2017/01/Cardamom.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Clove",
-      "imageUrl": "https://t3.ftcdn.net/jpg/00/46/43/38/360_F_46433885_pyLrmyDWOdEjR1TgqHQcFPfqUWi7J3By.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Nutmeg",
-      "imageUrl": "https://cdn.britannica.com/77/170777-050-3A754B3D/Nutmeg-seeds-ground-spice.jpg",
-      "category": "spices"
-    },
-    {
-      "name": "Saffron",
-      "imageUrl": "https://perfarmersglobal.in/wp-content/uploads/2023/10/Saffron.jpg",
-      "category": "spices"
-    },
-    {
+      "id": "47",
       "category": "meats",
       "name": "Chicken Breast",
-      "imageUrl": "https://png.pngtree.com/png-vector/20231115/ourmid/pngtree-raw-chicken-breast-fillets-food-png-image_10601732.png",
-      "id": "a48f"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chicken_breast_fillet.jpg/1200px-Chicken_breast_fillet.jpg",
+      "price": "$8.99"
     },
     {
-      "category": "meats",
-      "name": "Chicken Thighs",
-      "imageUrl": "https://png.pngtree.com/png-vector/20240511/ourmid/pngtree-topdown-view-of-chicken-meat-wrapped-in-paper-packaging-on-antique-png-image_12398257.png",
-      "id": "a48f"
-    },
-    {
-      "category": "meats",
-      "name": "Whole Chicken",
-      "imageUrl": "https://png.pngtree.com/png-clipart/20240213/original/pngtree-raw-chicken-on-a-white-shopping-tray-with-photo-png-image_14304802.png",
-      "id": "a48f"
-    },
-    {
-      "category": "meats",
-      "name": "Beef Steak",
-      "imageUrl": "https://png.pngtree.com/png-vector/20240603/ourmid/pngtree-beef-meat-packaging-steak-png-image_12608610.png",
-      "id": "a48f"
-    },
-    {
+      "id": "48",
       "category": "meats",
       "name": "Ground Beef",
-      "imageUrl": "https://png.pngtree.com/png-vector/20240515/ourmid/pngtree-minced-meat-in-a-plastic-tray-ground-pork-or-beef-in-png-image_12467845.png",
-      "id": "d2e8"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Ground_beef.jpg/1200px-Ground_beef.jpg",
+      "price": "$6.99"
     },
     {
+      "id": "49",
       "category": "meats",
       "name": "Pork Chops",
-      "imageUrl": "https://png.pngtree.com/png-vector/20231222/ourmid/pngtree-raw-fillet-chop-png-image_11181370.png",
-      "id": "6630"
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Pork_Chops.jpg/1200px-Pork_Chops.jpg",
+      "price": "$7.49"
     },
     {
+      "id": "50",
       "category": "meats",
-      "name": "Pork Belly",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/045/912/330/non_2x/freshly-sliced-raw-pork-belly-ready-for-cooking-cut-out-stock-png.png",
-      "id": "6630"
+      "name": "Salmon Fillets",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Salmon_fillet.jpg/1200px-Salmon_fillet.jpg",
+      "price": "$12.99"
     },
     {
+      "id": "51",
       "category": "meats",
-      "name": "Lamb Chops",
-      "imageUrl": "https://thomasfarms.com.au/cdn/shop/products/Thomas-Farms_Lamb__BBW-Chops_530x@2x.png?v=1667891990",
-      "id": "6630"
+      "name": "Turkey Breast",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Turkey_breast_fillet.jpg/1200px-Turkey_breast_fillet.jpg",
+      "price": "$9.49"
     },
     {
-      "category": "meats",
-      "name": "Ground Beef",
-      "imageUrl": "https://png.pngtree.com/png-vector/20240515/ourmid/pngtree-minced-meat-in-a-plastic-tray-ground-pork-or-beef-in-png-image_12467845.png",
-      "id": "d2e8"
+      "id": "52",
+      "category": "dairy",
+      "name": "Milk",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Whole_milk.jpg/1200px-Whole_milk.jpg",
+      "price": "$2.79"
     },
     {
-      "category": "meats",
-      "name": "Pork Chops",
-      "imageUrl": "https://png.pngtree.com/png-vector/20231222/ourmid/pngtree-raw-fillet-chop-png-image_11181370.png",
-      "id": "6630"
+      "id": "53",
+      "category": "dairy",
+      "name": "Cheddar Cheese",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cheddar_cheese.jpg/1200px-Cheddar_cheese.jpg",
+      "price": "$4.99"
     },
     {
-      "category": "meats",
-      "name": "Pork Belly",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/045/912/330/non_2x/freshly-sliced-raw-pork-belly-ready-for-cooking-cut-out-stock-png.png",
-      "id": "6630"
+      "id": "54",
+      "category": "dairy",
+      "name": "Greek Yogurt",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Greek_yogurt.jpg/1200px-Greek_yogurt.jpg",
+      "price": "$3.49"
     },
     {
-      "category": "meats",
-      "name": "Lamb Chops",
-      "imageUrl": "https://thomasfarms.com.au/cdn/shop/products/Thomas-Farms_Lamb__BBW-Chops_530x@2x.png?v=1667891990",
-      "id": "6630"
+      "id": "55",
+      "category": "dairy",
+      "name": "Butter",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Butter%2C_cream%2C_and_margarine.jpg/1200px-Butter%2C_cream%2C_and_margarine.jpg",
+      "price": "$3.99"
     },
     {
-      "category": "dairys",
-      "name": "Almonds",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/012/596/321/non_2x/almond-nut-with-leaves-png.png",
-      "id": "9977"
-    },
-    {
-      "category": "dairys",
-      "name": "Cashews",
-      "imageUrl": "https://pngfre.com/wp-content/uploads/cashew-poster.png",
-      "id": "5bf3"
-    },
-    {
-      "category": "dairys",
-      "name": "Walnuts",
-      "imageUrl": "https://pngimg.com/d/walnut_PNG24.png",
-      "id": "fb14"
-    },
-    {
-      "category": "dairys",
-      "name": "Dried Apricots",
-      "imageUrl": "https://static.vecteezy.com/system/resources/previews/024/108/084/original/dried-tasty-apricot-fruit-with-seed-isolated-on-transparent-background-png.png",
-      "id": "1bd1"
-    },
-    {
-      "category": "dairys",
-      "name": "Raisins",
-      "imageUrl": "https://5.imimg.com/data5/SELLER/Default/2024/1/373521800/PV/KX/VF/196698357/raisins-500x500.png",
-      "id": "1003"
-    },
-    {
-      "category": "dairys",
-      "name": "Sunflower Seeds",
-      "imageUrl": "https://yi-files.yellowimages.com/products/914000/914532/1550528-cover.jpg",
-      "id": "5d12"
-    },
-    {
-      "category": "dairys",
-      "name": "Dried Mango",
-      "imageUrl": "https://png.pngtree.com/png-vector/20230922/ourmid/pngtree-dried-mango-slices-on-background-ingredient-png-image_10097425.png",
-      "id": "6353"
-    },
-    {
-      "category": "dairys",
-      "name": "Trail Mix",
-      "imageUrl": "https://www.grandmaemily.com/cdn/shop/products/GE-6118_grande.png?v=1623691242",
-      "id": "164a"
-    },
-    {
-      "category": "dairys",
-      "name": "Granola",
-      "imageUrl": "https://www.pngitem.com/pimgs/m/615-6156989_granola-bag-packaging-hd-png-download.png",
-      "id": "5ad7"
-    },
-    {
-      "category": "dairys",
-      "name": "Beef Jerky",
-      "imageUrl": "https://www.jacklinks.com/shop/media/catalog/product/1/0/10000017993_3.25oz_jl_bf_jala_jerk_hero.png",
-      "id": "89f1"
-    },
-    {
-      "category": "dairys",
-      "name": "Dried Cranberries",
-      "imageUrl": "https://mariani.com/cdn/shop/products/08_cranberries_front_1080x.png?v=1623297636",
-      "id": "5514"
-    },
-    {
-      "category": "dairys",
-      "name": "Dried Fish",
-      "imageUrl": "https://ceylonfood.co.uk/wp-content/uploads/2022/03/linna.png",
-      "id": "0953"
-    },
-    {
-      "category": "dairys",
-      "name": "Pita Chips",
-      "imageUrl": "https://pretzelized.com/cdn/shop/files/PDP_Front-Package_Pita_Everything.png?v=1711683280",
-      "id": "33b2"
-    },
-    {
-      "category": "dairys",
-      "name": "Rice Cakes",
-      "imageUrl": "https://png.pngtree.com/png-vector/20231120/ourmid/pngtree-stack-of-rice-cakes-nobody-png-image_10580868.png",
-      "id": "6472"
+      "id": "56",
+      "category": "dairy",
+      "name": "Cream Cheese",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Cream_cheese.jpg/1200px-Cream_cheese.jpg",
+      "price": "$2.99"
     }
   ]
 }
