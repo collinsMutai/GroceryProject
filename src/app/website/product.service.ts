@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CartItem, CartData, Item } from './Product'; // Adjust the path as necessary
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { CartItem, CartData, Item, ApiResponse } from './Product'; // Adjust the path as necessary
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,8 @@ export class ProductService {
 
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
-  private api = 'http://localhost:3000/';
+  // private api = 'http://localhost:3000/';
+  private api = 'http://localhost:5000/api/';
 
   constructor(private http: HttpClient) {
     this.loadCart();
@@ -26,16 +27,16 @@ export class ProductService {
 
   getAllProducts(): void {
     this.http
-      .get<Item[]>(`${this.api}allProducts`)
+      .get<ApiResponse>(`${this.api}products`)
       .pipe(
-        map((products) => {
-          this.productsSubject.next(products);
+        map((response) => response.products || []), // Safeguard against unexpected response structures
+        catchError((error) => {
+          console.error('Error fetching products:', error);
+          return of([]); // Return an observable with an empty array
         })
       )
-      .subscribe({
-        error: (error) => {
-          console.error('Error fetching products:', error);
-        },
+      .subscribe((products) => {
+        this.productsSubject.next(products);
       });
   }
 
@@ -47,12 +48,14 @@ export class ProductService {
     return this.productsSubject.asObservable();
   }
 
-  getProductByCategory(id: any): Observable<Item[]> {
-    return this.http.get<Item[]>(`${this.APIURL}?id=${id}`);
+  getProductByCategory(category: string): Observable<ApiResponse[]> {
+    return this.http.get<ApiResponse[]>(
+      `${this.api}products/category/${category}`
+    );
   }
 
   getProductById(id: any): Observable<Item> {
-    return this.http.get<Item>(`${this.api}allProducts/${id}`);
+    return this.http.get<Item>(`${this.api}products/${id}`);
   }
 
   private itemInCart(itemId: string): Observable<CartItem | undefined> {

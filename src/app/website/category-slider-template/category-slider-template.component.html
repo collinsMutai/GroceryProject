@@ -11,24 +11,27 @@
       data-bs-interval="5000"
     >
       <div class="carousel-inner">
+        <!-- Iterate through chunks of items for carousel slides -->
         <div
           class="carousel-item"
           *ngFor="let slideImages of chunkedItems; let i = index"
           [ngClass]="{ active: i === 0 }"
         >
-          <div class="carousel-item-content"  [ngClass]="{ 'three-products': slideImages.length <= 4 }">
+          <div class="carousel-item-content" [ngClass]="{ 'three-products': slideImages.length <= 4 }">
+            <!-- Iterate through items in each slide -->
             <div
               class="carousel-item-image"
               *ngFor="let item of slideImages"
               (click)="onItemClick(item)"
               style="cursor: pointer; text-align: center;"
             >
-              <img [src]="item.imageUrl" alt="{{ item.name }}" />
+              <img [src]="item.image" [alt]="item.name" />
               <p>{{ item.name }}</p>
             </div>
           </div>
         </div>
       </div>
+      <!-- Carousel controls -->
       <button
         class="carousel-control-prev"
         type="button"

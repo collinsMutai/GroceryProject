@@ -25,6 +25,8 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const itemId = params.get('id');
+      console.log('itemId', itemId);
+      
       if (itemId) {
         this.loadItemDetails(itemId);
       } else {

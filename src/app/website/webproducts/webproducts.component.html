@@ -176,48 +176,14 @@
   </div>
 </div>
 
-<!-- Vegetables Slider -->
-<app-category-slider-template
-  *ngIf="vegetableImagesWithNames.length"
-  [items]="vegetableImagesWithNames"
-  [chunkSize]="chunkSizes.vegetables"
-  title="Vegetables"
-  (itemClick)="goToCart($event)"
-></app-category-slider-template>
+<app-category-slider-template *ngIf="vegetables.length" [items]="vegetables" title="Vegetables" (itemClick)="goToCart($event)"></app-category-slider-template>
 
-<!-- Fruits Slider -->
-<app-category-slider-template
-  *ngIf="fruitImagesWithNames.length"
-  [items]="fruitImagesWithNames"
-  [chunkSize]="chunkSizes.fruits"
-  title="Fruits"
-  (itemClick)="goToCart($event)"
-></app-category-slider-template>
+<app-category-slider-template *ngIf="fruits.length" [items]="vegetables" title="Fruits" (itemClick)="goToCart($event)"></app-category-slider-template>
 
-<!-- Spices Slider -->
-<app-category-slider-template
-  *ngIf="spiceImagesWithNames.length"
-  [items]="spiceImagesWithNames"
-  [chunkSize]="chunkSizes.spices"
-  title="Spices"
-  (itemClick)="goToCart($event)"
-></app-category-slider-template>
+<app-category-slider-template *ngIf="spices.length" [items]="vegetables" title="Spices" (itemClick)="goToCart($event)"></app-category-slider-template>
 
-<!-- Meats Slider -->
-<app-category-slider-template
-  *ngIf="meatImagesWithNames.length"
-  [items]="meatImagesWithNames"
-  [chunkSize]="chunkSizes.meats"
-  title="Meats"
-  (itemClick)="goToCart($event)"
-></app-category-slider-template>
+<app-category-slider-template *ngIf="meats.length" [items]="vegetables" title="Meats" (itemClick)="goToCart($event)"></app-category-slider-template>
 
-<!-- Dairies Slider -->
-<app-category-slider-template
-  *ngIf="dairyImagesWithNames.length"
-  [items]="dairyImagesWithNames"
-  [chunkSize]="chunkSizes.dairies"
-  title="Dairies"
-  (itemClick)="goToCart($event)"
-></app-category-slider-template>
+<app-category-slider-template *ngIf="dairies.length" [items]="vegetables" title="Dairies" (itemClick)="goToCart($event)"></app-category-slider-template>
+
 

@@ -6,7 +6,7 @@
   <div *ngIf="selectedItem">
     <div class="mini-container">
       <div class="image">
-        <img [src]="selectedItem.imageUrl" [alt]="selectedItem.name" />
+        <img [src]="selectedItem.image" [alt]="selectedItem.name" />
       </div>
       <div class="info">
         <div class="product-info">
@@ -42,11 +42,11 @@
             Availability:
             <span
               [ngClass]="{
-                'in-stock': selectedItem.inStock,
-                'out-of-stock': !selectedItem.inStock
+                'in-stock': selectedItem.stock,
+                'out-of-stock': !selectedItem.stock
               }"
             >
-              {{ selectedItem.inStock ? "In Stock" : "Out of Stock" }}
+              {{ selectedItem.stock ? "In Stock" : "Out of Stock" }}
             </span>
           </p>
         </div>

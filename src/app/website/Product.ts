@@ -11,13 +11,18 @@ export interface Product {
 export interface Item {
   id: string;
   name: string;
-  imageUrl: string;
-  unitPrice500g?: number;
-  unitPriceKg?: number;
   price: number;
   description: string;
   category: string;
-  inStock: boolean;
+  stock: number;
+  vendor: {
+    id: string;
+    name: string;
+    email: string;
+    contactNumber: string;
+    address: string;
+  };
+  image: string;
 }
 
 // Product.ts or an appropriate file
@@ -27,10 +32,19 @@ export interface CartItem {
   price: number; // Price per unit of the item
 }
 
-
 // Define the structure of cart data
 export interface CartData {
   cartItems: CartItem[];
   subtotal: number;
   totalQuantity: number;
+}
+
+export interface ApiResponse {
+  message: string;
+  products: Item[];
+}
+
+export interface ProductDisplay {
+  image: string;
+  name: string;
 }
