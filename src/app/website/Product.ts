@@ -9,7 +9,7 @@ export interface Product {
   featuredProduct: true;
 }
 export interface Item {
-  id: string;
+  _id: string;
   name: string;
   price: number;
   description: string;
@@ -27,21 +27,25 @@ export interface Item {
 
 // Product.ts or an appropriate file
 export interface CartItem {
-  itemId: string;
+  _id: string;
   quantity: number;
-  price: number; // Price per unit of the item
+  price: number; 
+  name: string
+  image: string
 }
 
 // Define the structure of cart data
 export interface CartData {
   cartItems: CartItem[];
-  subtotal: number;
-  totalQuantity: number;
 }
 
 export interface ApiResponse {
   message: string;
   products: Item[];
+}
+export interface ApiResponseProduct {
+  message: string;
+  product: Item;
 }
 
 export interface ProductDisplay {

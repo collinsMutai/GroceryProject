@@ -9,6 +9,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Item } from '../../website/Product';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-slider-template',
@@ -26,6 +28,8 @@ export class CategorySliderTemplateComponent implements OnChanges, OnInit {
   carouselId: string = ''; // New property for dynamic ID
 
   @Output() itemClick = new EventEmitter<Item>();
+
+  constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit(): void {
     // Initialize carouselId based on the title
@@ -48,9 +52,8 @@ export class CategorySliderTemplateComponent implements OnChanges, OnInit {
     return result;
   }
 
-  onItemClick(item: Item): void {
+  onItemClick(item: any): void {
     console.log('onItemClick', item);
-    
-    this.itemClick.emit(item);
+    this.router.navigate(['products', item._id]);
   }
 }

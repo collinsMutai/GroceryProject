@@ -2,34 +2,31 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CartItem, CartData, Item, ApiResponse } from './Product'; // Adjust the path as necessary
+import { CartItem, Item, ApiResponse, ApiResponseProduct } from './Product'; // Adjust the path as necessary
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
   private productsSubject = new BehaviorSubject<Item[]>([]);
-  private cartSubject = new BehaviorSubject<CartData>({
-    cartItems: [],
-    subtotal: 0,
-    totalQuantity: 0,
-  });
+  private cartSubject = new BehaviorSubject<CartItem[]>(
+    this.loadCartFromLocalStorage()
+  );
 
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
-  // private api = 'http://localhost:3000/';
   private api = 'http://localhost:5000/api/';
 
   constructor(private http: HttpClient) {
-    this.loadCart();
     this.getAllProducts();
   }
 
+  // Fetch all products from the API
   getAllProducts(): void {
     this.http
       .get<ApiResponse>(`${this.api}products`)
       .pipe(
-        map((response) => response.products || []), // Safeguard against unexpected response structures
+        map((response) => response.products || []),
         catchError((error) => {
           console.error('Error fetching products:', error);
           return of([]); // Return an observable with an empty array
@@ -43,126 +40,88 @@ export class ProductService {
   getProducts(): Item[] {
     return this.productsSubject.getValue();
   }
+  getCartObservable(): Observable<any> {
+    return this.cartSubject.asObservable();
+  }
 
   getProductsObservable(): Observable<Item[]> {
     return this.productsSubject.asObservable();
   }
 
-  getProductByCategory(category: string): Observable<ApiResponse[]> {
-    return this.http.get<ApiResponse[]>(
-      `${this.api}products/category/${category}`
-    );
-  }
-
-  getProductById(id: any): Observable<Item> {
-    return this.http.get<Item>(`${this.api}products/${id}`);
-  }
-
-  private itemInCart(itemId: string): Observable<CartItem | undefined> {
+  getProductByCategory(category: string): Observable<Item[]> {
     return this.http
-      .get<CartItem[]>(this.api + 'cart')
+      .get<Item[]>(`${this.api}products/category/${category}`)
       .pipe(
-        map((cartItems) => cartItems.find((item) => item.itemId === itemId))
+        catchError((error) => {
+          console.error('Error fetching products by category:', error);
+          return of([]);
+        })
       );
   }
 
-  addtoCart(cartItem: {
-    itemId: string;
-    quantity: number;
-    price: number;
-  }): void {
-    this.itemInCart(cartItem.itemId).subscribe((existingItem) => {
-      if (existingItem) {
-        // If item exists, update quantity
-        const updatedQuantity = existingItem.quantity + cartItem.quantity;
-        this.updateCartItem(existingItem.itemId, { quantity: updatedQuantity });
+  getProductById(id: string): Observable<ApiResponseProduct> {
+    return this.http.get<ApiResponseProduct>(`${this.api}products/${id}`);
+  }
+
+  // Add item to the cart
+  addToCart(item: CartItem, quantity: number): void {
+    const cartItems = this.cartSubject.getValue();
+    const existingItem = cartItems.find(
+      (cartItem) => cartItem._id === item._id
+    );
+
+    if (existingItem) {
+      existingItem.quantity += quantity;
+      console.log('add', cartItems);
+    } else {
+      cartItems.push({ _id: item._id, quantity, price: item.price, name: item.name, image: item.image});
+      console.log('update', cartItems);
+    }
+
+    this.updateCart(cartItems);
+  }
+
+  // Update item in the cart
+  updateCartItem(_id: string, quantity: number): void {
+    const cartItems = this.cartSubject.getValue();
+    const item = cartItems.find((cartItem) => cartItem._id === _id);
+
+    if (item) {
+      item.quantity = quantity;
+      if (item.quantity <= 0) {
+        this.removeFromCart(_id);
       } else {
-        // If item does not exist, add new item
-        this.http.post<void>(this.api + 'cart', cartItem).subscribe({
-          next: () => this.loadCart(),
-          error: (error) => {
-            console.error('Error adding to cart:', error);
-          },
-        });
+        this.updateCart(cartItems);
       }
-    });
+    }
   }
 
-  private loadCart(): void {
-    this.http
-      .get<CartItem[]>(this.api + 'cart')
-      .pipe(
-        map((cartItems) => {
-          const subtotal = cartItems.reduce(
-            (acc, item) => acc + item.price * item.quantity,
-            0
-          );
-          const totalQuantity = cartItems.reduce(
-            (acc, item) => acc + item.quantity,
-            0
-          );
-          return { cartItems, subtotal, totalQuantity };
-        })
-      )
-      .subscribe({
-        next: (cartData) => {
-          this.cartSubject.next(cartData);
-        },
-        error: (error) => {
-          console.error('Error fetching cart:', error);
-        },
-      });
+  // Remove item from the cart
+  removeFromCart(_id: string): void {
+    const cartItems = this.cartSubject
+      .getValue()
+      .filter((cartItem) => cartItem._id !== _id);
+    this.updateCart(cartItems);
   }
 
-  get cartData(): CartData {
-    return this.cartSubject.getValue();
+  // Retrieve cart from local storage
+  private loadCartFromLocalStorage(): CartItem[] {
+    const cartData = localStorage.getItem('cart');
+    return cartData ? JSON.parse(cartData) : [];
   }
 
-  getCartObservable(): Observable<CartData> {
+  // Save cart to local storage
+  private saveCartToLocalStorage(cartItems: CartItem[]): void {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  }
+
+  // Update cart in both memory and local storage
+  private updateCart(cartItems: CartItem[]): void {
+    this.cartSubject.next(cartItems);
+    this.saveCartToLocalStorage(cartItems);
+  }
+
+  getCart(): Observable<CartItem[]> {
     return this.cartSubject.asObservable();
-  }
-  updateCartItem(itemId: string, updatedData: Partial<CartItem>): void {
-    // Fetch all cart items
-    this.http.get<CartItem[]>(`${this.api}cart`).subscribe({
-      next: (cartItems) => {
-        // Find the cart item with the matching itemId
-        const itemToUpdate = cartItems.find((item) => item.itemId === itemId);
-
-        if (itemToUpdate) {
-          // Combine existing item data with updates from updatedData
-          const updatedItem: CartItem = { ...itemToUpdate, ...updatedData };
-
-          // Update the item in the cart using itemId in the URL
-          this.http
-            .put<void>(`${this.api}cart/${itemId}`, updatedItem)
-            .subscribe({
-              next: () => {
-                // Optionally update the UI immediately
-                this.loadCart();
-              },
-              error: (error) => {
-                console.error('Error updating cart item:', error);
-                // Optionally show user feedback
-              },
-            });
-        } else {
-          console.error('Item with specified itemId not found in cart.');
-          // Optionally show user feedback
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching cart items:', error);
-        // Optionally show user feedback
-      },
-    });
-  }
-
-  deleteCartItem(itemId: string): void {
-    this.http.delete<void>(`${this.api + 'cart'}/${itemId}`).subscribe({
-      next: () => this.loadCart(),
-      error: (error) => {
-        console.error('Error deleting cart item:', error);
-      },
-    });
   }
 }

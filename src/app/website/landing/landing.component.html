@@ -200,7 +200,7 @@
               for delivery.
             </p>
           </div>
-          <ng-container *ngIf="cartItems.length == 0">
+          <ng-container *ngIf="!cartItems">
             <p style="text-align: center">No products found.</p>
           </ng-container>
           <div
@@ -280,7 +280,7 @@
             routerLink="/checkout"
             type="button"
             class="checkoutBtn"
-            *ngIf="cartItems.length != 0"
+            *ngIf="cartItems"
           >
             Checkout Now
           </button>

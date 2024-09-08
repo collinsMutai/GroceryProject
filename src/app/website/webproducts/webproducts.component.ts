@@ -24,9 +24,9 @@ export class WebproductsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit(): void {
-    
-    this.productService.getProductsObservable().subscribe((products) => {
-      this.filterProductsByCategory(products);
+    this.productService.getProductsObservable().subscribe((productsMap) => {
+      const productsArray = Array.from(productsMap.values());
+      this.filterProductsByCategory(productsArray);
     });
 
     this.productService.getAllProducts();
@@ -37,10 +37,10 @@ export class WebproductsComponent implements OnInit {
       (product) => product.category === 'vegetables'
     );
     console.log('this.vegetables', this.vegetables);
-    
+
     this.fruits = products.filter((product) => product.category === 'fruits');
     console.log('this.fruits', this.fruits);
-    
+
     this.spices = products.filter((product) => product.category === 'spices');
     this.meats = products.filter((product) => product.category === 'meats');
     this.dairies = products.filter((product) => product.category === 'dairies');
@@ -48,10 +48,7 @@ export class WebproductsComponent implements OnInit {
 
   goToCart(item: Item): void {
     console.log('item', item);
-   
-    this.selectedItems.push(item);
-    this.router.navigate(['products', item.id], {
-      state: { selectedItems: this.selectedItems },
-    });
+
+    // this.selectedItems.push(item);
   }
 }

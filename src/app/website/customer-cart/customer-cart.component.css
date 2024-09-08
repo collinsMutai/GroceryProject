@@ -30,7 +30,7 @@
 }
 .cart-btns .add svg,
 .cart-btns .remove svg {
-  background-color: #fe5e50;
+  background-color: #28a745;
   width: 20px;
   height: 20px;
   color: #fff;
@@ -41,3 +41,13 @@
   width: 40px;
 }
 
+.tocheckoutBtn{
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid #28a745;
+  background-color: #fff;
+  color: #28a745;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+}

@@ -11,17 +11,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="productRow">
+          <tr class="productRow" *ngFor="let item of cartItems">
             <td>
               <div class="product d-flex align-items-center">
                 <img
-                  src="https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg"
-                  alt=""
+                  [src]="item.image"
+                  [alt]="item.name"
                   style="max-width: 100px"
                 />
                 <div class="price ml-3">
-                  <h3 class="mb-0">Farm Fresh (AAA)</h3>
-                  <p class="mb-0">KShs 549</p>
+                  <h3 class="mb-0">{{ item.name }}</h3>
+                  <p class="mb-0">KShs {{ item.price | number : "1.2-2" }}</p>
                 </div>
               </div>
             </td>
@@ -29,7 +29,10 @@
               <div
                 class="cart-btns d-flex justify-content-center align-items-center"
               >
-                <p class="remove m-0">
+                <button
+                  (click)="updateQuantity(item._id, item.quantity - 1)"
+                  class="remove btn"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -45,9 +48,12 @@
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M5 12l14 0" />
                   </svg>
-                </p>
-                <p class="cartItem m-0">1</p>
-                <p class="add m-0">
+                </button>
+                <p class="cartItem m-0">{{ item.quantity }}</p>
+                <button
+                  (click)="updateQuantity(item._id, item.quantity + 1)"
+                  class="add btn"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -64,87 +70,28 @@
                     <path d="M12 5l0 14" />
                     <path d="M5 12l14 0" />
                   </svg>
-                </p>
+                </button>
               </div>
             </td>
-            <td class="subtotal align-middle">KShs 549</td>
+            <td class="subtotal align-middle">
+              KShs
+              {{
+                calculateSubtotal(item.price, item.quantity) | number : "1.2-2"
+              }}
+            </td>
             <td class="align-middle">
               <button
                 type="button"
                 class="btn-close delete"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </td>
-          </tr>
-          <tr class="productRow">
-            <td>
-              <div class="product d-flex align-items-center">
-                <img
-                  src="https://greenspoon.co.ke/wp-content/uploads/2018/01/Greenspoon-Kenya-Farm-Fresh-AAA-Strawberries-200g-2-500x500.jpg"
-                  alt=""
-                  style="max-width: 100px"
-                />
-                <div class="price ml-3">
-                  <h3 class="mb-0">Farm Fresh (AAA)</h3>
-                  <p class="mb-0">KShs 549</p>
-                </div>
-              </div>
-            </td>
-            <td class="align-middle text-center">
-              <div
-                class="cart-btns d-flex justify-content-center align-items-center"
-              >
-                <p class="remove m-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-minus"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M5 12l14 0" />
-                  </svg>
-                </p>
-                <p class="cartItem m-0">1</p>
-                <p class="add m-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 5l0 14" />
-                    <path d="M5 12l14 0" />
-                  </svg>
-                </p>
-              </div>
-            </td>
-            <td class="subtotal align-middle">KShs 549</td>
-            <td class="align-middle">
-              <button
-                type="button"
-                class="btn-close delete"
-                data-bs-dismiss="modal"
+                (click)="removeProduct(item._id)"
                 aria-label="Close"
               ></button>
             </td>
           </tr>
         </tbody>
       </table>
+      <button class="tocheckoutBtn" (click)="toCheckout()">Proceed To Checkout</button>
     </div>
+    
   </div>
 </div>

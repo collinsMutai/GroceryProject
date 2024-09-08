@@ -14,7 +14,8 @@ import { AboutComponent } from './admin/about/about.component';
 import { BlogComponent } from './website/blog/blog.component';
 import { MerchantComponent } from './website/merchant/merchant.component';
 import { ContactComponent } from './website/contact/contact.component';
-import { CartComponent } from './admin/cart/cart.component';
+
+import { ProductDetailsComponent } from './website/product-details/product-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'shop', pathMatch: 'full' },
@@ -34,7 +35,7 @@ export const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'merchants', component: MerchantComponent },
       { path: 'contact', component: ContactComponent },
-      { path: 'products/:id', component: CartComponent },
+      { path: 'products/:id', component: ProductDetailsComponent },
     ],
   },
 

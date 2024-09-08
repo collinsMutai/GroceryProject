@@ -23,12 +23,12 @@ textarea {
   border-radius: 5px;
   width: auto;
   padding: 4px 10px;
-  color: #fe5e50;
+  color: #28a745;
   background: none;
-  border: 1px solid #fe5e50;
+  border: 1px solid #28a745;
 }
 .placeOrderBtn:hover {
-  background-color: #fe5e50;
+  background-color: #28a745;
   color: #fff;
 }
 .shipping_form {
@@ -64,7 +64,7 @@ textarea {
   font-weight: 600;
 }
 .custom-radio {
-  background-color: #fe5e50;
+  background-color: #28a745;
   color: #fff;
-  border-color: #fe5e50;
+  border-color: #28a745;
 }

@@ -111,7 +111,7 @@ export class LandingComponent implements OnInit, AfterViewInit {
   }
 
   removeCartItem(cartId: string) {
-    this.productService.deleteCartItem(cartId);
+    this.productService.removeFromCart(cartId);
   }
 
   navigateToLogin() {
