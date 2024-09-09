@@ -1,148 +1,166 @@
-<!-- about.component.html -->
-<!-- <section class="section__container about__container" id="about"><div class="about-container">
-    <h1>About Us</h1>
-  <img src="https://eastafricanwatch.net/wp-content/uploads/2022/03/grocery-business.jpg" alt="groccery">
-    <section class="intro">
-      <h2>Welcome to {{ storeName }}</h2>
-      <p>At {{ storeName }}, we're more than just a grocery store. We are a community-focused market dedicated to providing fresh, high-quality products to our valued customers. Our mission is to make healthy eating accessible and enjoyable for everyone in our neighborhood.</p>
-    </section>
-  
-    <section class="our-story">
-      <h2>Our Story</h2>
-      <p>Founded in {{ foundingYear }} by {{ founderName }}, {{ storeName }} started with a simple vision: to create a place where people could find wholesome, locally-sourced products and exceptional service. What began as a small, family-run business has grown into a beloved part of the community, thanks to the support of our loyal customers and the hard work of our dedicated team.</p>
-    </section>
-  
-    <section class="our-values">
-      <h2>Our Values</h2>
-      <ul>
-        <li><strong>Quality:</strong> We believe in offering only the best products. From farm-fresh produce to premium meats and artisanal goods, our commitment to quality is unwavering.</li>
-        <li><strong>Sustainability:</strong> We are dedicated to reducing our environmental impact. Our store prioritizes eco-friendly practices, from minimizing waste to sourcing sustainable products.</li>
-        <li><strong>Community:</strong> Our community is at the heart of everything we do. We support local farmers, artisans, and businesses, and actively participate in community events and initiatives.</li>
-        <li><strong>Customer Service:</strong> Your satisfaction is our top priority. Our knowledgeable and friendly staff are here to assist you and ensure you have a pleasant shopping experience.</li>
-      </ul>
-    </section>
-  
-    <section class="our-products">
-      <h2>Our Products</h2>
-      <p>We take pride in offering a diverse range of products, including:</p>
-      <ul>
-        <li><strong>Fresh Produce:</strong> Locally-sourced fruits and vegetables to keep your family healthy.</li>
-        <li><strong>Organic Options:</strong> A wide selection of organic and natural products for a healthier lifestyle.</li>
-        <li><strong>Gourmet Delights:</strong> Specialty items and artisanal goods for the food enthusiast.</li>
-        <li><strong>Everyday Essentials:</strong> All the staples you need to stock your pantry and fridge.</li>
-      </ul>
-    </section>
-  
-    <section class="commitment">
-      <h2>Our Commitment</h2>
-      <p>At {{ storeName }}, we're committed to providing you with the best shopping experience possible. Whether you're looking for fresh ingredients, unique finds, or just friendly service, we're here to help.</p>
-    </section>
-  
-    <section class="visit-us">
-      <h2>Visit Us</h2>
-      <p>Come and experience the difference at {{ storeName }}. We’re located at {{ address }}, and our doors are open {{ hours }}. For more information, or if you have any questions, feel free to contact us at {{ phoneNumber }} or {{ emailAddress }}.</p>
-    </section>
-  
-    <section class="follow-us">
-      <h2>Follow Us</h2>
-      <p>Stay connected and keep up with our latest products, offers, and community events. Follow us on:</p>
-      <ul>
-        <li *ngFor="let link of socialMediaLinks">
-          <a [href]="link.url" target="_blank">{{ link.name }}</a>
-        </li>
-      </ul>
-    </section>
+<section class="section__container about__container" id="about">
+  <div class="about__header">
+    <div>
+      <div class="section__header">
+        <h1>About US</h1>
+        <h3>
+          Save more with Quickcart We give you the lowest prices on all your
+          grocery needs.
+        </h3>
+      </div>
+
+      <p class="section__description">
+        At {{ storeName }}, we're more than just a grocery store. We are a
+        community-focused market dedicated to providing fresh, high-quality
+        products to our valued customers. Our mission is to make healthy eating
+        accessible and enjoyable for everyone in our neighborhood.
+      </p>
+    </div>
+    <button class="about__btn">Learn More</button>
   </div>
-  </section> -->
+  <div class="about__content">
+    <div class="about__image">
+      <img
+        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKqIelvhNrAgyTjpDMJ6HrSR3T5o61OyLXWzYWkFxegoBSIEjmtNyCiXFNrxoxJXbsu8J2RJekWmHdnya37w19AI_CSdwPBvN33DvVTLFS4xl8NajoVJ7SnpIj68G3s6GPoln70mCFGDiLCSlnvpT1cBnNKDTy5nvKg-mZ4Q5tRAyv8o_6PX5w4FVT/s728/1663405504946.jpg"
+        alt="about"
+      />
+    </div>
 
+    <div class="about__image-b">
+      <img
+        src="https://img.freepik.com/premium-photo/elderly-african-american-woman-shopping-grocery-store-side-view-choosing-fresh-fruits-vegetables-supermarket-shopping-concept_177786-5644.jpg"
+        alt="about"
+      />
+    </div>
 
-  <section class="section__container about__container" id="about">
-    <div class="about__header">
-      <div>
-        <div class="section__header"> 
-          <h1>About US</h1> <h3>Save more with Quickcart We give you the lowest prices on all your grocery needs.</h3></div>
-      
-        <p class="section__description">
-          At {{ storeName }}, we're more than just a grocery store. We are a community-focused market dedicated to providing fresh, high-quality products to our valued customers. Our mission is to make healthy eating accessible and enjoyable for everyone in our neighborhood.
+    <div class="about__grid">
+      <div class="about__card">
+        <h3>1.</h3>
+        <h4>Our Story</h4>
+        <p>
+          Founded in {{ foundingYear }} by {{ founderName }},
+          {{ storeName }} started with a simple vision: to create a place where
+          people could find wholesome, locally-sourced products and exceptional
+          service. What began as a small, family-run business has grown into a
+          beloved part of the community, thanks to the support of our loyal
+          customers and the hard work of our dedicated team.
         </p>
       </div>
-      <button class="about__btn">Learn More</button>
-    </div> 
-    <div class="about__content">
-     <div class="about__image">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhKqIelvhNrAgyTjpDMJ6HrSR3T5o61OyLXWzYWkFxegoBSIEjmtNyCiXFNrxoxJXbsu8J2RJekWmHdnya37w19AI_CSdwPBvN33DvVTLFS4xl8NajoVJ7SnpIj68G3s6GPoln70mCFGDiLCSlnvpT1cBnNKDTy5nvKg-mZ4Q5tRAyv8o_6PX5w4FVT/s728/1663405504946.jpg" alt="about" />
-      
-      </div>
-
-<div class="about__image-b">  <img src="https://img.freepik.com/premium-photo/elderly-african-american-woman-shopping-grocery-store-side-view-choosing-fresh-fruits-vegetables-supermarket-shopping-concept_177786-5644.jpg" alt="about"></div>
-
-      <div class="about__grid">
-        <div class="about__card">
-          <h3>1.</h3>
-          <h4>Our Story</h4>
-          <p>Founded in {{ foundingYear }} by {{ founderName }}, {{ storeName }} started with a simple vision: to create a place where people could find wholesome, locally-sourced products and exceptional service. What began as a small, family-run business has grown into a beloved part of the community, thanks to the support of our loyal customers and the hard work of our dedicated team.</p>
-        </div>
-        <div class="about__card">
-          <h3>2.</h3>
-          <h4>Our Values</h4>
+      <div class="about__card">
+        <h3>2.</h3>
+        <h4>Our Values</h4>
         <ul>
-          <li><strong>Quality:</strong> We believe in offering only the best products. From farm-fresh produce to premium meats and artisanal goods, our commitment to quality is unwavering.</li>
-          <li><strong>Sustainability:</strong> We are dedicated to reducing our environmental impact. Our store prioritizes eco-friendly practices, from minimizing waste to sourcing sustainable products.</li>
-          <li><strong>Customer Service:</strong> Your satisfaction is our top priority. Our knowledgeable and friendly staff are here to assist you and ensure you have a pleasant shopping experience.</li>
+          <li>
+            <strong>Quality:</strong> We believe in offering only the best
+            products. From farm-fresh produce to premium meats and artisanal
+            goods, our commitment to quality is unwavering.
+          </li>
+          <li>
+            <strong>Sustainability:</strong> We are dedicated to reducing our
+            environmental impact. Our store prioritizes eco-friendly practices,
+            from minimizing waste to sourcing sustainable products.
+          </li>
+          <li>
+            <strong>Customer Service:</strong> Your satisfaction is our top
+            priority. Our knowledgeable and friendly staff are here to assist
+            you and ensure you have a pleasant shopping experience.
+          </li>
         </ul>
-        </div>
-        <div class="about__card">
-          <h3>3.</h3>
-          <h4>Our Products</h4>
-          <p>We take pride in offering a diverse range of products, including:</p>
-          <ul>
-            <li><strong>Fresh Produce:</strong> Locally-sourced fruits and vegetables to keep your family healthy.</li>
-            <li><strong>Organic Options:</strong> A wide selection of organic and natural products for a healthier lifestyle.</li>
-            <li><strong>Gourmet Delights:</strong> Specialty items and artisanal goods for the food enthusiast.</li>
-            <li><strong>Everyday Essentials:</strong> All the staples you need to stock your pantry and fridge.</li>
-          </ul>
-        </div>
-        <div class="about__card">
-          <h3>4.</h3>
-          <h4>Our Commitment</h4>
-        <p>At {{ storeName }}, we're committed to providing you with the best shopping experience possible. Whether you're looking for fresh ingredients, unique finds, or just friendly service, we're here to help.</p>
-        </div>
+      </div>
+      <div class="about__card">
+        <h3>3.</h3>
+        <h4>Our Products</h4>
+        <p>We take pride in offering a diverse range of products, including:</p>
+        <ul>
+          <li>
+            <strong>Fresh Produce:</strong> Locally-sourced fruits and
+            vegetables to keep your family healthy.
+          </li>
+          <li>
+            <strong>Organic Options:</strong> A wide selection of organic and
+            natural products for a healthier lifestyle.
+          </li>
+          <li>
+            <strong>Gourmet Delights:</strong> Specialty items and artisanal
+            goods for the food enthusiast.
+          </li>
+          <li>
+            <strong>Everyday Essentials:</strong> All the staples you need to
+            stock your pantry and fridge.
+          </li>
+        </ul>
+      </div>
+      <div class="about__card">
+        <h3>4.</h3>
+        <h4>Our Commitment</h4>
+        <p>
+          At {{ storeName }}, we're committed to providing you with the best
+          shopping experience possible. Whether you're looking for fresh
+          ingredients, unique finds, or just friendly service, we're here to
+          help.
+        </p>
       </div>
     </div>
-    <div class="container-a">
-        <h1>What We Provide?</h1>
-        <div class="services">
-            <div class="service">
-                <div class="icon">👜</div>
-                <h3>Best Prices & Offers</h3>
-                <p>We offer a curated selection of products and take advantage of our best prices and offers for our local retailers. Consumers shop with confidence knowing they're getting exceptional value on every purchase.</p>
-            </div>
-            <div class="service">
-                <div class="icon">🚚</div>
-                <h3>Free and 20mins delivery</h3>
-                <p>We offer free delivery within 20 minutes, ensuring swift and efficient service right to our consumers' doorstep. Consumers experience unparalleled convenience as we deliver their orders to them promptly, allowing them to enjoy their groceries without delay.</p>
-            </div>
-            <div class="service">
-                <div class="icon">🔁</div>
-                <h3>Embedded Finance</h3>
-                <p>SMEs get access to a digital wallet and affordable credit to help them grow and scale their businesses. We provide a platform where SMEs get easy access to working capital and financial services, enabling them to grow and scale their businesses.</p>
-            </div>
-            <div class="service">
-                <div class="icon">🚚</div>
-                <h3>Point of Sale solution</h3>
-                <p>Customized dashboards and reporting to fit your lending context Inventory management.</p>
-            </div>
-            <div class="service">
-                <div class="icon">🛒</div>
-                <h3>100% Satisfaction Guarantee</h3>
-                <p>We have been in the business for a while now and we are confident that we can provide the best service to our customers. We guarantee 100% satisfaction to our customers.</p>
-            </div>
-            <div class="service">
-                <div class="icon">🏷️</div>
-                <h3>Great Daily Deals Discount</h3>
-                <p>Our prices are unbeatable. We offer great daily deals and discounts to our customers. We have a wide range of products and we offer the best prices on all our products.</p>
-            </div>
-        </div>
+  </div>
+  <div class="container-a">
+    <h1>What We Provide?</h1>
+    <div class="services">
+      <div class="service">
+        <div class="icon">👜</div>
+        <h3>Best Prices & Offers</h3>
+        <p>
+          We offer a curated selection of products and take advantage of our
+          best prices and offers for our local retailers. Consumers shop with
+          confidence knowing they're getting exceptional value on every
+          purchase.
+        </p>
+      </div>
+      <div class="service">
+        <div class="icon">🚚</div>
+        <h3>Free and 20mins delivery</h3>
+        <p>
+          We offer free delivery within 20 minutes, ensuring swift and efficient
+          service right to our consumers' doorstep. Consumers experience
+          unparalleled convenience as we deliver their orders to them promptly,
+          allowing them to enjoy their groceries without delay.
+        </p>
+      </div>
+      <div class="service">
+        <div class="icon">🔁</div>
+        <h3>Embedded Finance</h3>
+        <p>
+          SMEs get access to a digital wallet and affordable credit to help them
+          grow and scale their businesses. We provide a platform where SMEs get
+          easy access to working capital and financial services, enabling them
+          to grow and scale their businesses.
+        </p>
+      </div>
+      <div class="service">
+        <div class="icon">🚚</div>
+        <h3>Point of Sale solution</h3>
+        <p>
+          Customized dashboards and reporting to fit your lending context
+          Inventory management.
+        </p>
+      </div>
+      <div class="service">
+        <div class="icon">🛒</div>
+        <h3>100% Satisfaction Guarantee</h3>
+        <p>
+          We have been in the business for a while now and we are confident that
+          we can provide the best service to our customers. We guarantee 100%
+          satisfaction to our customers.
+        </p>
+      </div>
+      <div class="service">
+        <div class="icon">🏷️</div>
+        <h3>Great Daily Deals Discount</h3>
+        <p>
+          Our prices are unbeatable. We offer great daily deals and discounts to
+          our customers. We have a wide range of products and we offer the best
+          prices on all our products.
+        </p>
+      </div>
     </div>
-  </section>
-  
+  </div>
+</section>

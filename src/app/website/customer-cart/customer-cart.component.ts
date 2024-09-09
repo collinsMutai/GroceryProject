@@ -2,27 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service'; // Adjust the path as necessary
 import { CartItem } from '../Product'; // Adjust the path as necessary
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-customer-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './customer-cart.component.html',
   styleUrls: ['./customer-cart.component.css'], // Corrected styleUrls
 })
 export class CustomerCartComponent implements OnInit {
   cartItems: CartItem[] = [];
-
+  subtotal: number = 0;
+  totalQuantity: number = 0;
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
     this.productService.getCart().subscribe((cartItems) => {
       this.cartItems = cartItems;
-      console.log('this.cartItems', this.cartItems);
+       this.calculateTotals();
     });
   }
-
+  calculateTotals() {
+    this.totalQuantity = this.cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    this.subtotal = this.cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+  }
   calculateSubtotal(price: number, quantity: number): number {
     console.log('price', price, 'quantity', quantity);
     return price * quantity;

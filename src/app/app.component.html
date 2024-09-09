@@ -1,3 +1,402 @@
+<!-- Top nav -->
+<nav
+  class="navbar navbar-light bg-light container-fluid middleNavContainer"
+  style="border: 1px solid #ddd"
+>
+  <div class="left">
+    <p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="icon icon-tabler icons-tabler-filled icon-tabler-phone"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z"
+        />
+      </svg>
+      call us: 0705356899
+    </p>
+  </div>
+  <div class="middle">
+    <select class="form-select area-select" aria-label="Default select example">
+      <option selected>Supported Areas</option>
+      <option value="1">Kilimani - Nairobi</option>
+      <option value="2">Airport - 401</option>
+      <option value="3">CBD - Nairobi</option>
+
+      <option value="1">Kilimani - Nairobi</option>
+      <option value="2">Airport - 401</option>
+      <option value="3">CBD - Nairobi</option>
+    </select>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search products in our inventory"
+      aria-label="Username"
+      aria-describedby="addon-wrapping"
+    />
+  </div>
+  <div class="right">
+    <p class="d-flex align-items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="icon icon-tabler icons-tabler-filled icon-tabler-user me-2"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
+        <path
+          d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"
+        />
+      </svg>
+      <a class="nav-link" routerLink="/login" style="cursor: pointer">
+        Login/Signup
+      </a>
+    </p>
+
+    <!--  -->
+    <p (click)="openCart()" class="cartIcon" type="button">
+      <span>{{ totalQuantity }}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="icon icon-tabler icons-tabler-filled icon-tabler-shopping-cart"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M6 2a1 1 0 0 1 .993 .883l.007 .117v1.068l13.071 .935a1 1 0 0 1 .929 1.024l-.01 .114l-1 7a1 1 0 0 1 -.877 .853l-.113 .006h-12v2h10a3 3 0 1 1 -2.995 3.176l-.005 -.176l.005 -.176c.017 -.288 .074 -.564 .166 -.824h-5.342a3 3 0 1 1 -5.824 1.176l-.005 -.176l.005 -.176a3.002 3.002 0 0 1 1.995 -2.654v-12.17h-1a1 1 0 0 1 -.993 -.883l-.007 -.117a1 1 0 0 1 .883 -.993l.117 -.007h2zm0 16a1 1 0 1 0 0 2a1 1 0 0 0 0 -2zm11 0a1 1 0 1 0 0 2a1 1 0 0 0 0 -2z"
+        />
+      </svg>
+    </p>
+  </div>
+</nav>
+<div class="container-fluid locationBtnContainer" style="margin-top: 80px">
+  <p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-map-pins"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10.828 9.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z" />
+      <path d="M8 7l0 .01" />
+      <path d="M18.828 17.828a4 4 0 1 0 -5.656 0l2.828 2.829l2.828 -2.829z" />
+      <path d="M16 15l0 .01" /></svg
+    >No delivery location is currently set
+  </p>
+  <p class="setLocationModal">
+    <button
+      type="button"
+      class="locationBtn"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      data-bs-whatever="@mdo"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-map-pin-plus"
+      >
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+        <path
+          d="M12.794 21.322a2 2 0 0 1 -2.207 -.422l-4.244 -4.243a8 8 0 1 1 13.59 -4.616"
+        />
+        <path d="M16 19h6" />
+        <path d="M19 16v6" /></svg
+      >Set Location
+    </button>
+  </p>
+</div>
+
+<!-- bottom nav -->
+<nav class="navbar navbar-expand-sm navbar-light navContainer">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img
+        src="https://image-prod-qcsb-image-service.azurewebsites.net/Images/QC/3d76145a527e4db3a05c1e3ddd351994.png"
+        alt=""
+        height="40px"
+        width="80px"
+      />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse pt-4 pb-4" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shop" routerLinkActive="active"
+            >Shop</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/faqs" routerLinkActive="active"
+            >FAQs</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/blog" routerLinkActive="active"
+            >Blog</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/merchants" routerLinkActive="active"
+            >Merchants</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- modal Cart-->
+<div
+  class="modal fade"
+  id="cartModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog custom-modal">
+    <div class="modal-content pb-4">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
+
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Order before 10pm and get it delivered next day before 3pm. Order
+          before noon and get it delivered today. Order for
+          delivery within 3 hours between 8am and 7pm! Minimum of KShs 2,000 for
+          delivery.
+        </p>
+
+        <ng-container *ngIf="!cartItems || cartItems.length === 0">
+          <p style="text-align: center">No products found.</p>
+        </ng-container>
+        <ng-container *ngIf="cartItems && cartItems.length > 0">
+          <div class="container cartContainer">
+            <div class="row">
+              <div class="col-lg-8 col-md-6">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">Product</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Subtotal</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="productRow" *ngFor="let item of cartItems">
+                      <td>
+                        <div class="product d-flex align-items-center">
+                          <img
+                            [src]="item.image"
+                            [alt]="item.name"
+                            style="max-width: 100px"
+                          />
+                          <div class="price ml-3">
+                            <h3 class="mb-0">{{ item.name }}</h3>
+                            <p class="mb-0">
+                              KShs {{ item.price | number : "1.2-2" }}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td class="align-middle text-center">
+                        <div
+                          class="cart-btns d-flex justify-content-center align-items-center"
+                        >
+                          <button
+                            (click)="
+                              updateQuantity(item._id, item.quantity - 1)
+                            "
+                            class="remove btn"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="icon icon-tabler icons-tabler-outline icon-tabler-minus"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              />
+                              <path d="M5 12l14 0" />
+                            </svg>
+                          </button>
+                          <p class="cartItem m-0">{{ item.quantity }}</p>
+                          <button
+                            (click)="
+                              updateQuantity(item._id, item.quantity + 1)
+                            "
+                            class="add btn"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="24"
+                              height="24"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                            >
+                              <path
+                                stroke="none"
+                                d="M0 0h24v24H0z"
+                                fill="none"
+                              />
+                              <path d="M12 5l0 14" />
+                              <path d="M5 12l14 0" />
+                            </svg>
+                          </button>
+                        </div>
+                      </td>
+                      <td class="subtotal align-middle">
+                        KShs
+                        {{
+                          calculateSubtotal(item.price, item.quantity)
+                            | number : "1.2-2"
+                        }}
+                      </td>
+                      <td class="align-middle">
+                        <button
+                          type="button"
+                          class="btn-close delete"
+                          (click)="removeProduct(item._id)"
+                          aria-label="Close"
+                        ></button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="modal-footer">
+        <div class="total-info">
+          <p>Subtotal - {{totalQuantity}} items</p>
+          <p>KShs {{ subtotal }}</p>
+        </div>
+        <button class="tocheckoutBtn" (click)="toCheckout()">
+          Proceed To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- message modal-->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label"
+              >Recipient:</label
+            >
+            <input type="text" class="form-control" id="recipient-name" />
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
 <app-footer></app-footer>
