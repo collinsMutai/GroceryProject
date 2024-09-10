@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './customer-cart.component.html',
-  styleUrls: ['./customer-cart.component.css'], // Corrected styleUrls
+  styleUrls: ['./customer-cart.component.css'], 
 })
 export class CustomerCartComponent implements OnInit {
   cartItems: CartItem[] = [];

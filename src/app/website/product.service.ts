@@ -2,12 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { CartItem, Item, ApiResponse, ApiResponseProduct } from './Product'; // Adjust the path as necessary
+import {
+  CartItem,
+  Item,
+  Vendor,
+  ApiResponse,
+  ApiResponseProduct,
+} from './Product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
+  private vendorsSubject = new BehaviorSubject<Vendor[]>([]);
   private productsSubject = new BehaviorSubject<Item[]>([]);
   private cartSubject = new BehaviorSubject<CartItem[]>(
     this.loadCartFromLocalStorage()
@@ -15,10 +22,12 @@ export class ProductService {
 
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
+  private VENDORAPIURL = 'http://localhost:4000/vendors/'; 
   private api = 'http://localhost:5000/api/';
 
   constructor(private http: HttpClient) {
     this.getAllProducts();
+    this.getAllVendors(); 
   }
 
   // Fetch all products from the API
@@ -29,7 +38,7 @@ export class ProductService {
         map((response) => response.products || []),
         catchError((error) => {
           console.error('Error fetching products:', error);
-          return of([]); // Return an observable with an empty array
+          return of([]); 
         })
       )
       .subscribe((products) => {
@@ -37,9 +46,32 @@ export class ProductService {
       });
   }
 
+  // Fetch all vendors from the API
+  getAllVendors(): void {
+    this.http
+      .get<Vendor[]>(`${this.api}vendors`)
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching vendors:', error);
+          return of([]);
+        })
+      )
+      .subscribe((vendors) => {
+        this.vendorsSubject.next(vendors);
+      });
+  }
+
+  // Get vendors observable
+  getVendorsObservable(): Observable<Vendor[]> {
+    return this.vendorsSubject.asObservable();
+  }
+
+  // Other methods remain unchanged
+
   getProducts(): Item[] {
     return this.productsSubject.getValue();
   }
+
   getCartObservable(): Observable<any> {
     return this.cartSubject.asObservable();
   }
@@ -74,7 +106,13 @@ export class ProductService {
       existingItem.quantity += quantity;
       console.log('add', cartItems);
     } else {
-      cartItems.push({ _id: item._id, quantity, price: item.price, name: item.name, image: item.image});
+      cartItems.push({
+        _id: item._id,
+        quantity,
+        price: item.price,
+        name: item.name,
+        image: item.image,
+      });
       console.log('update', cartItems);
     }
 

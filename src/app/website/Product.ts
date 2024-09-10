@@ -52,3 +52,13 @@ export interface ProductDisplay {
   image: string;
   name: string;
 }
+
+export interface Vendor {
+  _id: string; 
+  name: string; 
+  email: string; 
+  contactNumber: string; 
+  address: string; 
+ 
+}
+

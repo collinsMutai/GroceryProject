@@ -1,1 +1,51 @@
-<p>category-products works!</p>
+<div class="container categoryContainer">
+  <div class="row g-3"> <!-- Added g-3 for gaps -->
+    <div class="col-lg-4 col-md-6" *ngFor="let item of items">
+      <div class="card">
+        <img [src]="item.image" class="card-img-top" alt="{{ item.name }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <div class="cart-btns">
+            <button class="remove btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-minus"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M5 12l14 0" />
+              </svg>
+            </button>
+            <p class="cartItem m-0"> 1 </p>
+            <button class="add btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 5l0 14" />
+                <path d="M5 12l14 0" />
+              </svg>
+            </button>
+          </div>
+          <button class="tocheckoutBtn" (click)="addToCart(item)">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

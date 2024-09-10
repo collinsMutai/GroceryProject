@@ -5,7 +5,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './website/footer/footer.component';
 import { Subscription } from 'rxjs';
 import { ProductService } from './website/product.service';
@@ -16,7 +16,7 @@ declare var $: any;
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, CommonModule],
+  imports: [RouterOutlet, FooterComponent, CommonModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
@@ -72,11 +72,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   openCart() {
     //  this.router.navigate(['cart']);
     if (this.cartItems.length === 0) {
-     
       console.log('Cart is empty.');
     } else {
       console.log('this.cartItems', this.cartItems);
-      
+
       $('#cartModal').modal('show');
     }
   }
@@ -109,7 +108,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   toCheckout() {
-     $('#cartModal').modal('hide');
+    $('#cartModal').modal('hide');
     this.router.navigate(['cart']);
+  }
+  navigateToCategory(vendor: string) {
+    this.router.navigate(['/category'], { queryParams: { vendor } });
   }
 }

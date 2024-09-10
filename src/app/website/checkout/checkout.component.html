@@ -3,7 +3,11 @@
     <div class="row justify-content-center">
       <div class="col-lg-7 col-md-6">
         <div
-          style="border: 1px solid rgb(189, 189, 189); padding: 45px 25px; border-radius: 5px"
+          style="
+            border: 1px solid rgb(189, 189, 189);
+            padding: 45px 25px;
+            border-radius: 5px;
+          "
         >
           <div class="card form" style="border: none">
             <h5
@@ -132,9 +136,9 @@
               Your Order
             </h5>
             <div class="card-body pt-4">
-              <div class="checkoutItem">
+              <div class="checkoutItem" *ngFor="let item of cartItems">
                 <div class="itemDetails">
-                  <p>Farm Fresh (AAA)</p>
+                  <p>{{ item.name }}</p>
                   <p>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -154,39 +158,16 @@
                       <path d="M5 12l14 0" />
                     </svg>
                   </p>
-                  <p>1</p>
+                  <p>{{item.quantity}}</p>
                 </div>
-                <p class="price">$20.00</p>
-              </div>
-              <div class="checkoutItem">
-                <div class="itemDetails">
-                  <p>Farm Fresh (AAA)</p>
-                  <p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
-                      style="transform: rotate(45deg)"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
-                  </p>
-                  <p>1</p>
-                </div>
-                <p class="price">$20.00</p>
+                <p class="price"> KShs
+              {{
+                calculateSubtotal(item.price, item.quantity) | number : "1.2-2"
+              }}</p>
               </div>
               <div class="subtotal">
                 <p>Subtotal</p>
-                <p>KShs 2,942</p>
+                <p>KShs {{ subtotal }}</p>
               </div>
             </div>
           </div>
