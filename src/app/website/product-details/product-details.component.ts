@@ -103,11 +103,12 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   addToCart(selectedItem: Item): void {
     if (selectedItem) {
       const cartItem: CartItem = {
-        _id: selectedItem._id,
+        productId: selectedItem._id,
         quantity: this.quantity,
         price: selectedItem.price,
         name: selectedItem.name,
-        image: selectedItem.image
+        image: selectedItem.image,
+        vendor: selectedItem.vendor,
       };
       this.productService.addToCart(cartItem, this.quantity);
     } else {

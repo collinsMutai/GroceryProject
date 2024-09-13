@@ -16,7 +16,7 @@ export interface Item {
   category: string;
   stock: number;
   vendor: {
-    id: string;
+    _id: string;
     name: string;
     email: string;
     contactNumber: string;
@@ -24,14 +24,21 @@ export interface Item {
   };
   image: string;
 }
-
-// Product.ts or an appropriate file
-export interface CartItem {
+export interface Vendor {
   _id: string;
+  name: string;
+  email: string;
+  contactNumber: string;
+  address: string;
+}
+
+export interface CartItem {
+  productId: string;
   quantity: number;
-  price: number; 
-  name: string
-  image: string
+  price: number;
+  name: string;
+  image: string;
+  vendor: Vendor;
 }
 
 // Define the structure of cart data
@@ -54,11 +61,26 @@ export interface ProductDisplay {
 }
 
 export interface Vendor {
-  _id: string; 
-  name: string; 
-  email: string; 
-  contactNumber: string; 
-  address: string; 
- 
+  _id: string;
+  name: string;
+  email: string;
+  contactNumber: string;
+  address: string;
 }
 
+export interface OrderRequest {
+  customerId?: string; // Optional for guest checkout
+  customerDetails?: {
+    firstName: string;
+    lastName: string;
+    phone: string;
+    email: string;
+    address: string;
+    building?: string;
+    city: string;
+    county: string;
+    instructions?: string;
+  }; // Optional for guest checkout
+  items: CartItem[];
+  paymentMethod: string;
+}

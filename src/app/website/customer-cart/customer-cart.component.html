@@ -28,7 +28,7 @@
             <td>
               <div class="cart-btns">
                 <button
-                  (click)="updateQuantity(item._id, item.quantity - 1)"
+                  (click)="updateQuantity(item.productId, item.quantity - 1)"
                   class="remove btn"
                 >
                   <svg
@@ -49,7 +49,7 @@
                 </button>
                 <p class="cartItem m-0">{{ item.quantity }}</p>
                 <button
-                  (click)="updateQuantity(item._id, item.quantity + 1)"
+                  (click)="updateQuantity(item.productId, item.quantity + 1)"
                   class="add btn"
                 >
                   <svg
@@ -81,7 +81,7 @@
               <button
                 type="button"
                 class="btn-close delete"
-                (click)="removeProduct(item._id)"
+                (click)="removeProduct(item.productId)"
                 aria-label="Close"
               ></button>
             </td>

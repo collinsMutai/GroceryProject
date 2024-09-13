@@ -8,6 +8,7 @@ import {
   Vendor,
   ApiResponse,
   ApiResponseProduct,
+  OrderRequest,
 } from './Product';
 
 @Injectable({
@@ -22,12 +23,12 @@ export class ProductService {
 
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
-  private VENDORAPIURL = 'http://localhost:4000/vendors/'; 
+  private VENDORAPIURL = 'http://localhost:4000/vendors/';
   private api = 'http://localhost:5000/api/';
 
   constructor(private http: HttpClient) {
     this.getAllProducts();
-    this.getAllVendors(); 
+    this.getAllVendors();
   }
 
   // Fetch all products from the API
@@ -38,7 +39,7 @@ export class ProductService {
         map((response) => response.products || []),
         catchError((error) => {
           console.error('Error fetching products:', error);
-          return of([]); 
+          return of([]);
         })
       )
       .subscribe((products) => {
@@ -99,7 +100,7 @@ export class ProductService {
   addToCart(item: CartItem, quantity: number): void {
     const cartItems = this.cartSubject.getValue();
     const existingItem = cartItems.find(
-      (cartItem) => cartItem._id === item._id
+      (cartItem) => cartItem.productId === item.productId
     );
 
     if (existingItem) {
@@ -107,11 +108,12 @@ export class ProductService {
       console.log('add', cartItems);
     } else {
       cartItems.push({
-        _id: item._id,
+        productId: item.productId,
         quantity,
         price: item.price,
         name: item.name,
         image: item.image,
+        vendor: item.vendor,
       });
       console.log('update', cartItems);
     }
@@ -122,7 +124,7 @@ export class ProductService {
   // Update item in the cart
   updateCartItem(_id: string, quantity: number): void {
     const cartItems = this.cartSubject.getValue();
-    const item = cartItems.find((cartItem) => cartItem._id === _id);
+    const item = cartItems.find((cartItem) => cartItem.productId === _id);
 
     if (item) {
       item.quantity = quantity;
@@ -138,7 +140,7 @@ export class ProductService {
   removeFromCart(_id: string): void {
     const cartItems = this.cartSubject
       .getValue()
-      .filter((cartItem) => cartItem._id !== _id);
+      .filter((cartItem) => cartItem.productId !== _id);
     this.updateCart(cartItems);
   }
 
@@ -161,5 +163,15 @@ export class ProductService {
 
   getCart(): Observable<CartItem[]> {
     return this.cartSubject.asObservable();
+  }
+
+  // Place an order
+  placeOrder(orderRequest: OrderRequest): Observable<any> {
+    return this.http.post<any>(`${this.api}orders`, orderRequest).pipe(
+      catchError((error) => {
+        console.error('Error placing order:', error);
+        return of(null);
+      })
+    );
   }
 }

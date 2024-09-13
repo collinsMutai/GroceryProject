@@ -55,7 +55,7 @@ export class CategoryProductsComponent implements OnInit {
   addToCart(selectedItem: Item): void {
     if (selectedItem) {
       const existingCartItem = this.cartItems.find(
-        (item) => item._id === selectedItem._id
+        (item) => item.productId === selectedItem._id
       );
 
       if (existingCartItem) {
@@ -65,11 +65,12 @@ export class CategoryProductsComponent implements OnInit {
         );
       } else {
         const cartItem: CartItem = {
-          _id: selectedItem._id,
+          productId: selectedItem._id,
           quantity: this.quantity,
           price: selectedItem.price,
           name: selectedItem.name,
           image: selectedItem.image,
+          vendor: selectedItem.vendor,
         };
         // this.productService
         //   .addToCart(cartItem, this.quantity)

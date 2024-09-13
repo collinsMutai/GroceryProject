@@ -16,6 +16,7 @@ import { ContactComponent } from './website/contact/contact.component';
 
 import { ProductDetailsComponent } from './website/product-details/product-details.component';
 import { AppComponent } from './app.component';
+import { CheckoutSuccessComponent } from './website/checkout-success/checkout-success.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'category', component: CategoryProductsComponent },
   { path: 'cart', component: CustomerCartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'checkout-success', component: CheckoutSuccessComponent },
   { path: 'faqs', component: FAQsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'blog', component: BlogComponent },
