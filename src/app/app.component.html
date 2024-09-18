@@ -56,7 +56,7 @@
           d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z"
         />
       </svg>
-      <a class="nav-link" routerLink="/login" style="cursor: pointer">
+      <a class="nav-link" (click)="loginHandler()" style="cursor: pointer">
         Login/Signup
       </a>
     </p>
@@ -80,7 +80,7 @@
     </p>
   </div>
 </nav>
-<div class="container-fluid locationBtnContainer" style="margin-top: 80px">
+<div class="container-fluid locationBtnContainer">
   <p>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -159,17 +159,73 @@
 
     <div class="collapse navbar-collapse pt-4 pb-4" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active"
-            >Shop</a
-          >
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Shop</a>
         </li>
-        <li class="nav-item" (click)="navigateToCategory('Green Farm Organics')">
-          <a class="nav-link" routerLinkActive="active"
-            >Green Farm Organics</a
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
           >
+            Shop by Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Green Farm Organics')"
+                >Organic Vegetables</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Organic Fruits')"
+                >Organic Fruits</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Nature\'s Harvest')"
+                >Nature's Harvest</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Fresh Farm Produce')"
+                >Fresh Farm Produce</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Nature\'s Bounty')"
+                >Nature's Bounty</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Organic Valley Market')"
+                >Organic Valley Market</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                (click)="navigateToCategory('Organic Roots Market')"
+                >Organic Roots Market</a
+              >
+            </li>
+          </ul>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" routerLink="/about" routerLinkActive="active"
             >About</a
@@ -205,7 +261,7 @@
   class="modal fade"
   id="cartModal"
   tabindex="-1"
-  aria-labelledby="exampleModalLabel"
+  aria-labelledby="cartModalLabel"
   aria-hidden="true"
 >
   <div class="modal-dialog custom-modal">
@@ -223,9 +279,8 @@
       <div class="modal-body">
         <p>
           Order before 10pm and get it delivered next day before 3pm. Order
-          before noon and get it delivered today. Order for
-          delivery within 3 hours between 8am and 7pm! Minimum of KShs 2,000 for
-          delivery.
+          before noon and get it delivered today. Order for delivery within 3
+          hours between 8am and 7pm! Minimum of KShs 2,000 for delivery.
         </p>
 
         <ng-container *ngIf="!cartItems || cartItems.length === 0">
@@ -344,9 +399,9 @@
           </div>
         </ng-container>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" *ngIf="totalQuantity > 0">
         <div class="total-info">
-          <p>Subtotal - {{totalQuantity}} items</p>
+          <p>Subtotal - {{ totalQuantity }} items</p>
           <p>KShs {{ subtotal }}</p>
         </div>
         <button class="tocheckoutBtn" (click)="toCheckout()">
@@ -357,7 +412,7 @@
   </div>
 </div>
 
-<!-- message modal-->
+<!-- set location modal-->
 
 <div
   class="modal fade"
@@ -401,8 +456,103 @@
   </div>
 </div>
 
+
+
+<!-- login modal -->
+<div
+  class="modal fade"
+  id="loginModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-body modal-container">
+        <div class="left-section"></div>
+        <div class="right-section">
+          <div class="login-container">
+            <form [formGroup]="isRegister ? registrationForm : loginForm" (ngSubmit)="isRegister ? onRegister() : onLogin()" class="login-form">
+              <h2 class="login-title">
+                <i class="fas fa-user-circle"></i> {{ isRegister ? 'Register' : 'Login' }}
+              </h2>
+              
+              <div class="form-control formcontrol">
+                <i class="fas fa-user icon"></i>
+                <select formControlName="userType" required>
+                  <option value="" disabled selected>Select user type</option>
+                  <option value="customer">Customer</option>
+                  <option value="vendor">Vendor</option>
+                </select>
+              </div>
+
+              <div class="inline" *ngIf="isRegister">
+                <div class="form-control formcontrol">
+                  <i class="fas fa-user icon"></i>
+                  <input
+                    type="text"
+                    formControlName="firstName"
+                    placeholder="First name"
+                    id="first_name"
+                    required
+                  />
+                </div>
+                <div class="form-control formcontrol">
+                  <i class="fas fa-user icon"></i>
+                  <input
+                    type="text"
+                    formControlName="lastName"
+                    placeholder="Last name"
+                    id="last_name"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-control formcontrol">
+                <i class="fas fa-user icon"></i>
+                <input
+                  type="text"
+                  formControlName="username"
+                  placeholder="Username"
+                  id="username"
+                  required
+                />
+              </div>
+
+              <div class="form-control formcontrol">
+                <i class="fas fa-lock icon"></i>
+                <input
+                  type="password"
+                  formControlName="password"
+                  placeholder="Password"
+                  id="password"
+                  required
+                />
+              </div>
+
+              <button type="submit">
+                {{ isRegister ? 'Register' : 'Login' }}
+              </button>
+
+              <div class="register">
+                <p>
+                  {{ isRegister ? 'Already have an account?' : 'Need an account?' }} 
+                  <span (click)="toggleRegister()">{{ isRegister ? 'Login' : 'Register' }}</span>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 <!-- shop by vendors modal  -->
- 
 
 <router-outlet></router-outlet>
 <app-footer></app-footer>

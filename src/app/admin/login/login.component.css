@@ -3,45 +3,45 @@
 
 .parent {
   font-family: "Arial", sans-serif;
-  margin: 50px;
-  padding: 40px;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   height: 100vh;
 }
 
-.container {
+.modal-container {
   display: flex;
-  gap: 50px;
-  height: 100vh;
-  align-items: stretch;
+  height: 100%;
+  margin: 0; /* Ensure no extra space */
 }
 
 .left-section {
-  background: url("https://1.bp.blogspot.com/-VcN4U1UoQR4/X3n9m8mGrBI/AAAAAAAAiLg/_8uaoZPbBrcJqqDi8lQwoe5Axn5ki-_dwCLcBGAsYHQ/s1600/grocery%2Bbusiness.jpg")
-    no-repeat center center;
-  display: none;
+  background: url("https://1.bp.blogspot.com/-VcN4U1UoQR4/X3n9m8mGrBI/AAAAAAAAiLg/_8uaoZPbBrcJqqDi8lQwoe5Axn5ki-_dwCLcBGAsYHQ/s1600/grocery%2Bbusiness.jpg") no-repeat center center;
+  background-size: cover;
   flex: 1;
 }
 
 .right-section {
-  flex: 2;
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+
 }
 
 .login-container {
   background-color: rgba(255, 255, 255, 0.8);
   padding: 40px;
-  border-radius: 15px;
+  /* Removed border-radius */
   box-shadow: 0 10px 25px rgb(10 75 90);
   width: 100%;
   max-width: 550px;
 }
-.inline{
-    display: flex;
-    gap: 20px;
+
+.inline {
+  display: flex;
+  gap: 20px;
 }
+
 .login-form h2 {
   color: #ffb144;
   text-align: center;
@@ -128,11 +128,10 @@ button:hover {
   background-color: #405d7d;
 }
 
-/*Responsive*/
+/* Responsive */
 @media screen and (min-width: 768px) {
   .left-section {
     display: block;
     /* Show the left section on larger screens */
-    flex: 1;
   }
 }

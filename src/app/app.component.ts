@@ -5,34 +5,63 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { FooterComponent } from './website/footer/footer.component';
-import { Subscription } from 'rxjs';
+import { Router, RouterOutlet } from '@angular/router';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ProductService } from './website/product.service';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { CartItem } from './website/Product';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { FooterComponent } from './website/footer/footer.component';
+import { AuthService } from './auth.service';
 declare var $: any;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FooterComponent, CommonModule, RouterLink],
+  imports: [
+    CommonModule,
+    FooterComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterOutlet,
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  activeTab: string = 'home';
   cartItems: CartItem[] = [];
   subtotal: number = 0;
   totalQuantity: number = 0;
-  private cartSubscription: Subscription = new Subscription();
-  title: any;
+  loginForm: FormGroup;
+  registrationForm: FormGroup;
+  isRegister: boolean = false;
 
   constructor(
     private productService: ProductService,
+    private authService: AuthService,
     private router: Router,
+    private fb: FormBuilder,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+    this.loginForm = this.fb.group({
+      userType: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+
+    this.registrationForm = this.fb.group({
+      userType: ['', Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+    });
+  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -51,33 +80,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.cartSubscription = this.productService
-      .getCart()
-      .subscribe((cartItems) => {
-        this.cartItems = cartItems;
-        this.calculateTotals();
-      });
-  }
-
-  ngOnDestroy(): void {
-    if (this.cartSubscription) {
-      this.cartSubscription.unsubscribe();
-    }
-  }
-
-  setActive(tab: string) {
-    this.activeTab = tab;
+    this.productService.getCart().subscribe((cartItems) => {
+      this.cartItems = cartItems;
+      this.calculateTotals();
+    });
   }
 
   openCart() {
-    //  this.router.navigate(['cart']);
-    if (this.cartItems.length === 0) {
-      console.log('Cart is empty.');
-    } else {
-      console.log('this.cartItems', this.cartItems);
-
-      $('#cartModal').modal('show');
-    }
+    $('#cartModal').modal('show');
   }
 
   calculateTotals() {
@@ -97,21 +107,69 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   updateQuantity(productId: string, quantity: number): void {
     this.productService.updateCartItem(productId, quantity);
+    this.calculateTotals(); // Update totals after changing quantity
   }
 
   removeProduct(productId: string): void {
     this.productService.removeFromCart(productId);
   }
 
-  navigateToLogin() {
-    this.router.navigate(['/login']);
-  }
-
   toCheckout() {
     $('#cartModal').modal('hide');
     this.router.navigate(['cart']);
   }
+
   navigateToCategory(vendor: string) {
     this.router.navigate(['/category'], { queryParams: { vendor } });
+  }
+
+  loginHandler() {
+    $('#loginModal').modal('show');
+  }
+
+  onLogin() {
+    if (this.loginForm.valid) {
+      const { username, password, userType } = this.loginForm.value;
+
+      this.authService.login(userType, username, password).subscribe({
+        next: () => {
+          this.router.navigateByUrl('/dashboard');
+          $('#loginModal').modal('hide');
+        },
+        error: () => {
+          alert('Invalid credentials');
+        },
+      });
+    } else {
+      alert('Please fill in all required fields');
+    }
+  }
+
+  onRegister() {
+    if (this.registrationForm.valid) {
+      const { username, password, firstName, lastName, userType } =
+        this.registrationForm.value;
+
+      this.authService
+        .register(userType, { username, password, firstName, lastName })
+        .subscribe({
+          next: () => {
+            alert('Registration successful! You can log in now.');
+            this.isRegister = false; // Switch back to login form
+          },
+          error: (err) => {
+            console.error('Registration error:', err);
+            alert(
+              err.error ? err.error : 'Registration failed. Please try again.'
+            );
+          },
+        });
+    } else {
+      alert('Please fill in all required fields');
+    }
+  }
+
+  toggleRegister() {
+    this.isRegister = !this.isRegister; // Toggle between login and registration
   }
 }

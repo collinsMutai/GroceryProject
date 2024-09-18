@@ -97,7 +97,7 @@ export class ProductService {
   }
 
   // Add item to the cart
-  addToCart(item: CartItem, quantity: number): void {
+  addToCart(item: CartItem, quantity: number): Observable<CartItem[]> {
     const cartItems = this.cartSubject.getValue();
     const existingItem = cartItems.find(
       (cartItem) => cartItem.productId === item.productId
@@ -105,7 +105,6 @@ export class ProductService {
 
     if (existingItem) {
       existingItem.quantity += quantity;
-      console.log('add', cartItems);
     } else {
       cartItems.push({
         productId: item.productId,
@@ -115,14 +114,14 @@ export class ProductService {
         image: item.image,
         vendor: item.vendor,
       });
-      console.log('update', cartItems);
     }
 
-    this.updateCart(cartItems);
+    this.updateCart(cartItems); // Update the cart in memory and local storage
+    return of(cartItems); // Return updated cart items as observable
   }
 
   // Update item in the cart
-  updateCartItem(_id: string, quantity: number): void {
+  updateCartItem(_id: string, quantity: number): Observable<CartItem[]> {
     const cartItems = this.cartSubject.getValue();
     const item = cartItems.find((cartItem) => cartItem.productId === _id);
 
@@ -134,6 +133,8 @@ export class ProductService {
         this.updateCart(cartItems);
       }
     }
+
+    return of(cartItems); // Return updated cart items as observable
   }
 
   // Remove item from the cart

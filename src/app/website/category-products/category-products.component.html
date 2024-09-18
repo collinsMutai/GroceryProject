@@ -1,12 +1,16 @@
 <div class="container categoryContainer">
-  <div class="row g-3"> <!-- Added g-3 for gaps -->
+  <div *ngIf="items.length === 0" class="no-products">
+    <p>No products found for the {{vendor}} category.</p>
+  </div>
+
+  <div *ngIf="items.length > 0" class="row g-3">
     <div class="col-lg-4 col-md-6" *ngFor="let item of items">
       <div class="card">
         <img [src]="item.image" class="card-img-top" alt="{{ item.name }}" />
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
           <div class="cart-btns">
-            <button class="remove btn">
+            <button class="remove btn" (click)="decreaseQuantity(item._id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -23,8 +27,8 @@
                 <path d="M5 12l14 0" />
               </svg>
             </button>
-            <p class="cartItem m-0"> 1 </p>
-            <button class="add btn">
+            <p class="cartItem m-0">{{ quantityMap[item._id] }}</p>
+            <button class="add btn" (click)="increaseQuantity(item._id)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -43,7 +47,9 @@
               </svg>
             </button>
           </div>
-          <button class="tocheckoutBtn" (click)="addToCart(item)">Add To Cart</button>
+          <button class="tocheckoutBtn" (click)="addToCart(item)">
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
