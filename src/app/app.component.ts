@@ -40,6 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   loginForm: FormGroup;
   registrationForm: FormGroup;
   isRegister: boolean = false;
+  user!: string;
 
   constructor(
     private productService: ProductService,
@@ -80,6 +81,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    // Listen for changes in the user (authentication state)
+    this.authService.user$.subscribe((user) => {
+      if (user) {
+       
+        this.user = user.firstName;
+      } else {
+        console.log('No user logged in');
+      }
+    });
+
     this.productService.getCart().subscribe((cartItems) => {
       this.cartItems = cartItems;
       this.calculateTotals();
@@ -124,7 +135,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   loginHandler() {
-    $('#loginModal').modal('show');
+    if (this.user) {
+      this.authService.logout();
+      this.user = '';
+    } else {
+      $('#loginModal').modal('show');
+    }
   }
 
   onLogin() {
@@ -133,8 +149,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
       this.authService.login(userType, username, password).subscribe({
         next: () => {
-          this.router.navigateByUrl('/dashboard');
+          // this.router.navigateByUrl('/dashboard');
           $('#loginModal').modal('hide');
+          if (userType === 'vendor') {
+            this.router.navigateByUrl('/dashboard');
+          }
         },
         error: () => {
           alert('Invalid credentials');

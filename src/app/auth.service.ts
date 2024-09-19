@@ -14,10 +14,22 @@ interface AuthResponse {
 })
 export class AuthService {
   private api = 'http://localhost:5000/api/auth/';
-  private userSubject: BehaviorSubject<any> = new BehaviorSubject(null);
-  public user$: Observable<any> = this.userSubject.asObservable();
+  private userSubject: BehaviorSubject<any>;
+  public user$: Observable<any>;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    // Initialize BehaviorSubject with the current user (if exists in localStorage)
+    const storedUserJson = localStorage.getItem('user');
+    let storedUser = null;
+    try {
+      storedUser = storedUserJson ? JSON.parse(storedUserJson) : null;
+    } catch (error) {
+      console.error('Error parsing user from localStorage', error);
+      storedUser = null;
+    }
+    this.userSubject = new BehaviorSubject(storedUser);
+    this.user$ = this.userSubject.asObservable();
+  }
 
   login(
     type: string,
@@ -28,6 +40,7 @@ export class AuthService {
       .post<AuthResponse>(`${this.api}login`, { type, username, password })
       .pipe(
         tap((response) => {
+         
           this.storeUser(response.user, response.token);
         })
       );
@@ -53,16 +66,22 @@ export class AuthService {
 
   private storeUser(user: any, token: string) {
     localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
     this.userSubject.next(user);
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 }

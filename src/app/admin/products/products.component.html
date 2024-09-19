@@ -38,7 +38,7 @@
 </div> -->
 
   </div>
-  <div>
+  <div *ngIf="products$ | async as products">
     <app-product-card [products]="products"></app-product-card>
   </div>
 </div>

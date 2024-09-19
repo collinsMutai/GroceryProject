@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { filter, from, map, mergeMap, toArray } from 'rxjs';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EditProductFormComponent } from '../edit-product-form/edit-product-form.component';
+import { Item } from '../../website/Product';
 
 @Component({
   selector: 'app-product-card',
@@ -14,7 +15,7 @@ import { EditProductFormComponent } from '../edit-product-form/edit-product-form
   styleUrl: './product-card.component.css',
 })
 export class ProductCardComponent {
-  @Input() products: any[] = [];
+  @Input() products!: Item[];
   edit: boolean = false;
   editedProductId: any;
   product: any;

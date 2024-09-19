@@ -47,6 +47,22 @@ export class ProductService {
       });
   }
 
+  // Fetch all vendor-specific products
+  getAllVendorProducts(vendorId: string): void {
+    this.http
+      .get<ApiResponse>(`${this.api}products/vendor/${vendorId}`) // Ensure the correct endpoint format
+      .pipe(
+        map((response) => response.products || []),
+        catchError((error) => {
+          console.error('Error fetching vendor products:', error);
+          return of([]);
+        })
+      )
+      .subscribe((products) => {
+        this.productsSubject.next(products);
+      });
+  }
+
   // Fetch all vendors from the API
   getAllVendors(): void {
     this.http
@@ -164,6 +180,12 @@ export class ProductService {
 
   getCart(): Observable<CartItem[]> {
     return this.cartSubject.asObservable();
+  }
+
+  // Clear the cart
+  clearCart(): void {
+    this.cartSubject.next([]);
+    localStorage.removeItem('cart');
   }
 
   // Place an order

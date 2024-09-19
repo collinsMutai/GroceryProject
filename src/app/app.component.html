@@ -57,8 +57,9 @@
         />
       </svg>
       <a class="nav-link" (click)="loginHandler()" style="cursor: pointer">
-        Login/Signup
-      </a>
+        <span *ngIf="user; else loginSignup">Hello, {{ user }} <br/> Logout</span>
+        <ng-template #loginSignup>Login/Signup</ng-template>
+      </a> 
     </p>
 
     <!--  -->
@@ -178,7 +179,7 @@
               <a
                 class="dropdown-item"
                 (click)="navigateToCategory('Green Farm Organics')"
-                >Organic Vegetables</a
+                >Green Farm Organics</a
               >
             </li>
             <li>
@@ -456,8 +457,6 @@
   </div>
 </div>
 
-
-
 <!-- login modal -->
 <div
   class="modal fade"
@@ -472,11 +471,16 @@
         <div class="left-section"></div>
         <div class="right-section">
           <div class="login-container">
-            <form [formGroup]="isRegister ? registrationForm : loginForm" (ngSubmit)="isRegister ? onRegister() : onLogin()" class="login-form">
+            <form
+              [formGroup]="isRegister ? registrationForm : loginForm"
+              (ngSubmit)="isRegister ? onRegister() : onLogin()"
+              class="login-form"
+            >
               <h2 class="login-title">
-                <i class="fas fa-user-circle"></i> {{ isRegister ? 'Register' : 'Login' }}
+                <i class="fas fa-user-circle"></i>
+                {{ isRegister ? "Register" : "Login" }}
               </h2>
-              
+
               <div class="form-control formcontrol">
                 <i class="fas fa-user icon"></i>
                 <select formControlName="userType" required>
@@ -532,15 +536,20 @@
               </div>
 
               <button type="submit">
-                {{ isRegister ? 'Register' : 'Login' }}
+                {{ isRegister ? "Register" : "Login" }}
               </button>
 
               <div class="register">
                 <p>
-                  {{ isRegister ? 'Already have an account?' : 'Need an account?' }} 
-                  <span (click)="toggleRegister()">{{ isRegister ? 'Login' : 'Register' }}</span>
+                  {{
+                    isRegister ? "Already have an account?" : "Need an account?"
+                  }}
+                  <span (click)="toggleRegister()">{{
+                    isRegister ? "Login" : "Register"
+                  }}</span>
                 </p>
               </div>
+             
             </form>
           </div>
         </div>
@@ -548,9 +557,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <!-- shop by vendors modal  -->
 

@@ -36,9 +36,9 @@ export interface CartItem {
   productId: string;
   quantity: number;
   price: number;
-  name: string;
-  image: string;
-  vendor: Vendor;
+  name?: string;
+  image?: string;
+  vendor?: Vendor;
 }
 
 // Define the structure of cart data
@@ -69,7 +69,7 @@ export interface Vendor {
 }
 
 export interface OrderRequest {
-  customerId?: string; // Optional for guest checkout
+  items: CartItem[];
   customerDetails?: {
     firstName: string;
     lastName: string;
@@ -81,6 +81,7 @@ export interface OrderRequest {
     county: string;
     instructions?: string;
   }; // Optional for guest checkout
-  items: CartItem[];
   paymentMethod: string;
+  customerId?: string; // Optional for guest checkout
+  vendorId?: string;
 }

@@ -20,7 +20,6 @@ import { CheckoutSuccessComponent } from './website/checkout-success/checkout-su
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-
   { path: '', component: WebproductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'category', component: CategoryProductsComponent },

@@ -2,15 +2,15 @@
   <li class="cards__item" *ngFor="let product of products">
     <div class="card">
       <img
-        src="{{product.productImage}}"
+        src="{{product.image}}"
         alt=""
       />
       <div class="card__content">
-        <div class="card__title">{{product.productName}}</div>
-        <p class="card__text">{{product.productDescription}}</p>
+        <div class="card__title">{{product.name}}</div>
+        <p class="card__text">{{product.description}}</p>
         <div class="cardBtns">
        <svg
-         (click)="editProduct(product.id)"
+         (click)="editProduct(product._id)"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -32,7 +32,7 @@
             <path d="M16 5l3 3" />
           </svg>
           <svg
-          (click)="deleteProduct(product.id)"
+          (click)="deleteProduct(product._id)"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
