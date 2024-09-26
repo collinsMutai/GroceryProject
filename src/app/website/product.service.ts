@@ -9,6 +9,7 @@ import {
   ApiResponse,
   ApiResponseProduct,
   OrderRequest,
+  Product,
 } from './Product';
 
 @Injectable({
@@ -24,11 +25,68 @@ export class ProductService {
   private APIURL = 'http://localhost:4000/products/';
   private CARTAPIURL = 'http://localhost:4000/cart/';
   private VENDORAPIURL = 'http://localhost:4000/vendors/';
-  private api = 'http://localhost:5000/api/';
+  private api = 'http://localhost:3000/api/';
 
   constructor(private http: HttpClient) {
     this.getAllProducts();
     this.getAllVendors();
+  }
+
+  // Add product to the service
+  addProduct(newProduct: Item): void {
+    this.http
+      .post<Item>(`${this.api}products`, newProduct)
+      .pipe(
+        catchError((error) => {
+          console.error('Error adding product:', error);
+          return of(null);
+        })
+      )
+      .subscribe(() => {
+        this.productsSubject.next([
+          ...this.productsSubject.getValue(),
+          newProduct,
+        ]);
+      });
+  }
+// Update product by ID
+updateProduct(updatedProduct: Item): void {
+  this.http
+    .put<Item>(`${this.api}products/${updatedProduct._id}`, updatedProduct)
+    .pipe(
+      catchError((error) => {
+        console.error('Error updating product:', error);
+        return of(null);
+      })
+    )
+    .subscribe((response) => {
+      if (response) {
+        const updatedProducts = this.productsSubject.getValue().map((product) =>
+          product._id === updatedProduct._id ? response : product
+        );
+        this.productsSubject.next(updatedProducts);
+      }
+    });
+}
+
+  // Delete product by ID
+  deleteProduct(_id: string): void {
+    this.http
+      .delete(`${this.api}products/${_id}`)
+      .pipe(
+        catchError((error) => {
+          console.error('Error deleting product:', error);
+          return of(null);
+        })
+      )
+      .subscribe((response) => {
+        if (response) {
+          const updatedProducts = this.productsSubject
+            .getValue()
+            .filter((product) => product._id !== _id);
+          this.productsSubject.next(updatedProducts);
+        }
+      });
   }
 
   // Fetch all products from the API
@@ -116,14 +174,14 @@ export class ProductService {
   addToCart(item: CartItem, quantity: number): Observable<CartItem[]> {
     const cartItems = this.cartSubject.getValue();
     const existingItem = cartItems.find(
-      (cartItem) => cartItem.productId === item.productId
+      (cartItem) => cartItem._id === item._id
     );
 
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
       cartItems.push({
-        productId: item.productId,
+        _id: item._id,
         quantity,
         price: item.price,
         name: item.name,
@@ -139,7 +197,7 @@ export class ProductService {
   // Update item in the cart
   updateCartItem(_id: string, quantity: number): Observable<CartItem[]> {
     const cartItems = this.cartSubject.getValue();
-    const item = cartItems.find((cartItem) => cartItem.productId === _id);
+    const item = cartItems.find((cartItem) => cartItem._id === _id);
 
     if (item) {
       item.quantity = quantity;
@@ -157,7 +215,7 @@ export class ProductService {
   removeFromCart(_id: string): void {
     const cartItems = this.cartSubject
       .getValue()
-      .filter((cartItem) => cartItem.productId !== _id);
+      .filter((cartItem) => cartItem._id !== _id);
     this.updateCart(cartItems);
   }
 

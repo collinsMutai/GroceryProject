@@ -1,6 +1,6 @@
 <div class="container cartContainer">
   <div class="row rowContainer">
-    <div class="col-lg-7 col-md-6">
+    <div class="col-lg-8 col-md-6">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -21,14 +21,14 @@
                 />
                 <div class="price ml-3">
                   <h3 class="mb-0">{{ item.name }}</h3>
-                  <p class="mb-0">KShs {{ item.price | number : "1.2-2" }}</p>
+                  <p class="mb-0"> {{ item.price | currency : "KES " : "symbol" : "1.2-2" }}</p>
                 </div>
               </div>
             </td>
             <td>
               <div class="cart-btns">
                 <button
-                  (click)="updateQuantity(item.productId, item.quantity - 1)"
+                  (click)="updateQuantity(item._id, item.quantity - 1)"
                   class="remove btn"
                 >
                   <svg
@@ -49,7 +49,7 @@
                 </button>
                 <p class="cartItem m-0">{{ item.quantity }}</p>
                 <button
-                  (click)="updateQuantity(item.productId, item.quantity + 1)"
+                  (click)="updateQuantity(item._id, item.quantity + 1)"
                   class="add btn"
                 >
                   <svg
@@ -72,16 +72,16 @@
               </div>
             </td>
             <td class="subtotal align-middle">
-              KShs
+              
               {{
-                calculateSubtotal(item.price, item.quantity) | number : "1.2-2"
+                calculateSubtotal(item.price, item.quantity) | currency : "KES " : "symbol" : "1.2-2"
               }}
             </td>
             <td class="align-middle">
               <button
                 type="button"
                 class="btn-close delete"
-                (click)="removeProduct(item.productId)"
+                (click)="removeProduct(item._id)"
                 aria-label="Close"
               ></button>
             </td>
@@ -89,11 +89,11 @@
         </tbody>
       </table>
     </div>
-    <div class="col-lg-4 col-md-6 cart-totals">
+    <div class="col-lg-3 col-md-6 cart-totals">
       <h4>Cart totals</h4>
       <div class="total-info">
         <p>Subtotal - {{totalQuantity}} items</p>
-        <p>KShs {{ subtotal }}</p>
+        <p>{{ subtotal | currency : "KES " : "symbol" : "1.2-2" }}</p>
       </div>
     </div>
   </div>

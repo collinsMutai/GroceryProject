@@ -13,7 +13,7 @@ interface AuthResponse {
   providedIn: 'root',
 })
 export class AuthService {
-  private api = 'http://localhost:5000/api/auth/';
+  private api = 'http://localhost:3000/api/auth/';
   private userSubject: BehaviorSubject<any>;
   public user$: Observable<any>;
 
@@ -75,6 +75,7 @@ export class AuthService {
     localStorage.removeItem('user');
     this.userSubject.next(null);
     this.router.navigate(['/']);
+  
   }
 
   isAuthenticated(): boolean {

@@ -66,8 +66,8 @@
 }
 .total-info{
   display: flex;
- gap: 40px;
-  flex-direction: row;
+ /* gap: 40px; */
+  flex-direction: column;
 }
 .shop{
   text-align: center;

@@ -176,14 +176,37 @@
   </div>
 </div>
 
-<app-category-slider-template *ngIf="vegetables.length" [items]="vegetables" title="Vegetables" (itemClick)="goToCart($event)"></app-category-slider-template>
+<app-category-slider-template
+  *ngIf="vegetables.length"
+  [items]="vegetables"
+  title="Vegetables"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
 
-<app-category-slider-template *ngIf="fruits.length" [items]="vegetables" title="Fruits" (itemClick)="goToCart($event)"></app-category-slider-template>
+<app-category-slider-template
+  *ngIf="fruits.length"
+  [items]="fruits"
+  title="Fruits"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
 
-<app-category-slider-template *ngIf="spices.length" [items]="vegetables" title="Spices" (itemClick)="goToCart($event)"></app-category-slider-template>
+<app-category-slider-template
+  *ngIf="spices.length"
+  [items]="spices"
+  title="Spices"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
 
-<app-category-slider-template *ngIf="meats.length" [items]="vegetables" title="Meats" (itemClick)="goToCart($event)"></app-category-slider-template>
+<app-category-slider-template
+  *ngIf="meats.length"
+  [items]="meats"
+  title="Meats"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>
 
-<app-category-slider-template *ngIf="dairies.length" [items]="vegetables" title="Dairies" (itemClick)="goToCart($event)"></app-category-slider-template>
-
-
+<app-category-slider-template
+  *ngIf="dairies.length"
+  [items]="dairies"
+  title="Dairies"
+  (itemClick)="goToCart($event)"
+></app-category-slider-template>

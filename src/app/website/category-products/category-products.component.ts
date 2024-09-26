@@ -4,107 +4,92 @@ import { ProductService } from '../product.service';
 import { combineLatest, map } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-category-products',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './category-products.component.html',
   styleUrls: ['./category-products.component.css'],
 })
 export class CategoryProductsComponent implements OnInit {
   items: Item[] = [];
-  cartItems: CartItem[] = [];
-  quantityMap: { [key: string]: number } = {};
-  vendor!: string
+  filteredItems: Item[] = [];
+  category!: string;
+  user: any = null;
+  searchTerm: string = '';
+
+  // Pagination properties
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalItems: number = 0;
+
+  // Computed property for paginated items
+  get paginatedItems(): Item[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.filteredItems.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  // For determining the number of pages
+  get totalPages(): number {
+    return Math.ceil(this.filteredItems.length / this.itemsPerPage);
+  }
 
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    // Subscribe to user changes
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+      this.loadProducts();
+    });
+
+    // Load products initially
+    this.loadProducts();
+  }
+
+  loadProducts(): void {
     combineLatest([
-      this.route.queryParams,
+      this.route.params,
       this.productService.getProductsObservable(),
     ])
       .pipe(
         map(([params, products]) => {
-          this.vendor = params['vendor'];
-          console.log('vendor', this.vendor);
-          return {
-            vendor: this.vendor,
-            items: this.vendor
-              ? products.filter((product) => product.vendor['name'] === this.vendor)
-              : products,
-          };
+          this.category = params['category'];
+          const filteredItems = this.category
+            ? products.filter(
+                (product) =>
+                  product.category === this.category &&
+                  product.vendor?.['_id'] === this.user?._id
+              )
+            : products;
+          this.items = filteredItems;
+          this.filteredItems = filteredItems;
         })
       )
-      .subscribe(({ items }) => {
-        console.log('items', items);
-        this.items = items;
-        // Initialize quantityMap with default quantities
-        this.quantityMap = items.reduce((acc, item) => {
-          acc[item._id] = 1; // Default quantity
-          return acc;
-        }, {} as { [key: string]: number });
-        
-      });
-
-    // Subscription for cart items
-    this.productService.getCart().subscribe((cartItems) => {
-      this.cartItems = cartItems;
-    });
+      .subscribe();
   }
 
-  updateQuantity(productId: string, quantity: number): void {
-    if (quantity < 1) return;
-
-    this.productService
-      .updateCartItem(productId, quantity)
-      .subscribe((updatedCart) => {
-        this.cartItems = updatedCart;
-      });
+  filterItems(): void {
+    this.filteredItems = this.items.filter((item) =>
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+    this.currentPage = 1;
   }
 
-  addToCart(selectedItem: Item): void {
-    if (selectedItem) {
-      const existingCartItem = this.cartItems.find(
-        (item) => item.productId === selectedItem._id
-      );
-      if (existingCartItem) {
-        this.updateQuantity(
-          selectedItem._id,
-          existingCartItem.quantity + this.quantityMap[selectedItem._id]
-        );
-      } else {
-        const cartItem: CartItem = {
-          productId: selectedItem._id,
-          quantity: this.quantityMap[selectedItem._id],
-          price: selectedItem.price,
-          name: selectedItem.name,
-          image: selectedItem.image,
-          vendor: selectedItem.vendor,
-        };
-        this.productService
-          .addToCart(cartItem, this.quantityMap[selectedItem._id])
-          .subscribe((updatedCart) => {
-            this.cartItems = updatedCart;
-          });
-      }
-    } else {
-      console.error('No item selected.');
-    }
+  updateProduct(product: Item): void {
+    this.router.navigate(['/dashboard/product', product._id]);
   }
 
-  decreaseQuantity(productId: string): void {
-    if (this.quantityMap[productId] > 1) {
-      this.quantityMap[productId]--;
-    }
-  }
-
-  increaseQuantity(productId: string): void {
-    this.quantityMap[productId]++;
+  deleteProduct(_id: string): void {
+    this.productService.deleteProduct(_id);
+    this.loadProducts();
   }
 }

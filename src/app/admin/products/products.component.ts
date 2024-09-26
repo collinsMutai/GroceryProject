@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       // If the user exists, fetch vendor-specific products
       if (this.currentUser && this.currentUser._id) {
         this.productService.getAllVendorProducts(this.currentUser._id);
-      } 
+      }
     });
 
     // Subscribe to the productsSubject to receive product updates
@@ -53,7 +53,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   navigateTo(category: string) {
-    this.router.navigate([`/${category}`]);
+    this.router.navigate([`/dashboard/category/${category}`]);
   }
 
   ngOnDestroy(): void {

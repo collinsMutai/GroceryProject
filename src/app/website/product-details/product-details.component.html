@@ -13,12 +13,14 @@
           <h2>{{ selectedItem.name }}</h2>
 
           <p class="price">
-            Price per unit: KES {{ selectedItem.price || 'N/A' }}.00
+            Price per unit:
+            {{ selectedItem.price | currency : "KES " : "symbol" : "1.2-2" }}
           </p>
           <p class="total-price">
-            Total Price: KES {{ getTotalPrice() || 'N/A' }}.00
+            Total Price:
+            {{ getTotalPrice() | currency : "KES " : "symbol" : "1.2-2" }}
           </p>
-          
+
           <div class="quantity-control">
             <button
               (click)="decreaseQuantity()"
@@ -63,7 +65,13 @@
             <p>We simply deliver the best.</p>
           </div>
         </div>
-        <button type="button" class="add-to-cart" (click)="addToCart(selectedItem)">ADD TO CART</button>
+        <button
+          type="button"
+          class="add-to-cart"
+          (click)="addToCart(selectedItem)"
+        >
+          ADD TO CART
+        </button>
       </div>
     </div>
   </div>

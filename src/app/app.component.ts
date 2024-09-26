@@ -5,7 +5,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -15,7 +15,7 @@ import {
 } from '@angular/forms';
 import { ProductService } from './website/product.service';
 import { CartItem } from './website/Product';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { FooterComponent } from './website/footer/footer.component';
 import { AuthService } from './auth.service';
 declare var $: any;
@@ -29,6 +29,8 @@ declare var $: any;
     FormsModule,
     ReactiveFormsModule,
     RouterOutlet,
+    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   loginForm: FormGroup;
   registrationForm: FormGroup;
   isRegister: boolean = false;
-  user!: string;
+  user!: any;
 
   constructor(
     private productService: ProductService,
@@ -82,14 +84,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     // Listen for changes in the user (authentication state)
-    this.authService.user$.subscribe((user) => {
-      if (user) {
-       
-        this.user = user.firstName;
-      } else {
-        console.log('No user logged in');
-      }
-    });
+   this.authService.user$.subscribe((user) => {
+     this.user = user ? user : null; // Reset to null if no user is logged in
+     console.log(this.user ? 'User logged in' : 'No user logged in');
+   });
+
 
     this.productService.getCart().subscribe((cartItems) => {
       this.cartItems = cartItems;
@@ -137,7 +136,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   loginHandler() {
     if (this.user) {
       this.authService.logout();
-      this.user = '';
+      this.user = null;
     } else {
       $('#loginModal').modal('show');
     }

@@ -543,5 +543,192 @@
       "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Cream_cheese.jpg/1200px-Cream_cheese.jpg",
       "price": "$2.99"
     }
+  ],
+  "fruits": [
+    {
+      "name": "Wonderful Halos Mandarins, 3Lb Bag",
+      "price": 6.99,
+      "description": "PACK SIZE: 3lbs. Grab one for the family or stock up for snacks for your next party, on-the-go, or kids' sports game",
+      "category": "fruits",
+      "stock": 30,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/7150R1L5s5L._SX679_.jpg"
+    },
+    {
+      "name": "Premium Black Pepper",
+      "price": 4.49,
+      "description": "Freshly ground black pepper, ideal for seasoning all your dishes.",
+      "category": "fruits",
+      "stock": 40,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://example.com/images/premium-black-pepper.jpg"
+    },
+    {
+      "name": "Honeycrisp Apple, 1 Each",
+      "price": 5.29,
+      "description": "Natural",
+      "category": "fruits",
+      "stock": 25,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/71KKBVXup3L._SX679_.jpg"
+    },
+    {
+      "name": "Medium Hass Avocado",
+      "price": 3.79,
+      "description": "Grown in Mexico or California",
+      "category": "fruits",
+      "stock": 35,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81LKLCmdAQL.AC_SL240_.jpg"
+    },
+    {
+      "name": "Banana Bunch",
+      "price": 2.99,
+      "description": "Good Source of Vitamin B-6 and Potassium",
+      "category": "fruits",
+      "stock": 50,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61aLynLf2GL.AC_SL240_.jpg"
+    },
+    {
+      "name": "Wonderful Halos Mandarins, 3Lb Bag",
+      "price": 6.99,
+      "description": "PACK SIZE: 3lbs. Grab one for the family or stock up for snacks for your next party, on-the-go, or kids' sports game",
+      "category": "fruits",
+      "stock": 30,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/7150R1L5s5L._SX679_.jpg"
+    },
+    {
+      "name": "Organic Blueberries Pint",
+      "price": 4.49,
+      "description": "Freshly ground black pepper, ideal for seasoning all your dishes.",
+      "category": "fruits",
+      "stock": 40,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/41ztFVI9nmL._SY300_SX300_QL70_FMwebp_.jpg"
+    },
+    {
+      "name": "Lime, 1 Each",
+      "price": 5.29,
+      "description": "Acidic, tart, and refreshing, perfect for baking, grilling, or zesting the peel into grains for a zing of flavor",
+      "category": "fruits",
+      "stock": 25,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/81KoXfeCD1L._SX679_.jpg"
+    },
+    {
+      "name": "Green Seedless Grapes, 3 Lb",
+      "price": 3.79,
+      "description": "Delicious on their own as a healthy snack or as part of a recipe",
+      "category": "fruits",
+      "stock": 35,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/71IbOS1fKkL._SX679_.jpg"
+    },
+    {
+      "name": "Red Raspberries, 6 Oz",
+      "price": 2.99,
+      "description": "Delicious on their own as a healthy snack or as part of a recipe",
+      "category": "fruits",
+      "stock": 50,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/71CJQWqAxFL._SX679_.jpg"
+    }
+  ],
+  "vegetables": [
+    {
+      "name": "Amazon Fresh Brand, Cut And Peeled Baby Carrots, 16 Oz",
+      "price": 6.99,
+      "description": "PACK SIZE: 3lbs. Grab one for the family or stock up for snacks for your next party, on-the-go, or kids' sports game",
+      "category": "vegetables",
+      "stock": 30,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/716s9vkPTSL._SX679_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Russet Potatoes, 5 Lb",
+      "price": 4.49,
+      "description": "Freshly ground black pepper, ideal for seasoning all your dishes.",
+      "category": "vegetables",
+      "stock": 40,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/81GhOkcAuVL._SX679_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Sliced Baby Bella Mushrooms, 8 Oz",
+      "price": 5.29,
+      "description": "Natural",
+      "category": "vegetables",
+      "stock": 25,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/81oQzhdCjxL._SX679_.jpg"
+    },
+    {
+      "name": "Russet Potato, 1 Each",
+      "price": 3.79,
+      "description": "Grown in Mexico or California",
+      "category": "vegetables",
+      "stock": 35,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/818y42pc78L._SX679_.jpg"
+    },
+    {
+      "name": "365 by Whole Foods Market, Organic Trimmed Green Beans, 12 oz",
+      "price": 2.99,
+      "description": "Good Source of Vitamin B-6 and Potassium",
+      "category": "vegetables",
+      "stock": 50,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/51j2KvemTHL._SX300_SY300_QL70_FMwebp_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Grape Tomatoes, 10 Oz",
+      "price": 6.99,
+      "description": "PACK SIZE: 3lbs. Grab one for the family or stock up for snacks for your next party, on-the-go, or kids' sports game",
+      "category": "vegetables",
+      "stock": 30,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/71gf+p62t8L._SX679_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Rainbow Bell Peppers, 3 Count",
+      "price": 4.49,
+      "description": "Freshly ground black pepper, ideal for seasoning all your dishes.",
+      "category": "vegetables",
+      "stock": 40,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/715I1laX7lL._SY879_.jpg"
+    },
+    {
+      "name": "Red Onion, 1 Each",
+      "price": 5.29,
+      "description": "Acidic, tart, and refreshing, perfect for baking, grilling, or zesting the peel into grains for a zing of flavor",
+      "category": "vegetables",
+      "stock": 25,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/71AM8cSg+7L._SX679_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Mini Cucumbers, 16 Oz",
+      "price": 3.79,
+      "description": "Delicious on their own as a healthy snack or as part of a recipe",
+      "category": "vegetables",
+      "stock": 35,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/81JYWbCSJwL._SX679_.jpg"
+    },
+    {
+      "name": "Amazon Fresh Brand, Baby Medley Potatoes, 1.5 Lb",
+      "price": 2.99,
+      "description": "Delicious on their own as a healthy snack or as part of a recipe",
+      "category": "vegetables",
+      "stock": 50,
+      "vendor": "66ebf838c76fa3d6472d790f",
+      "image": "https://m.media-amazon.com/images/I/714VwBEFlWL._SX679_.jpg"
+    }
   ]
+
+
+
 }

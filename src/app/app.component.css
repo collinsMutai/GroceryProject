@@ -162,17 +162,17 @@
 .modal-container {
   display: flex;
   height: 100%;
-  margin: 0; 
+  margin: 0;
 }
 
 #loginModal .modal-dialog .modal-content {
-  margin: 0; 
-  border: none; 
+  margin: 0;
+  border: none;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .modal-container {
-  padding: 0; 
+  padding: 0;
 }
 
 .left-section {
@@ -316,9 +316,6 @@
   height: auto;
 }
 
-.product {
-  width: 70%;
-}
 .product .header {
   display: flex;
   align-items: center;

@@ -13,7 +13,7 @@ export class ProductService {
     return this.http.get(this.APIURL);
   }
   addProduct(data: any) {
-    return this.http.post(this.APIURL, data);
+    return this.http.post('http://localhost:3000/api/products', data);
   }
   getProductByID(id: any) {
     return this.http.get(`${this.APIURL}?id=${id}`);

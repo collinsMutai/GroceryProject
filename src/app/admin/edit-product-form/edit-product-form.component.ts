@@ -9,93 +9,105 @@ import {
 import {
   FormBuilder,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { ProductService } from '../products/product.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
-import { filter, from, map, mergeMap, toArray } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../website/product.service';
+import { ApiResponseProduct, Item } from '../../website/Product';
 
 @Component({
-  standalone: true,
   selector: 'app-edit-product-form',
   templateUrl: './edit-product-form.component.html',
-  styleUrl: './edit-product-form.component.css',
-  imports: [FormsModule, ReactiveFormsModule],
+  styleUrls: ['./edit-product-form.component.css'],
+  imports: [ReactiveFormsModule],
+  standalone: true,
 })
 export class EditProductFormComponent implements OnInit {
   @Output() updateProduct: EventEmitter<any> = new EventEmitter<any>();
   @Input() edit: boolean = false;
   @Input() id!: any;
-  @Input() product: any;
+  @Input() product: Item | null = null; // Define product type
   productForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
     private productService: ProductService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.productForm = this.formBuilder.group({
-      productName: this.formBuilder.control(''),
-      productImage: this.formBuilder.control(''),
-      productPrice: this.formBuilder.control(''),
-      productDiscountPrice: this.formBuilder.control(''),
-      productDescription: this.formBuilder.control(''),
+      name: ['', Validators.required],
+      image: ['', Validators.required],
+      price: ['', [Validators.required, Validators.min(0)]],
+      stock: ['', [Validators.required, Validators.min(0)]],
+      category: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Check for ID in route parameters
+    this.route.params.subscribe((params) => {
+      if (params['id']) {
+        this.id = params['id'];
+        this.loadProduct(this.id);
+      }
+    });
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['product'] && this.product) {
       this.productForm.patchValue({
-        productName: this.product.productName,
-        productImage: this.product.productImage,
-        productPrice: this.product.productPrice,
-        productDiscountPrice: this.product.productDiscountPrice,
-        productDescription: this.product.productDescription,
+        name: this.product.name,
+        image: this.product.image,
+        price: this.product.price,
+        stock: this.product.stock,
+        category: this.product.category,
+        description: this.product.description,
       });
     }
   }
 
+  loadProduct(id: string): void {
+    this.productService
+      .getProductById(id)
+      .subscribe((response: ApiResponseProduct) => {
+        const product = response.product; // Access product from response
+        this.productForm.patchValue({
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          stock: product.stock,
+          category: product.category,
+          description: product.description,
+        });
+      });
+  }
+
   onSubmit() {
     if (this.productForm.valid) {
-      if (!this.edit) {
-        const formData = this.productForm.value;
-        this.productService.addProduct(formData).subscribe(
-          (response) => {
-            this.toastr.success('Product added successfully');
-            this.router.navigate(['dashboard/products']);
-            this.productForm.reset();
-          },
-          (error) => {
-            this.toastr.error('Error adding product');
-            console.error('Error adding product', error);
-          }
-        );
+      const formData = {
+        ...this.productForm.value,
+        vendor: this.product?.vendor?._id,
+      }; // Assign vendor ID here
+      if (this.id) {
+        this.productService.updateProduct({ ...formData, _id: this.id });
+        this.toastr.success('Product updated successfully');
       } else {
-        this.productService
-          .updateProduct(this.id, this.productForm.value)
-          .subscribe(
-            (response) => {
-              this.toastr.success('Product updated successfully');
-              this.updateProduct.emit();
-              this.router.navigate(['dashboard/products']);
-            },
-            (error) => {
-              this.toastr.error('Error updating product');
-              console.error('Error updating product', error);
-            }
-          );
+        this.productService.addProduct(formData);
+        this.toastr.success('Product added successfully');
       }
+      this.router.navigate(['dashboard/products']);
+      this.productForm.reset();
     } else {
       this.toastr.warning('Form is invalid');
     }
   }
+
   closeForm() {
-    console.log('close');
     this.router.navigate(['dashboard/products']);
     this.updateProduct.emit('close');
   }

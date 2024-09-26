@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: WebproductsComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
-  { path: 'category', component: CategoryProductsComponent },
+
   { path: 'cart', component: CustomerCartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout-success', component: CheckoutSuccessComponent },
@@ -38,7 +38,9 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'products', pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
-      { path: 'add-product', component: EditProductFormComponent },
+      { path: 'category/:category', component: CategoryProductsComponent },
+      { path: 'product', component: EditProductFormComponent },
+      { path: 'product/:id', component: EditProductFormComponent },
       { path: 'orders', component: ProductOrdersTableComponent },
     ],
   },

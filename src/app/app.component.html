@@ -1,5 +1,6 @@
 <!-- Top nav -->
 <nav
+  *ngIf="!user || user.type !== 'vendor'"
   class="navbar navbar-light bg-light container-fluid middleNavContainer"
   style="border: 1px solid #ddd"
 >
@@ -57,9 +58,12 @@
         />
       </svg>
       <a class="nav-link" (click)="loginHandler()" style="cursor: pointer">
-        <span *ngIf="user; else loginSignup">Hello, {{ user }} <br/> Logout</span>
+        <span *ngIf="user; else loginSignup"
+          >Hello, {{ user.firstName }} <br />
+          Logout</span
+        >
         <ng-template #loginSignup>Login/Signup</ng-template>
-      </a> 
+      </a>
     </p>
 
     <!--  -->
@@ -81,7 +85,10 @@
     </p>
   </div>
 </nav>
-<div class="container-fluid locationBtnContainer">
+<div
+  *ngIf="!user || user.type !== 'vendor'"
+  class="container-fluid locationBtnContainer"
+>
   <p>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -135,9 +142,12 @@
 </div>
 
 <!-- bottom nav -->
-<nav class="navbar navbar-expand-sm navbar-light navContainer">
+<nav
+  *ngIf="!user || user.type !== 'vendor'"
+  class="navbar navbar-expand-sm navbar-light navContainer"
+>
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" routerLink="/">
       <img
         src="https://image-prod-qcsb-image-service.azurewebsites.net/Images/QC/3d76145a527e4db3a05c1e3ddd351994.png"
         alt=""
@@ -160,8 +170,8 @@
 
     <div class="collapse navbar-collapse pt-4 pb-4" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Shop</a>
+        <li class="nav-item" routerLink="/">
+          <a class="nav-link"  routerLinkActive="active">Shop</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -290,12 +300,13 @@
         <ng-container *ngIf="cartItems && cartItems.length > 0">
           <div class="container cartContainer">
             <div class="row">
-              <div class="col-lg-8 col-md-6">
+              <div class="col-lg-12 col-md-6">
                 <table class="table">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">Product</th>
                       <th scope="col">Quantity</th>
+                      <th scope="col">Price</th>
                       <th scope="col">Subtotal</th>
                       <th></th>
                     </tr>
@@ -304,26 +315,19 @@
                     <tr class="productRow" *ngFor="let item of cartItems">
                       <td>
                         <div class="product d-flex align-items-center">
-                          <img
-                            [src]="item.image"
-                            [alt]="item.name"
-                            style="max-width: 100px"
-                          />
-                          <div class="price ml-3">
+                          <div>
+                            <img [src]="item.image" [alt]="item.name" />
                             <h3 class="mb-0">{{ item.name }}</h3>
-                            <p class="mb-0">
-                              KShs {{ item.price | number : "1.2-2" }}
-                            </p>
                           </div>
                         </div>
                       </td>
-                      <td class="align-middle text-center">
+                      <td class="text-center">
                         <div
-                          class="cart-btns d-flex justify-content-center align-items-center"
+                          class="cart-btns d-flex flex-column justify-content-center align-items-center"
                         >
                           <button
                             (click)="
-                              updateQuantity(item.productId, item.quantity - 1)
+                              updateQuantity(item._id, item.quantity - 1)
                             "
                             class="remove btn"
                           >
@@ -347,10 +351,12 @@
                               <path d="M5 12l14 0" />
                             </svg>
                           </button>
-                          <p class="cartItem m-0">{{ item.quantity }}</p>
+                          <p class="cartItem m-0 subtotal">
+                            {{ item.quantity }}
+                          </p>
                           <button
                             (click)="
-                              updateQuantity(item.productId, item.quantity + 1)
+                              updateQuantity(item._id, item.quantity + 1)
                             "
                             class="add btn"
                           >
@@ -378,17 +384,22 @@
                         </div>
                       </td>
                       <td class="subtotal align-middle">
-                        KShs
                         {{
-                          calculateSubtotal(item.price, item.quantity)
-                            | number : "1.2-2"
+                          item.price | currency : "KES " : "symbol" : "1.2-2"
                         }}
                       </td>
+                      <td class="subtotal align-middle">
+                        {{
+                          calculateSubtotal(item.price, item.quantity)
+                            | currency : "KES " : "symbol" : "1.2-2"
+                        }}
+                      </td>
+
                       <td class="align-middle">
                         <button
                           type="button"
                           class="btn-close delete"
-                          (click)="removeProduct(item.productId)"
+                          (click)="removeProduct(item._id)"
                           aria-label="Close"
                         ></button>
                       </td>
@@ -403,7 +414,7 @@
       <div class="modal-footer" *ngIf="totalQuantity > 0">
         <div class="total-info">
           <p>Subtotal - {{ totalQuantity }} items</p>
-          <p>KShs {{ subtotal }}</p>
+          <p>{{ subtotal | currency : "KES " : "symbol" : "1.2-2" }}</p>
         </div>
         <button class="tocheckoutBtn" (click)="toCheckout()">
           Proceed To Cart
@@ -549,7 +560,6 @@
                   }}</span>
                 </p>
               </div>
-             
             </form>
           </div>
         </div>

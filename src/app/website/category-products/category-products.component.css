@@ -50,8 +50,7 @@
 
 .card {
   max-width: 500px;
-  height: 300px;
-
+  max-height: 500px;
 }
 
 .card img {
@@ -92,4 +91,40 @@
   font-weight: 500;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+svg {
+  height: 25px;
+  width: 25px;
+  color: #28a745;
+}
+.product-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.custom-pagination {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.custom-pagination .page-link {
+  color: black;
+  border: none; 
+  background-color: #fff;
+}
+
+.custom-pagination .page-link:hover {
+  cursor: pointer;
+}
+
+.custom-pagination .active .page-link {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.custom-pagination .disabled .page-link {
+  color: black;
+  pointer-events: none;
 }

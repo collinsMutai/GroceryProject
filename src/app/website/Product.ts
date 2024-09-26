@@ -15,7 +15,7 @@ export interface Item {
   description: string;
   category: string;
   stock: number;
-  vendor: {
+  vendor?: {
     _id: string;
     name: string;
     email: string;
@@ -33,7 +33,7 @@ export interface Vendor {
 }
 
 export interface CartItem {
-  productId: string;
+  _id: string;
   quantity: number;
   price: number;
   name?: string;

@@ -5,7 +5,7 @@ import {
   PLATFORM_ID,
   OnDestroy,
 } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../product.service'; // Adjust the path as necessary
 import { Item, CartItem } from '../Product';
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CurrencyPipe],
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
@@ -103,7 +103,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   addToCart(selectedItem: Item): void {
     if (selectedItem) {
       const cartItem: CartItem = {
-        productId: selectedItem._id,
+        _id: selectedItem._id,
         quantity: this.quantity,
         price: selectedItem.price,
         name: selectedItem.name,

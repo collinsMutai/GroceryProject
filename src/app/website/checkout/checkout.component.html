@@ -1,10 +1,19 @@
 <div class="container-fluid navigatorContainer">
   <form [formGroup]="checkoutForm" (ngSubmit)="placeOrder()">
     <div class="row justify-content-center">
-      <div class="col-lg-7 col-md-6">
-        <div style="border: 1px solid rgb(189, 189, 189); padding: 45px 25px; border-radius: 5px;">
+      <div class="col-lg-8 col-md-6">
+        <div
+          style="
+            border: 1px solid rgb(189, 189, 189);
+            padding: 45px 25px;
+            border-radius: 5px;
+          "
+        >
           <div class="card form" style="border: none">
-            <h5 class="card-header" style="background-color: #28a745; color: #fff">
+            <h5
+              class="card-header"
+              style="background-color: #28a745; color: #fff"
+            >
               Customer details
             </h5>
             <div class="card-body pt-4">
@@ -55,7 +64,10 @@
             </div>
           </div>
           <div class="card shipping_form" style="border: none; outline: none">
-            <h5 class="card-header" style="background-color: #28a745; color: #fff">
+            <h5
+              class="card-header"
+              style="background-color: #28a745; color: #fff"
+            >
               Delivery details
             </h5>
             <div class="card-body pt-4">
@@ -71,7 +83,9 @@
                   />
                 </div>
                 <div class="form-group col-md-6">
-                  <label class="label" for="building">Building, Apartment, or House No.</label>
+                  <label class="label" for="building"
+                    >Building, Apartment, or House No.</label
+                  >
                   <input
                     type="text"
                     class="form-control"
@@ -103,7 +117,9 @@
                   />
                 </div>
                 <div class="form-group col-md-12 pt-4">
-                  <label class="label" for="instructions">Delivery instructions</label>
+                  <label class="label" for="instructions"
+                    >Delivery instructions</label
+                  >
                   <textarea
                     class="form-control"
                     id="instructions"
@@ -118,34 +134,59 @@
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
-        <div style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px">
+        <div
+          style="border: 1px solid gray; padding: 45px 25px; border-radius: 5px"
+        >
           <div class="card form" style="border: none; outline: none">
-            <h5 class="card-header" style="background-color: #28a745; color: #fff">
+            <h5
+              class="card-header"
+              style="background-color: #28a745; color: #fff"
+            >
               Your Order
             </h5>
             <div class="card-body pt-4">
               <div class="checkoutItem" *ngFor="let item of cartItems">
                 <div class="itemDetails">
                   <p>{{ item.name }}</p>
-                  <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-plus" style="transform: rotate(45deg)">
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M12 5l0 14" />
-                      <path d="M5 12l14 0" />
-                    </svg>
+
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+                    style="transform: rotate(45deg)"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 5l0 14" />
+                    <path d="M5 12l14 0" />
+                  </svg>
+
+                  <p>{{ item.quantity }}</p>
+                  <p class="price">
+                    {{
+                      calculateSubtotal(item.price, item.quantity)
+                        | currency : "KES " : "symbol" : "1.2-2"
+                    }}
                   </p>
-                  <p>{{item.quantity}}</p>
                 </div>
-                <p class="price"> KShs {{ calculateSubtotal(item.price, item.quantity) | number : "1.2-2" }}</p>
               </div>
               <div class="subtotal">
                 <p>Subtotal</p>
-                <p>KShs {{ subtotal }}</p>
+                <p>{{ subtotal | currency : "KES " : "symbol" : "1.2-2" }}</p>
               </div>
             </div>
           </div>
           <div class="card shipping_form" style="border: none; outline: none">
-            <h5 class="card-header" style="background-color: #28a745; color: #fff">
+            <h5
+              class="card-header"
+              style="background-color: #28a745; color: #fff"
+            >
               Select payment method
             </h5>
             <div class="card-body">
@@ -167,7 +208,9 @@
                   id="pesapal"
                   value="pesapal"
                 />
-                <label class="form-check-label" for="pesapal">Pesapal (Credit Card Payments)</label>
+                <label class="form-check-label" for="pesapal"
+                  >Pesapal (Credit Card Payments)</label
+                >
               </div>
               <div class="form-check">
                 <input
@@ -187,13 +230,12 @@
                   id="cash"
                   value="cash"
                 />
-                <label class="form-check-label" for="cash"> Cash on delivery </label>
+                <label class="form-check-label" for="cash">
+                  Cash on delivery
+                </label>
               </div>
               <div class="pt-4">
-                <button
-                  type="submit"
-                  class="placeOrderBtn w-100 mw-100"
-                >
+                <button type="submit" class="placeOrderBtn w-100 mw-100">
                   Place order
                 </button>
               </div>
@@ -207,21 +249,34 @@
 
 <!-- payment modal -->
 
-
 <!-- Modal -->
-<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="paymentModal"
+  tabindex="-1"
+  aria-labelledby="paymentModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Pay with Mpesa</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
+      <div class="modal-body">...</div>
       <div class="modal-footer">
-       
-        <button type="button" class="btn btn-primary" (click)="closePaymentModal()">Pay</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="closePaymentModal()"
+        >
+          Pay
+        </button>
       </div>
     </div>
   </div>

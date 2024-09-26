@@ -24,6 +24,7 @@ export class WebproductsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit(): void {
+    
     this.productService.getProductsObservable().subscribe((productsMap) => {
       const productsArray = Array.from(productsMap.values());
       this.filterProductsByCategory(productsArray);
@@ -36,7 +37,9 @@ export class WebproductsComponent implements OnInit {
     this.vegetables = products.filter(
       (product) => product.category === 'vegetables'
     );
-    this.fruits = products.filter((product) => product.category === 'fruits');
+    this.fruits = products.filter(
+      (product) => product.category === 'fruits'
+    );
     this.spices = products.filter((product) => product.category === 'spices');
     this.meats = products.filter((product) => product.category === 'meats');
     this.dairies = products.filter((product) => product.category === 'dairies');

@@ -1,52 +1,67 @@
-/* .productContainer {
-  background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300200/54088668-organic-food-background-studio-photo-of-different-fruits-and-vegetables-on-white-wooden-table-high.jpg);
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  width: 85vw;
-  height: 100%;
-  padding: 40px 20px;
-} */
 
-.productContainer h3 {
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  /* padding-bottom: 40px; */
+
+.productContainer {
+    background-image: url(https://previews.123rf.com/images/romastudio/romastudio1603/romastudio160300200/54088668-organic-food-background-studio-photo-of-different-fruits-and-vegetables-on-white-wooden-table-high.jpg);
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    /* width: 85vw; */
+    padding: 40px 20px;
+    height: 100% !important; /* Adjust height based on content */
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
+.productContainer h3 {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .product-options {
-  gap: 20px; /* Adjust gap between cards if needed */
-  padding: 20px; /* Optional padding around the grid */
+    display: flex;
+ 
+    justify-content: space-between; /* Distribute space between cards */
+    gap: 20px; /* Space between cards */
+    padding: 10px 20px; /* Optional padding around the grid */
 }
 
 .product-options .card {
-  transition: transform 0.2s;
-  /* border: 1px solid #ccc; */
-  border-radius: 5px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  padding: 10px;
-  background-color: transparent;
-  
+    transition: transform 0.2s;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque background for readability */
+    flex: 0 1 calc(33.33% - 20px); /* Three cards per row */
+    max-width: calc(33.33% - 20px); /* Max width for three cards */
+    box-sizing: border-box; /* Include padding in width calculations */
 }
 
 .product-options .card:hover {
-  transform: scale(1.05);
+    transform: scale(1.05); /* Scale effect on hover */
 }
 
 .card-img-top {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  margin-bottom: 10px;
+    width: 100%;
+    height: 100px; /* Fixed height for images */
+    object-fit: contain; /* Cover the card area */
+    margin-bottom: 10px; /* Space below the image */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .product-options .card {
+        flex: 0 1 calc(50% - 20px); /* Two cards per row on medium screens */
+        max-width: calc(50% - 20px); /* Ensure max width for two cards */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-options .card {
+        flex: 0 1 100%; /* One card per row on small screens */
+        max-width: 100%; /* Ensure max width for one card */
+    }
 }

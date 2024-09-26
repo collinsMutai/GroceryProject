@@ -86,7 +86,7 @@ export class CheckoutComponent implements OnInit {
   placeOrder() {
     if (this.checkoutForm.valid) {
       const transformedItems = this.cartItems.map((item) => ({
-        productId: item.productId,
+        productId: item._id,
         quantity: item.quantity,
         price: item.price,
       }));
