@@ -90,10 +90,10 @@ export class AppComponent implements OnInit, AfterViewInit {
    });
 
 
-    this.productService.getCart().subscribe((cartItems) => {
-      this.cartItems = cartItems;
-      this.calculateTotals();
-    });
+    // this.productService.getCart().subscribe((cartItems) => {
+    //   this.cartItems = cartItems;
+    //   this.calculateTotals();
+    // });
   }
 
   openCart() {

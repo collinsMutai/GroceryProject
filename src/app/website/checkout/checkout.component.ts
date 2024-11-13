@@ -62,10 +62,10 @@ export class CheckoutComponent implements OnInit {
         });
       }
     });
-    this.productService.getCart().subscribe((cartItems) => {
-      this.cartItems = cartItems;
-      this.calculateTotals();
-    });
+    // this.productService.getCart().subscribe((cartItems) => {
+    //   this.cartItems = cartItems;
+    //   this.calculateTotals();
+    // });
   }
 
   calculateTotals() {

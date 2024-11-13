@@ -20,14 +20,14 @@ import { Router } from '@angular/router';
   imports: [CommonModule],
 })
 export class CategorySliderTemplateComponent implements OnChanges, OnInit {
-  @Input() items: Item[] = [];
+  @Input() items: any[] = [];
   @Input() title: string = 'Category Title';
   @Input() chunkSize: number = 7; // Added @Input for chunkSize
 
-  chunkedItems: Item[][] = [];
+  chunkedItems: any[][] = [];
   carouselId: string = ''; // New property for dynamic ID
 
-  @Output() itemClick = new EventEmitter<Item>();
+  @Output() itemClick = new EventEmitter<any>();
 
   constructor(private router: Router, private productService: ProductService) {}
 
@@ -54,6 +54,6 @@ export class CategorySliderTemplateComponent implements OnChanges, OnInit {
 
   onItemClick(item: any): void {
     console.log('onItemClick', item);
-    this.router.navigate(['products', item._id]);
+    this.router.navigate(['products', item.productId]);
   }
 }

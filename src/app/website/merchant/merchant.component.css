@@ -1,20 +1,21 @@
-.merchant-container{
-   margin-bottom: 20px;
+.merchant-container {
+  margin-bottom: 20px;
+  min-height: 100vh;
 }
 @keyframes emergeFromCenter {
-    0% {
-      transform: scale(0.5);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
-  } 
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
-.merchant-info{
-    animation: emergeFromCenter 1s ease-out; /* Adjust timing as needed */
-}  
+.merchant-info {
+  animation: emergeFromCenter 1s ease-out; /* Adjust timing as needed */
+}
 
 .quick-cart-container {
   display: flex;
@@ -35,8 +36,8 @@
     margin-bottom: 0.5em;
     color: rgba(223, 223, 223, 0.918);
     span {
-        text-decoration: underline;
-      }
+      text-decoration: underline;
+    }
   }
 
   p {

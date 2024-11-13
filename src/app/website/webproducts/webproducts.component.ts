@@ -18,34 +18,60 @@ export class WebproductsComponent implements OnInit {
   spices: Item[] = [];
   meats: Item[] = [];
   dairies: Item[] = [];
+  allProducts: Item[] = [];
 
   selectedItems: Item[] = [];
 
   constructor(private router: Router, private productService: ProductService) {}
 
   ngOnInit(): void {
-    
-    this.productService.getProductsObservable().subscribe((productsMap) => {
-      const productsArray = Array.from(productsMap.values());
-      this.filterProductsByCategory(productsArray);
-    });
+    this.productService.getAllProducts().subscribe((res) => {
+      console.log('Full API response:', res.message); // Log the full API response
+      this.allProducts = res.message;
 
-    this.productService.getAllProducts();
+      // Filter products by category after receiving data
+      this.filterProductsByCategory(this.allProducts);
+    });
   }
 
   private filterProductsByCategory(products: Item[]): void {
-    this.vegetables = products.filter(
-      (product) => product.category === 'vegetables'
-    );
+    console.log('Filtering products:', products); // Log all products
+
+    // Filter for Vegetables
+    this.vegetables = products.filter((product:any) => {
+      console.log(
+        'Checking product category:',
+        product.productType.category?.title
+      ); // Log category title
+      return product.productType.category?.title === 'Vegetables'; // Compare category title
+    });
+
+    console.log('Vegetables after filtering:', this.vegetables); // Log filtered vegetables array
+
+    // Filter other categories
     this.fruits = products.filter(
-      (product) => product.category === 'fruits'
+      (product:any) => product.productType.category?.title === 'Fruits'
     );
-    this.spices = products.filter((product) => product.category === 'spices');
-    this.meats = products.filter((product) => product.category === 'meats');
-    this.dairies = products.filter((product) => product.category === 'dairies');
+    console.log('Fruits after filtering:', this.fruits); // Log filtered fruits array
+
+    this.spices = products.filter(
+      (product:any) => product.productType.category?.title === 'Spices'
+    );
+    console.log('Spices after filtering:', this.spices); // Log filtered spices array
+
+    this.meats = products.filter(
+      (product:any) => product.productType.category?.title === 'Meats'
+    );
+    console.log('Meats after filtering:', this.meats); // Log filtered meats array
+
+    this.dairies = products.filter(
+      (product:any) => product.productType.category?.title === 'Dairies'
+    );
+    console.log('Dairies after filtering:', this.dairies); // Log filtered dairies array
   }
 
   goToCart(item: Item): void {
-    console.log('item', item);
+    console.log('item', item); // Log clicked item
+    // Implement cart functionality here
   }
 }

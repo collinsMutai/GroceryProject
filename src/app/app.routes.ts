@@ -17,12 +17,22 @@ import { ContactComponent } from './website/contact/contact.component';
 import { ProductDetailsComponent } from './website/product-details/product-details.component';
 import { AppComponent } from './app.component';
 import { CheckoutSuccessComponent } from './website/checkout-success/checkout-success.component';
+import { PasswordResetRequestComponent } from './website/password-reset-request/password-reset-request.component';
+import { PasswordResetComponent } from './website/password-reset/password-reset.component';
+import { VendorsComponent } from './website/vendors/vendors.component';
+import { SuppliersComponent } from './website/suppliers/suppliers.component';
+import { CategoriesComponent } from './website/categories/categories.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: WebproductsComponent },
-  { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'products/:productId', component: ProductDetailsComponent },
+  { path: 'vendors', component: VendorsComponent },
+  { path: 'suppliers', component: SuppliersComponent },
+  { path: 'categories', component: CategoriesComponent },
 
+  { path: 'password-reset-request', component: PasswordResetRequestComponent },
+  { path: 'reset-password/:token', component: PasswordResetComponent },
   { path: 'cart', component: CustomerCartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'checkout-success', component: CheckoutSuccessComponent },

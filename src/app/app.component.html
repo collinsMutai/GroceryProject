@@ -171,7 +171,7 @@
     <div class="collapse navbar-collapse pt-4 pb-4" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item" routerLink="/">
-          <a class="nav-link"  routerLinkActive="active">Shop</a>
+          <a class="nav-link" routerLinkActive="active">Shop</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -182,56 +182,28 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Shop by Category
+            Shop by
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <a
                 class="dropdown-item"
-                (click)="navigateToCategory('Green Farm Organics')"
-                >Green Farm Organics</a
+               routerLink="categories"
+                >Category</a
               >
             </li>
             <li>
               <a
                 class="dropdown-item"
-                (click)="navigateToCategory('Organic Fruits')"
-                >Organic Fruits</a
+               routerLink="vendors"
+                >Vendor</a
               >
             </li>
             <li>
               <a
                 class="dropdown-item"
-                (click)="navigateToCategory('Nature\'s Harvest')"
-                >Nature's Harvest</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                (click)="navigateToCategory('Fresh Farm Produce')"
-                >Fresh Farm Produce</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                (click)="navigateToCategory('Nature\'s Bounty')"
-                >Nature's Bounty</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                (click)="navigateToCategory('Organic Valley Market')"
-                >Organic Valley Market</a
-              >
-            </li>
-            <li>
-              <a
-                class="dropdown-item"
-                (click)="navigateToCategory('Organic Roots Market')"
-                >Organic Roots Market</a
+                routerLink="suppliers"
+                >Supplier</a
               >
             </li>
           </ul>

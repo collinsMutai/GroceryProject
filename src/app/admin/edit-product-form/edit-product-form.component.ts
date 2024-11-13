@@ -72,19 +72,19 @@ export class EditProductFormComponent implements OnInit {
   }
 
   loadProduct(id: string): void {
-    this.productService
-      .getProductById(id)
-      .subscribe((response: ApiResponseProduct) => {
-        const product = response.product; // Access product from response
-        this.productForm.patchValue({
-          name: product.name,
-          image: product.image,
-          price: product.price,
-          stock: product.stock,
-          category: product.category,
-          description: product.description,
-        });
-      });
+    // this.productService
+    //   .getProductById(id)
+    //   .subscribe((response: ApiResponseProduct) => {
+    //     const product = response.product; 
+    //     this.productForm.patchValue({
+    //       name: product.name,
+    //       image: product.image,
+    //       price: product.price,
+    //       stock: product.stock,
+    //       category: product.category,
+    //       description: product.description,
+    //     });
+    //   });
   }
 
   onSubmit() {

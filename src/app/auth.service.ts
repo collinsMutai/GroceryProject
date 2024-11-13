@@ -40,7 +40,6 @@ export class AuthService {
       .post<AuthResponse>(`${this.api}login`, { type, username, password })
       .pipe(
         tap((response) => {
-         
           this.storeUser(response.user, response.token);
         })
       );
@@ -75,7 +74,6 @@ export class AuthService {
     localStorage.removeItem('user');
     this.userSubject.next(null);
     this.router.navigate(['/']);
-  
   }
 
   isAuthenticated(): boolean {
@@ -84,5 +82,18 @@ export class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  requestPasswordReset(email: string, userType: string): Observable<any> {
+    return this.http.post<any>(`${this.api}/password-reset`, {
+      email,
+      type: userType,
+    });
+  }
+
+  resetPassword(token: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.api}/reset-password/${token}`, {
+      password,
+    });
   }
 }

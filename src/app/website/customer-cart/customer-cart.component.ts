@@ -18,10 +18,10 @@ export class CustomerCartComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) {}
 
   ngOnInit(): void {
-    this.productService.getCart().subscribe((cartItems) => {
-      this.cartItems = cartItems;
-       this.calculateTotals();
-    });
+    // this.productService.getCart().subscribe((cartItems) => {
+    //   this.cartItems = cartItems;
+    //    this.calculateTotals();
+    // });
   }
   calculateTotals() {
     this.totalQuantity = this.cartItems.reduce(

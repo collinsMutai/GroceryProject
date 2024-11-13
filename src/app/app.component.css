@@ -731,7 +731,6 @@ nav {
 
 /* Full Width Dropdown Menu */
 .dropdown-menu {
-  width: 50vw;
   display: none;
   position: fixed;
   top: 100%;
@@ -797,7 +796,7 @@ nav {
   position: fixed; /* Positioning for full width */
   top: 100%;
   left: 0;
-  width: 100vw;
+  width: 15;
 }
 
 .mega-menu--flat {
