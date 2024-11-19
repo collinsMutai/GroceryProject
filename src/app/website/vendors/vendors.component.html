@@ -1,78 +1,31 @@
+<div class="filter-section">
+  <h3 class="filter-title">Products by Vendor Name</h3>
+
+  <div class="filter-container">
+    <label for="filter">Sort By</label>
+    <select id="filter" [(ngModel)]="selectedFilter" (change)="applyFilter()">
+      <option value="default">Select Filter</option>
+      <option value="priceAsc">Price: Low to High</option>
+      <option value="priceDesc">Price: High to Low</option>
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
+</div>
+
 <div class="vendor-products">
-
-  <div class="product-card">
-    <img
-      src="https://greenspoon.co.ke/wp-content/uploads/2021/12/Greenspoon-Flat-Parsley-Mlango-Farm1-720x480.jpg"
-      alt="Product 1"
-      class="product-image"
-    />
-   
+  <div class="product-card" *ngFor="let product of filteredProducts">
+    <img [src]="product.image" alt="Product" class="product-image" />
     <div class="product-title-price">
-      <h3>Product 1</h3>
-      <p class="product-price">Price: $19.99</p>
+      <h3>{{ product.name }}</h3>
+      <p class="product-price">Price: ${{ product.price }}</p>
     </div>
-
     <div class="product-actions">
-      
       <div class="quantity-control">
         <button>-</button>
         <span>1</span>
         <button>+</button>
       </div>
-
-      
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
- 
-  <div class="product-card">
-    <img
-      src="https://greenspoon.co.ke/wp-content/uploads/2021/12/Greenspoon-Flat-Parsley-Mlango-Farm1-720x480.jpg"
-      alt="Product 2"
-      class="product-image"
-    />
-  
-    <div class="product-title-price">
-      <h3>Product 2</h3>
-      <p class="product-price">Price: $29.99</p>
-    </div>
-
-    <div class="product-actions">
-     
-      <div class="quantity-control">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
-
-    
-      <button class="add-to-cart">Add to Cart</button>
-    </div>
-  </div>
-
-  
-  <div class="product-card">
-    <img
-      src="https://greenspoon.co.ke/wp-content/uploads/2021/12/Greenspoon-Flat-Parsley-Mlango-Farm1-720x480.jpg"
-      alt="Product 3"
-      class="product-image"
-    />
-  
-    <div class="product-title-price">
-      <h3>Product 3</h3>
-      <p class="product-price">Price: $39.99</p>
-    </div>
-
-    <div class="product-actions">
-     
-      <div class="quantity-control">
-        <button>-</button>
-        <span>1</span>
-        <button>+</button>
-      </div>
-
-     
       <button class="add-to-cart">Add to Cart</button>
     </div>
   </div>
