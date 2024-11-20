@@ -1,1 +1,32 @@
-<p>suppliers works!</p>
+<div class="filter-section">
+  <h3 class="filter-title">Products by Supplier Name</h3>
+
+  <div class="filter-container">
+    <label for="filter">Sort By</label>
+    <select id="filter" [(ngModel)]="selectedFilter" (change)="applyFilter()">
+      <option value="default">Select Filter</option>
+      <option value="priceAsc">Price: Low to High</option>
+      <option value="priceDesc">Price: High to Low</option>
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
+    </select>
+  </div>
+</div>
+
+<div class="vendor-products">
+  <div class="product-card" *ngFor="let product of filteredProducts">
+    <img [src]="product.image" alt="Product" class="product-image" />
+    <div class="product-title-price">
+      <h3>{{ product.name }}</h3>
+      <p class="product-price">Price: ${{ product.price }}</p>
+    </div>
+    <div class="product-actions">
+      <div class="quantity-control">
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+      </div>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+</div>

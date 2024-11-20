@@ -1,16 +1,30 @@
-<div class="container my-4">
-  <h2 class="mb-4" style="color: whitesmoke;">Frequently Asked Questions (FAQs)</h2>
-
+<div class="container my-4" style="margin-top: 300px !important">
+  <h2 class="mb-4" style="color: whitesmoke">
+    Frequently Asked Questions (FAQs)
+  </h2>
 
   <div class="content-row">
     <div class="accordion" id="faqsAccordion">
       <div class="accordion-item" *ngFor="let faq of faqs; let i = index">
-        <h2 class="accordion-header" id="heading{{i}}">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapse' + i" aria-expanded="true" [attr.aria-controls]="'collapse' + i">
+        <h2 class="accordion-header" id="heading{{ i }}">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapse' + i"
+            aria-expanded="true"
+            [attr.aria-controls]="'collapse' + i"
+          >
             {{ faq.question }}
           </button>
         </h2>
-        <div [id]="'collapse' + i" class="accordion-collapse collapse" [class.show]="i === 0" [attr.aria-labelledby]="'heading' + i" data-bs-parent="#faqsAccordion">
+        <div
+          [id]="'collapse' + i"
+          class="accordion-collapse collapse"
+          [class.show]="i === 0"
+          [attr.aria-labelledby]="'heading' + i"
+          data-bs-parent="#faqsAccordion"
+        >
           <div class="accordion-body">
             {{ faq.answer }}
           </div>
@@ -24,20 +38,29 @@
       <form>
         <div class="form-group">
           <label for="name">Your Name <span class="required">*</span></label>
-          <input type="text" id="name" placeholder="Enter Name" required>
+          <input type="text" id="name" placeholder="Enter Name" required />
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="email">Email Address <span class="required">*</span></label>
-            <input type="email" id="email" placeholder="ex@gmail.com" required>
+            <label for="email"
+              >Email Address <span class="required">*</span></label
+            >
+            <input
+              type="email"
+              id="email"
+              placeholder="ex@gmail.com"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="phone">Phone <span class="required">*</span></label>
-            <input type="text" id="phone" placeholder="Enter Phone" required>
+            <input type="text" id="phone" placeholder="Enter Phone" required />
           </div>
         </div>
         <div class="form-group">
-          <label for="message">Your Message <span class="required">*</span></label>
+          <label for="message"
+            >Your Message <span class="required">*</span></label
+          >
           <textarea id="message" placeholder="" required></textarea>
         </div>
         <div class="button-group">

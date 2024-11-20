@@ -7,14 +7,15 @@
     transform: scale(1);
     opacity: 1;
   }
-} 
+}
 
 .container {
-  max-width: 1400px;
+  width: 100%;
+  min-height: 100vh;
   margin: 0 auto;
-background-image: url(https://t3.ftcdn.net/jpg/03/07/15/28/360_F_307152868_ncMILWfZIhGoAEK8QsFDsScGiRaQMsL0.jpg);
-background-size: cover;
-background-position: center;
+  background-image: url(https://t3.ftcdn.net/jpg/03/07/15/28/360_F_307152868_ncMILWfZIhGoAEK8QsFDsScGiRaQMsL0.jpg);
+  background-size: cover;
+  background-position: center;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.75);
@@ -70,7 +71,8 @@ label {
   color: red;
 }
 
-input, textarea {
+input,
+textarea {
   /* background:rgba(255, 255, 255, 0.3) ; */
   width: 100%;
   padding: 8px;

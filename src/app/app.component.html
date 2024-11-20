@@ -1,4 +1,7 @@
 <!-- Top nav -->
+<div class="moving-text-container" style="position: fixed; left: 0; top: 0; width: 100%;">
+  <p class="moving-text">🚚 We Are Pleased To Serve You | Free delivery on orders above KSh 5000! 🚚</p>
+</div>
 <nav
   *ngIf="!user || user.type !== 'vendor'"
   class="navbar navbar-light bg-light container-fluid middleNavContainer"
@@ -86,6 +89,7 @@
   </div>
 </nav>
 <div
+style="position: fixed; left: 0; top: 30px; z-index: 999;"
   *ngIf="!user || user.type !== 'vendor'"
   class="container-fluid locationBtnContainer"
 >
@@ -143,6 +147,7 @@
 
 <!-- bottom nav -->
 <nav
+style="position: fixed; left: 0; top: 180px; z-index: 999; width: 100%;"
   *ngIf="!user || user.type !== 'vendor'"
   class="navbar navbar-expand-sm navbar-light navContainer"
 >
@@ -541,6 +546,8 @@
 </div>
 
 <!-- shop by vendors modal  -->
+<div style="margin-top: 200px; margin-bottom:50px;">
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>

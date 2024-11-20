@@ -1,4 +1,33 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+/* Style for the moving text container */
+.moving-text-container {
+  background-color: #f8f9fa;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  z-index: 10;
+}
+
+/* Create the animation effect */
+.moving-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: moveText 10s linear infinite;
+}
+
+/* Define the keyframes to animate the text */
+@keyframes moveText {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 .locationBtnContainer {
   padding: 10px 0px;
@@ -24,7 +53,7 @@
 
 .middleNavContainer {
   position: fixed;
-  top: 0;
+  top: 50px;
   width: 100%;
   z-index: 1030;
   padding: 15px 0px;
